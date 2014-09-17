@@ -63,8 +63,8 @@ Alternativamente:
     "Gira el robot x cant de grados hacia su derecha"
 
     | partial_dir |
-    partial_dir := self direction - degrees.
-    partial_dir > 0
+    partial_dir := self direction + degrees.
+    partial_dir > 360
       ifTrue: [ partial_dir := partial_dir - 360 ].
     self direction: partial_dir
 ```
@@ -92,7 +92,7 @@ Alternativamente:
 ```smalltalk
 squareAtHomeOfSize: aSize
   "Realiza un cuadrado con una esquina en 25@25 y de lado aSize."
-  self squareOfSize: aSize at: 25@25
+  self squareOfSize: aSize at: (25@25)
 ```
 
 
@@ -163,16 +163,28 @@ patrol: aPatrol sniper: aSniper
     patrol: aPatrol;
     sniper: aSniper
 ```
+```smalltalk
+sniper
+  "Retorna un sniper"
+
+  ^ sniper
+```
+```smalltalk
+patrol
+  "Retorna un patrol"
+
+  ^ patrol
+```
 2) Cree dos robos diferentes para que sean  patrol y sniper respectivamente.
 Cree una instancia de PatrolCouple. Por último, envíe el mensaje #patrol:
 sniper: con los robots como parámetros de instancia de PatrolCouple.
 ```smalltalk
-| patrol_couple patrol sniper|
-patrol_couple := PatrolCouple new.
-patrol := WalkingBrushRobot new.
-sniper := WalkingBrushRobot new.
+  | patrol_couple patrol sniper|
+  patrol_couple := PatrolCouple new.
+  patrol := WalkingBrushRobot new.
+  sniper := WalkingBrushRobot new.
 
-patrol_couple patrol: patrol sniper: sniper
+  patrol_couple patrol: patrol sniper: sniper
 ```
 
 3) Según lo visto en la teoría, implemente el o los métodos necesarios para que
@@ -181,41 +193,67 @@ conforman por medio de un método de clase que se encargue de la "creación e
 inicialización".
 
 ```smalltalk
-newWithPatrol: aPatrol andSniper: aSniper
-  "Crea e inicializa un PatrolCouple con robots."
+  newWithPatrol: aPatrol andSniper: aSniper
+    "Crea e inicializa un PatrolCouple con robots."
 
-  ^ self new patrol: aPatrol sniper: aSniper
+    ^ self new patrol: aPatrol sniper: aSniper
 ```
 
 Ejercicio 4:
 =============
 
 PatrolCouple con comportamiento
-En este ejercicio agregaremos comportamiento a PatrolCouple con la siguiente definición de mensajes:
 
-`#reset`
+En este ejercicio agregaremos comportamiento a PatrolCouple con la siguiente
+definición de mensajes:
 
-"Ambos robots se posicionan enfrentados a distancia 5 uno del otro (uno mira al
-south y el otro al north, uno de ellos posicionado en 20@20"
+```smalltalk
+  reset
+    "Ambos robots se posicionan enfrentados a distancia 5 uno del otro (uno mira al
+      south y el otro al north, uno de ellos posicionado en 20@20"
 
-`#regularPatrol`
+    self patrol
+      north;
+      position: (20@20).
+    self sniper
+      south;
+      position: (20@5).
+```
 
-"patrol hace un cuadrado de lado 10 rotado 45 grados alrededor de sniper,
-sniper en el centro gira en sentido de las agujas del reloj."
+```smalltalk
+  regularPatrol
+    "patrol hace un cuadrado de lado 10 rotado 45 grados alrededor de sniper,
+      sniper en el centro gira en sentido de las agujas del reloj."
 
-`#regularPatrolTrace`
+    self patrol rotatedSquareOfSize: 10 at: (self sniper position / 2)
+```
 
-"Similar a regularPatrol pero patrol realiza un trazo con el brush"
 
-`#doTheRegularPatrol`
+```smalltalk
+  regularPatrolTrace
+    "Similar a regularPatrol pero patrol realiza un trazo con el brush"
 
-"Los guardias repiten regularPatrol 5 veces, pero luego de cada una se corren 5
-hacia el este. Considere usar bateria con suficiente carga"
+    self
+      brushDown;
+      regularPatrol;
+      brushUp.
+```
 
-`#doTheRegularPatrolTrace`
 
-"Similar a doTheRegularPatrol pero cada robot deja un trazo en la arena con el
-brush"
+```smalltalk
+    <!-- TODO -->
+  doTheRegularPatrol
+    "Los guardias repiten regularPatrol 5 veces, pero luego de cada una se
+    corren 5 hacia el este. Considere usar bateria con suficiente carga"
+```
+
+```smalltalk
+  doTheRegularPatrolTrace
+
+      "Similar a doTheRegularPatrol pero cada robot deja un trazo en la arena
+      con el brush"
+
+```
 
 1. Realice el diagrama de clases.
 
@@ -270,7 +308,7 @@ Note que siempre los robots deben dejar el rastro de su patrullaje.  Por ej. el 
 regularWatch podria ser:
 
 
-
+<!-- TODO: ver imagen -->
 
 
 
@@ -278,25 +316,37 @@ Mientras que el resultado del paranoicWatch podría ser:
 
 
 
+<!-- TODO: ver imagen -->
 
 
 
 
 Ejercicio 6: Wallpost
-En este ejercicio abandonamos el mundo del robot y nos manejamos con el Browser del Sistema.
+---------------------
 
-Debe desarrollar un post en un muro, al estilo de Facebook. Definimos un objeto Wallpost con los
-siguientes atributos: un texto que se desea publicar, cantidad de likes ("me gusta") y una marca que indica
-si es destacado o no.
+En este ejercicio abandonamos el mundo del robot y nos manejamos con el Browser
+del Sistema.
+
+Debe desarrollar un post en un muro, al estilo de Facebook. Definimos un objeto
+Wallpost con los siguientes atributos: un texto que se desea publicar, cantidad
+de likes ("me gusta") y una marca que indica si es destacado o no.
+
 Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
-`#text `
-"Retorna el texto descriptivo de la publicación"
+
+```smalltalk
+  text
+  "Retorna el texto descriptivo de la publicación"
+```
 
 `#text: aString `
 "Setea el texto descriptivo de la publicación"
 
-`#likes `
-"Retorna la cantidad de "me gusta""
+```smalltalk
+  likes
+    "Retorna la cantidad de "me gusta""
+
+```
+
 
 `#like `
 "Incrementa la cantidad de likes en uno"

@@ -331,39 +331,98 @@ Debe desarrollar un post en un muro, al estilo de Facebook. Definimos un objeto
 Wallpost con los siguientes atributos: un texto que se desea publicar, cantidad
 de likes ("me gusta") y una marca que indica si es destacado o no.
 
+```smalltalk
+  Object subclass: #Wallpost
+    instanceVariableNames: 'likes featured text'
+    classVariableNames: ''
+    category: 'unclassified'
+```
+
 Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
 
 ```smalltalk
   text
-  "Retorna el texto descriptivo de la publicación"
+    "Retorna el texto descriptivo de la publicación"
+
+    ^ text
 ```
 
-`#text: aString `
-"Setea el texto descriptivo de la publicación"
+```smalltalk
+  text: aString
+    "Setea el texto descriptivo de la publicación"
+
+    text := aString
+
+```
 
 ```smalltalk
   likes
     "Retorna la cantidad de "me gusta""
 
+    ^ self likes
 ```
 
 
-`#like `
-"Incrementa la cantidad de likes en uno"
+```smalltalk
+  likes: aNumber
+    "Setter para likes"
 
-`#dislike `
-"Decrementa la cantidad de likes en uno. Si ya es 0, no hace nada"
+    likes := aNumber
+```
 
-`#isFeatured `
-"Retorna true si el post esta marcado como destacado, false en caso contrario"
+```smalltalk
+  like
+    "Incrementa la cantidad de likes en uno"
 
-`#toggleFeatured `
-"Cambia el post del estado destacado a no destacado y viceversa"
+    self likes: self likes + 1
+```
 
-`#initialize `
-"Inicializa el estado de las variables de instancia del Wallpost. Luego de la
-invocación el Wallpost debe tener como texto: "Undefined post", no debe estar
-marcado como destacado y la cantidad de "Me gusta" deben ser 0."
+```smalltalk
+  dislike
+    "Decrementa la cantidad de likes en uno. Si ya es 0, no hace nada"
+
+    self likes > 0 ifTrue: [ self likes: self likes - 1 ]
+```
+
+```smalltalk
+  featured
+    "getter para featured"
+
+    ^ featured
+```
+
+```smalltalk
+  featured: aValue
+    "setter para featured"
+
+    featured := aValue
+```
+
+```smalltalk
+  isFeatured
+    "Retorna true si el post esta marcado como destacado, false en caso contrario"
+
+    ^ self featured
+```
+
+```smalltalk
+  toggleFeatured
+    "Cambia el post del estado destacado a no destacado y viceversa"
+
+    self featured: self featured not
+```
+
+```smalltalk
+  initialize
+    "Inicializa el estado de las variables de instancia del Wallpost. Luego de
+    la invocación el Wallpost debe tener como texto: "Undefined post", no debe
+    estar marcado como destacado y la cantidad de "Me gusta" deben ser 0."
+
+    self
+      text: 'Undefined post';
+      featured: false;
+      likes: 0.
+```
 
 Utilice el test provisto por la cátedra para comprobar que su implementación de Wallpost es correcta.
 
@@ -371,27 +430,27 @@ Utilice el test provisto por la cátedra para comprobar que su implementación d
 
 
 Ejercicio 7: Ventana del  Wallpost
-Una vez que su implementación pasa los tests del ej anterior  puede utilizar la ventana que se muestra a
-continuación, la cual permite inspeccionar y manipular el post (definir su texto, hacer like y dislike, marcarlo
-como destacado).
+----------------------------------
+
+Una vez que su implementación pasa los tests del ej anterior  puede utilizar la
+ventana que se muestra a continuación, la cual permite inspeccionar y manipular
+el post (definir su texto, hacer like y dislike, marcarlo como destacado).
+
 Para abrir la ventana puede evaluar la siguiente expresión en el workspace:
-           WallpostUI on: (Wallpost new)
 
-
-
-
-
-
-
+ WallpostUI on: (Wallpost new)
 
 1) En la expresión:
-           WallpostUI on: (Wallpost new)
+   WallpostUI on: (Wallpost new)
 
 Se instancian 2 objetos, el wallpost y la ventana. Discuta con un ayudante
+
 1.a ¿En qué difieren las instanciaciones?
-1.b En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo invoca? Ayuda: coloque un
-breakpoint en el método initialize para ver quién lo invoca. Ayuda de la ayuda: para poner un breakpoint
-agregue la sentencia  self halt. al código del método #initialize.
+
+1.b En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo
+invoca? Ayuda: coloque un breakpoint en el método initialize para ver quién lo
+invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia  self
+halt. al código del método #initialize.
 
 
 

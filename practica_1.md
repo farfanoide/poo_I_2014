@@ -239,11 +239,33 @@ a)  Al hacer click en el robot se abre una ventana llamada inspector. Modifique
 la definición del robot para que la información que aparece en el  inspector se
 muestre en español.
 
+```smalltalk
+  printOn: aStream
+
+    aStream
+      nextPutAll: 'Robot en ';
+      nextPutAll: self position printString;
+      nextPutAll: ', direccion ';
+      nextPutAll: self direction printString.
+```
+
 b) Luego de estudiar el metodo `#move:` del robot, considere las diferentes
 maneras de implementar el metodo `#trace:`. El metodo `#trace:` dibuja una
 linea de la longitud que se pasa como parametro. Implemente la alternativa que
 Ud.  considere se acerca a lo visto en la teoria de la materia sobre reuso y
 programacion orientada a objetos
+
+```smalltalk
+  trace: aDistance
+    "dibuja una linea de una distancia dada"
+
+    aDistance
+      timesRepeat: [
+        self
+          brushDown;
+          brushUp;
+          move: 1 ]
+```
 
 Ejercicio 9
 -----------

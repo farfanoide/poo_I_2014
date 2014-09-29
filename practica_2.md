@@ -563,35 +563,120 @@ e. Implemente en Smalltalk y verifique su correcto funcionamiento.
   otroWallpost := Wallpost new.
  ```
  d. Obtener el texto del Wallpost con más likes.
+
+ ```smalltalk
+  unWallpost likes > otroWallpost likes
+    ifTrue: [ unWallpost text ]
+    ifFalse: [ otroWallpost text ]
+ ```
+
  e. Si el post unWallpost tiene más de 100 likes, márquelo como featured.
+
+ ```smalltalk
+  unWallpost likes > 100
+    ifTrue: [ unWallpost featured: true ].
+ ```
+
  f. Evalúe a true si ambos tienen más de 20 likes
- g. Cree una nueva instancia de Wallpost que sea la "concatenación" de ambos. Esto es que
- el texto debe ser la concatenación de los textos de ambos, sus likes deben ser la suma de
- ambos likes, y debe estar marcado como featured si al menos alguno de ellos lo está.
+
+ ```smalltalk
+  (unWallpost likes > 20) & (otroWallpost likes > 20).
+ ```
+
+ g. Cree una nueva instancia de Wallpost que sea la "concatenación" de ambos.
+ Esto es que el texto debe ser la concatenación de los textos de ambos, sus
+ likes deben ser la suma de ambos likes, y debe estar marcado como featured si
+ al menos alguno de ellos lo está.
+
+ ```smalltalk
+  union := Wallpost new.
+  union text: unWallpost text,otroWallpost text.
+  union likes: unWallpost likes + otroWallpost likes.
+  union featured: unWallpost isFeatured | otroWallpost isFeatured.
+ ```
 
  4. Dada una variable aNumber, escriba la expresión para calcular la suma de los primeros aNumber
  números naturales.
 
+ ```smalltalk
+  |sum|
+  sum:=0.
+  1 to: aNumber do: [:i | sum := sum + i].
+ ```
  5. Dada la siguiente expresión:
 
- 3 + 5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]
+ ```smalltalk
+   3 + 5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]
+ ```
 
  ¿Qué valor se obtiene al ser evaluada? ¿Cómo la modificaría para obtener el valor 8?
-
+```smalltalk
+  3 + (5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ])
+ ```
 
 Ejercicio 10:
-Considerando la clase DateAndTime, busque ejemplos de métodos donde se utilizan paréntesis para forzar
-cierto orden particular en la evaluación de mensajes. Discuta con un ayudante, mirando el código, qué
-pasaría si los paréntesis no estuvieran allí.
+-------------
+
+Considerando la clase DateAndTime, busque ejemplos de métodos donde se utilizan
+paréntesis para forzar cierto orden particular en la evaluación de mensajes.
+Discuta con un ayudante, mirando el código, qué pasaría si los paréntesis no
+estuvieran allí.
 
 
 Ejercicio 11: Documentar la batería con UML
- 1. Utilizando el System Browser de Pharo, acceda a la definición de la clase Battery.
- 2. Viendo la definición de la clase Battery, realice un diagrama de Clases UML que la documente.
+
+ 1. Utilizando el System Browser de Pharo, acceda a la definición de la clase
+ Battery.
+
+ 2. Viendo la definición de la clase Battery, realice un diagrama de Clases UML
+ que la documente.
 
 Ejercicio 12 (Avanzado):
-Implemente un nuevo tipo batería que se llama EnergyRecoveryCell. Este tipo de batería tiene el mismo
-comportamiento que la clase Battery pero ademas se recarga mientras el robot se mueve. Una instancia de
-EnergyRecoveryCell recarga 1 unidad de energía por cada 10 unidades de energía consumidas. Tenga en
-cuenta que es indistinto si las 10 unidades se consumen en una sola movida del robot o en varias.
-Verifique su implementación utilizando el test case provisto por la cátedra
+------------------------
+
+Implemente un nuevo tipo batería que se llama EnergyRecoveryCell. Este tipo de
+batería tiene el mismo comportamiento que la clase Battery pero ademas se
+recarga mientras el robot se mueve. Una instancia de EnergyRecoveryCell recarga
+1 unidad de energía por cada 10 unidades de energía consumidas. Tenga en cuenta
+que es indistinto si las 10 unidades se consumen en una sola movida del robot o
+en varias.  Verifique su implementación utilizando el test case provisto por la
+cátedra
+
+```smalltalk
+initialize
+  super initialize.
+  self steps: 0
+```
+
+```smalltalk
+  canConsume: amount
+    "considera si puede avanzar, tiene en cuenta recargas"
+    ^self charge + (amount + steps // 10) >= amount
+```
+
+```smalltalk
+  consume: amount
+
+    | full |
+    full := amount + self steps.
+    (self canConsume: amount)
+      ifTrue: [
+        self
+        charge: (self charge - amount + (full // 10));
+        steps: full \\ 10 ]
+      ifFalse: [ EmptyBatteryError signal ]
+```
+
+```smalltalk
+  steps: aNumber
+    "setters"
+
+    steps:= aNumber
+```
+
+```smalltalk
+  steps
+    "getters"
+
+    ^ steps
+```

@@ -307,6 +307,10 @@ está referenciado como “robotech”.  Cada uno de estos objetos pueden ser
 
 3. Imprima en el Workspace la carga actual de la bateria de robotech
 
+```smalltalk
+robotech battery charge "ctrl+p imprime el valor en el workspace"
+```
+
 4. Haga caminar al robot hasta que se agote la bateria y asigne la bateria de
 resguardo (`#backupBattery`) que se encuentra disponible en el Workspace.
 
@@ -326,7 +330,19 @@ EndlessBattery es una clase q basicamente reimplementa `canConsume` y
 `consume:` para que funcionen siempre
 ```
 
-2. Basado en los metodos `#move:` y `#trace:` implemente el metodo  `#dash:`. El
-metodo `#dash:` dibuja una linea punteada de longitud total equivalente al
+2. Basado en los metodos `#move:` y `#trace:` implemente el metodo  `#dash:`.
+El metodo `#dash:` dibuja una linea punteada de longitud total equivalente al
 parametro del metodo, y haciendo que los puntos y los espacios de la linea
 punteada sean de longitud uno
+
+```smalltalk
+  dash: aNumber
+    "hace una linea punteada de longitud anumber"
+
+    aNumber // 2
+      timesRepeat: [
+        self trace: 1.
+        self move: 1 ].
+    aNumber odd
+      ifTrue: [ self trace: 1 ]
+```

@@ -4,22 +4,22 @@ Orientación a Objetos 1 ­ 2014
 Práctica 2 - Introducción
 -------------------------
 
-En esta práctica deberá utilizar el ambiente del robot en una versión más avanzada, para ello copie, pegue
-en un workspace y ejecute el siguiente código:
+En esta práctica deberá utilizar el ambiente del robot en una versión más
+avanzada, para ello copie, pegue en un workspace y ejecute el siguiente código:
 
 `BGSArenaWindow expertViewOn: (OnTheFlyConfigurableSimulation batteryWalkingBrush).`
 
 Ejercicio 1:
 -------------
 
-El  mundo de robots de esta práctica ya no tiene un robot al comenzar. El mismo
+El mundo de robots de esta práctica ya no tiene un robot al comenzar. El mismo
 debe agregarse explicitamente por medio del botón etiquetado "Agregar Robot".
 Al agregar unrobot debe indicarelnombre con el que se lo referenciará (en este
 caso sugerimos utilizar la variable robotech). También es posible agregar un
 robot haciendo click en cualquier posición de la arena; en este caso el robot
 se ubicará en la posición clickeada.
 
-Extienda el comportamiento del robot para que sea capaz de entender  los
+Extienda el comportamiento del robot para que sea capaz de entender los
 siguientes mensajes. Compruebe que el robot robotech reacciona correctamente.
 Recuerde incluir el comentario del método en la definición de cada uno.
 
@@ -73,7 +73,7 @@ Alternativamente:
     "Realiza un cuadrado con una esquina en su posición actual y de lado aSize."
 
     self brushDown.
-    4 timesRepeat:  [
+    4 timesRepeat: [
       self move: aSize;
       rotateRight: 90.
     ].
@@ -145,9 +145,9 @@ Object subclass: #PatrolCouple
 ```
 ```smalltalk
 sniper: aRobot
-  "Asigna un robot a sniper"
+ "Asigna un robot a sniper"
 
-   sniper := aRobot.
+ sniper := aRobot.
 ```
 ```smalltalk
 patrol: aRobot
@@ -175,7 +175,7 @@ patrol
 
   ^ patrol
 ```
-2) Cree dos robos diferentes para que sean  patrol y sniper respectivamente.
+2) Cree dos robos diferentes para que sean patrol y sniper respectivamente.
 Cree una instancia de PatrolCouple. Por último, envíe el mensaje #patrol:
 sniper: con los robots como parámetros de instancia de PatrolCouple.
 ```smalltalk
@@ -200,7 +200,7 @@ inicialización".
 ```
 
 Ejercicio 4:
-=============
+------------
 
 PatrolCouple con comportamiento
 
@@ -279,12 +279,12 @@ Para lanzar el ambiente con el castillo antes debe:
 3) Lanzar el ambiente con la simulación de castillo:
 
 ```smalltalk
-  BGSArenaWindow expertViewOn: (CastleSimulation  batteryWalkingBrush).
+  BGSArenaWindow expertViewOn: (CastleSimulation batteryWalkingBrush).
 ```
 
 
 Defina la clase CastleWatch, la cual debe coordinar el accionar de los 4
-guardianes conocidos como northWatch, southWatch, eastWatch y westWatch.  Cada
+guardianes conocidos como northWatch, southWatch, eastWatch y westWatch. Cada
 guardián debe cubrir el correspondiente flanco del castillo.
 
 Implemente los siguientes métodos:
@@ -304,7 +304,7 @@ paranoicWatch
 ```
 
 
-Note que siempre los robots deben dejar el rastro de su patrullaje.  Por ej. el resultado de
+Note que siempre los robots deben dejar el rastro de su patrullaje. Por ej. el resultado de
 regularWatch podria ser:
 
 
@@ -333,9 +333,9 @@ de likes ("me gusta") y una marca que indica si es destacado o no.
 
 ```smalltalk
   Object subclass: #Wallpost
-    instanceVariableNames: 'likes featured text'
-    classVariableNames: ''
-    category: 'unclassified'
+  instanceVariableNames: 'likes featured text'
+  classVariableNames: ''
+  category: 'unclassified'
 ```
 
 Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
@@ -352,7 +352,6 @@ Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
     "Setea el texto descriptivo de la publicación"
 
     text := aString
-
 ```
 
 ```smalltalk
@@ -424,15 +423,14 @@ Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
       likes: 0.
 ```
 
-Utilice el test provisto por la cátedra para comprobar que su implementación de Wallpost es correcta.
+Utilice el test provisto por la cátedra para comprobar que su implementación de
+Wallpost es correcta.
 
 
-
-
-Ejercicio 7: Ventana del  Wallpost
+Ejercicio 7: Ventana del Wallpost
 ----------------------------------
 
-Una vez que su implementación pasa los tests del ej anterior  puede utilizar la
+Una vez que su implementación pasa los tests del ej anterior puede utilizar la
 ventana que se muestra a continuación, la cual permite inspeccionar y manipular
 el post (definir su texto, hacer like y dislike, marcarlo como destacado).
 
@@ -440,8 +438,8 @@ Para abrir la ventana puede evaluar la siguiente expresión en el workspace:
 
  WallpostUI on: (Wallpost new)
 
-1) En la expresión:
-   WallpostUI on: (Wallpost new)
+1. En la expresión:
+ WallpostUI on: (Wallpost new)
 
 Se instancian 2 objetos, el wallpost y la ventana. Discuta con un ayudante
 
@@ -449,72 +447,136 @@ Se instancian 2 objetos, el wallpost y la ventana. Discuta con un ayudante
 
 1.b En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo
 invoca? Ayuda: coloque un breakpoint en el método initialize para ver quién lo
-invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia  self
+invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia self
 halt. al código del método #initialize.
 
 
 
 Ejercicio 8: Leyendo código
+---------------------------
 
-Leer código ayuda a conocer convenciones sobre cómo se escribe el código en Smalltalk.
-Utilizando el browser y mirando cualquier clase o conjunto de clases y sus métodos responda:
+Leer código ayuda a conocer convenciones sobre cómo se escribe el código en
+Smalltalk. Utilizando el browser y mirando cualquier clase o conjunto de clases
+y sus métodos responda:
 
-1) ¿Los nombres de clase comienzan con minúscula o mayúscula?
-2) ¿Cómo se escriben los nombres de métodos?
-3) ¿Para qué se usan los protocolos?
-4) ¿Qué pasa si un método no tiene un protocolo asignado?
-5) Busque la clase DateAndTime y:
-  5.1 Mencione al menos 3 clases a las que se haga referencia desde el código de la clase DateAndTime.
-  5.2 Busque el método más largo de la clase. ¿Qué pasa en el browser cuando aparece un método largo?
-¿Qué conclusión puede sacar al respecto?
-  5.3 Busque un método que haga uso de variables temporales, y dos métodos que usen de instancia.
-Discuta con el ayudante sobre el uso que se les da a las variables temporales.
+1. ¿Los nombres de clase comienzan con minúscula o mayúscula?
+```
+- Mayuscula
+```
+2. ¿Cómo se escriben los nombres de métodos?
+```
+- En minuscula
+```
+3. ¿Para qué se usan los protocolos?
+```
+- Para organizar los metodos de los objetos.
+```
+4. ¿Qué pasa si un método no tiene un protocolo asignado?
+```
+- Absolutamente nada, solamente aparecera dentro de 'as yet unclassified'
+```
+5. Busque la clase DateAndTime y:
+
+  1. Mencione al menos 3 clases a las que se haga referencia desde el código de
+  la clase DateAndTime.
+
+  2. Busque el método más largo de la clase. ¿Qué pasa en el browser cuando
+  aparece un método largo?. ¿Qué conclusión puede sacar al respecto?
+
+  3. Busque un método que haga uso de variables temporales, y dos métodos que
+  usen de instancia.  Discuta con el ayudante sobre el uso que se les da a las
+  variables temporales.
 
 
 
 Ejercicio 9: Evaluación de expresiones
-    1.   ¿Qué   devuelve   Smalltalk  cuando  se  evalúan  las  siguientes  expresiones?  Realice  el  ejercicio  en
-         papel, tenga en cuenta el estado del ambiente producido por las evaluaciones previas.
+--------------------------------------
+
+1. ¿Qué devuelve Smalltalk cuando se evalúan las siguientes expresiones?
+Realice el ejercicio en papel, tenga en cuenta el estado del ambiente producido
+por las evaluaciones previas.
+
+```smalltalk
+ x := 2 * 5 factorial. "=> 240"
+
+ y := x + 1. "241"
+
+ |n| n := n+1. "=> revienta, n es nil y no entiende el mensaje +"
+
+ |n m| n := 4. m := 1. ^(n+m+x+y). "486"
+
+ 5 timesRepeat: [x := x + y]. "=> 1445"
+
+ 'objeto' at:2 isVowel. "revienta porq se le esta mandando el mensaje al 2 en vez de la 'b'"
+```
+
+2. Dado un triángulo rectángulo representado por las variables temporales base
+y altura, escriba las expresiones en Smalltalk para calcular:
+
+```smalltalk
+Object subclass: #TrianguloRectangulo
+instanceVariableNames: 'base altura'
+classVariableNames: ''
+category: 'triangulos'
+```
+
+a. La superficie
+```smalltalk
+  superficie
+    "calcula la superficie del triangulo"
+
+    ^(self base * self altura) / 2
+```
+b. La hipotenusa
+```smalltalk
+  hipotenusa
+    "calcula la hipotenusa del triangulo"
+
+    ^(self base squared + self altura squared) sqrt
+```
+c. El perímetro
+```smalltalk
+  perimetro
+    "calcula el perimetro del triangulo"
+    ^self base + self altura + self hipotenusa.
+```
+d. true si el perímetro es mayor a unPerimetro o false en caso contrario
+```smalltalk
+  perimetro_mayor_que: unPerimetro
+
+    ^ self perimetro > unPerimetro
+```
+e. Implemente en Smalltalk y verifique su correcto funcionamiento.
 
 
-         x := 2 * 5 factorial.
-         y := x + 1.
-         |n| n := n+1.
-         |n m| n := 4. m := 1. ^(n+m+x+y).
-         5 timesRepeat: [x := x + y].
-         'objeto' at:2 isVowel.
+ 3. Dada la clase Wallpost creada anteriormente, escriba las siguientes expresiones en Smalltalk:
+ ```smalltalk
+  |unWallpost|
+  unWallpost := Wallpost new.
+ ```
+ b. Incremente los likes de unWallPost hasta llegar a 20.
+ ```smalltalk
+  [ unWallpost likes < 20 ] whileTrue: [ unWallpost like ]
+ ```
+ c. Cree otra instancia de Wallpost, otroWallpost.
+ ```smalltalk
+  otroWallpost := Wallpost new.
+ ```
+ d. Obtener el texto del Wallpost con más likes.
+ e. Si el post unWallpost tiene más de 100 likes, márquelo como featured.
+ f. Evalúe a true si ambos tienen más de 20 likes
+ g. Cree una nueva instancia de Wallpost que sea la "concatenación" de ambos. Esto es que
+ el texto debe ser la concatenación de los textos de ambos, sus likes deben ser la suma de
+ ambos likes, y debe estar marcado como featured si al menos alguno de ellos lo está.
 
-         Luego de hacer las evaluaciones en papel, compruebe los resultados copiando las expresiones en
-         un workspace y evaluándolas con Pharo. Recomendamos usar el debugger.
+ 4. Dada una variable aNumber, escriba la expresión para calcular la suma de los primeros aNumber
+ números naturales.
 
-    2.   Dado  un   triángulo  rectángulo  representado  por   las  variables  temporales  base  y  altura,  escriba  las
-         expresiones en Smalltalk para calcular:
-             a. La superficie
-             b. La hipotenusa
-             c. El perímetro
-             d. true si el perímetro es mayor a unPerimetro o false en caso contrario
-             e. Implemente en Smalltalk y verifique su correcto funcionamiento.
+ 5. Dada la siguiente expresión:
 
+ 3 + 5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]
 
-    3. Dada la clase Wallpost creada anteriormente, escriba las siguientes expresiones en Smalltalk:
-             a.   Cree una instancia de Wallpost, unWallpost.
-             b.   Incremente los likes de unWallPost hasta llegar a 20.
-             c.   Cree otra instancia de Wallpost, otroWallpost.
-             d.   Obtener el texto del Wallpost con más likes.
-             e.   Si el post unWallpost tiene más de 100 likes, márquelo como featured.
-             f.   Evalúe a true si ambos tienen más de 20 likes
-             g.   Cree una nueva instancia de Wallpost que sea la "concatenación" de ambos. Esto es que
-                  el texto debe ser la concatenación de los textos de ambos, sus likes deben ser la suma de
-                  ambos likes, y debe estar marcado como featured si al menos alguno de ellos lo está.
-
-    4.   Dada una variable aNumber, escriba la expresión para calcular la suma de los primeros aNumber
-         números naturales.
-
-    5.   Dada la siguiente expresión:
-
-         3 + 5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]
-
-         ¿Qué valor se obtiene al ser evaluada? ¿Cómo la modificaría para obtener el valor 8?
+ ¿Qué valor se obtiene al ser evaluada? ¿Cómo la modificaría para obtener el valor 8?
 
 
 Ejercicio 10:
@@ -524,8 +586,8 @@ pasaría si los paréntesis no estuvieran allí.
 
 
 Ejercicio 11: Documentar la batería con UML
-    1.   Utilizando el System Browser de Pharo, acceda a la definición de la clase Battery.
-    2.   Viendo la definición de la clase Battery, realice un diagrama de Clases UML que la documente.
+ 1. Utilizando el System Browser de Pharo, acceda a la definición de la clase Battery.
+ 2. Viendo la definición de la clase Battery, realice un diagrama de Clases UML que la documente.
 
 Ejercicio 12 (Avanzado):
 Implemente un nuevo tipo batería que se llama EnergyRecoveryCell. Este tipo de batería tiene el mismo

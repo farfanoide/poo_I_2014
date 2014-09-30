@@ -139,9 +139,9 @@ como parámetros y los guarda en las variables de instancia que correspondan.
 
 ```smalltalk
 Object subclass: #PatrolCouple
-  instanceVariableNames: 'patrol sniper'
-  classVariableNames: ''
-  category: 'BotArena'
+instanceVariableNames: 'patrol sniper'
+classVariableNames: ''
+category: 'BotArena'
 ```
 ```smalltalk
 sniper: aRobot
@@ -225,7 +225,8 @@ definición de mensajes:
     "patrol hace un cuadrado de lado 10 rotado 45 grados alrededor de sniper,
       sniper en el centro gira en sentido de las agujas del reloj."
 
-    self patrol rotatedSquareOfSize: 10 at: (self sniper position / 2)
+    self patrol rotatedSquareOfSize: 10 at: ((self sniper position x - 5)@(self sniper position y))
+    4 timesRepeat: [self sniper rotateRight: 90]
 ```
 
 
@@ -233,18 +234,29 @@ definición de mensajes:
   regularPatrolTrace
     "Similar a regularPatrol pero patrol realiza un trazo con el brush"
 
-    self
-      brushDown;
-      regularPatrol;
-      brushUp.
+    self patrol brushDown.
+    self regularPatrol.
+    self brushUp.
 ```
 
-
 ```smalltalk
+canDoPatrol: movements
+  ^self battery charge >= (movements * 4 + 5)
+
+canDoRegularPatrol
+  ^self canDoPatrol: 10
+```
     <!-- TODO -->
+```smalltalk
   doTheRegularPatrol
     "Los guardias repiten regularPatrol 5 veces, pero luego de cada una se
     corren 5 hacia el este. Considere usar bateria con suficiente carga"
+    5 timesRepeat: [
+      self patrol canDoRegularPatrol and: [self sniper battery charge >= 9]
+        ifTrue: [
+          self regularPatrol
+        ]
+    ]
 ```
 
 ```smalltalk
@@ -332,7 +344,7 @@ Wallpost con los siguientes atributos: un texto que se desea publicar, cantidad
 de likes ("me gusta") y una marca que indica si es destacado o no.
 
 ```smalltalk
-  Object subclass: #Wallpost
+Object subclass: #Wallpost
   instanceVariableNames: 'likes featured text'
   classVariableNames: ''
   category: 'unclassified'

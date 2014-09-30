@@ -32,14 +32,14 @@ Para ejecutar código:
 descarga el ambiente de trabajo de esta práctica
 
 ```smalltalk
-  Gofer new
-  url: 'http://smalltalkhub.com/mc/FedericoBalaguer/BotArena/main';
-  package: 'ConfigurationOfBotArena';
-  load.
+Gofer new
+url: 'http://smalltalkhub.com/mc/FedericoBalaguer/BotArena/main';
+package: 'ConfigurationOfBotArena';
+load.
 ```
 
 ```smalltalk
-  #ConfigurationOfBotArena asClass loadDevelopment
+#ConfigurationOfBotArena asClass loadDevelopment
 ```
 
 5. Abrir el menú World nuevamente y elegir Save Image para guardar los cambios
@@ -56,9 +56,9 @@ Para abrir la ventana con el mundo de robots, haga lo siguiente:
 
   * Escribir el siguiente código:
 
-  ```smalltalk
-  BGSArenaWindow beginnerViewOn: (OnTheFlyConfigurableSimulation batteryWalkingBrush).
-  ```
+```smalltalk
+BGSArenaWindow beginnerViewOn: (OnTheFlyConfigurableSimulation batteryWalkingBrush).
+```
 
   * Seleccionar todo el código y desde el menú del boton derecho del mouse
     elegir “Do It”.
@@ -83,11 +83,11 @@ El robot puede girar mirando hacia la dirección indicada (0 es norte, 270 oeste
 y así siguiendo). Tenga en cuenta que el robot sólo puede mirar en direcciones
 rectas o diagonales (ej, 45, 90, 135 pero no 91, 120).
 
-                            North 0°
+                                North 0°
 
-    West 270°           Posición Actual       East 90°
+        West 270°           Posición Actual       East 90°
 
-                          South 180°
+                              South 180°
 
 El robot tiene una batería que disminuye su carga a medida que se mueve. Y
 tiene la capacidad de dejar marcado su recorrido. Los mensajes que el robot
@@ -156,11 +156,20 @@ son correctas  (sugerencia: utilice `print it` o `inspect it`, en lugar de
 
 2. Abriendo un nuevo ambiente del robot investigue ¿Cuánta carga de batería
 tiene al inicio? y ¿cuántas unidades puede avanzar el robot con esa carga?
+`Tiene 100 de carga inicial con lo que puede avanzar 100 pasos.`
 
 Ejercicio 4
 -----------
 
 * Utilizando el robot realice un rombo de lado 10 con alguna esquina en el centro de la grilla.
+
+```smalltalk
+  robotech
+    brushDown;
+    direction: 45;
+    move: 10.
+  3 timesRepeat: [ robotech direction: robotech direction + 90 ]
+```
 
 Ejercicio 5
 -----------
@@ -176,11 +185,11 @@ definición, qué valores debería retornar el robot al enviarle los mensajes
 los mensajes `#northEast`, `#northWest`, `#southEast` y `#southWest`, como
 ilustra la tabla.
 
-   mensaje              | northEast | northWest | southEast | southWest
+   mensaje              |northEast  |northWest  |southEast  |southWest
   ----------------------|-----------|-----------|-----------|----------
-   robotech position    ||||
-   robotech direction   ||||
-   robotech isBrushDown ||||
+   robotech position    |(25@25)    |(25@25)    |(25@25)    |(25@25)
+   robotech direction   |45         |315        |135        |225
+   robotech isBrushDown |false      |false      |false      |false
 
 Los valores a completar pueden ser un valor concreto (ej: 135) o valores
 indefinidos dependiendo del contexto. En caso de que dependan del contexto,
@@ -194,18 +203,22 @@ clase WalkingBrushRobot.
 
 1. Extienda la definición del robot agregando los mensajes: `#northEast`,
 `#northWest`, `#southEast` y `#southWest`.
-```smalltalk
-northWest
-  self direction: 315
-```
-```smalltalk
-southEast
-  self direction: 135
-```
+
 ```smalltalk
 northEast
   self direction: 45
 ```
+
+```smalltalk
+northWest
+  self direction: 315
+```
+
+```smalltalk
+southEast
+  self direction: 135
+```
+
 ```smalltalk
 southWest
   self direction: 225
@@ -219,13 +232,22 @@ Ejercicio 6
 
 Resuelva el ejercicio 4 utilizando los mensajes definidos en el ejercicio 5.
 
+```smalltalk
+  robotech
+    brushDown;
+    northEast.
+    move: 10.
+  3 timesRepeat: [ robotech direction: robotech direction + 90 ]
+```
+
 Ejercicio 7
 -----------
 
 Explore la implementación de los mensajes del robot (los definidos en la
 introducción).
 
-a) ¿Cuáles son los objetos con los que el robot colabora?
+a. ¿Cuáles son los objetos con los que el robot colabora?
+`battery`
 
 b) Preste atención, en cada caso, a la forma en que el robot interactúa con los
 objetos a los que conoce. ¿Qué mensajes envía en esa interacción?

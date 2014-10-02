@@ -25,7 +25,7 @@ Recuerde incluir el comentario del método en la definición de cada uno.
 
 ```smalltalk
 position: aPoint
-  "Posiciona al robot en la celda aPoint de la arena. Ayuda: ver def de  #position"
+  "Posiciona al robot en la celda aPoint de la arena."
   ^ self body position: aPoint
 ```
 
@@ -49,44 +49,44 @@ squareOfSize: aSize
 Alternativamente:
 
 ```smalltalk
-  rotateLeft: degrees
-    "Gira el robot hacia su izquierda"
+rotateLeft: degrees
+  "Gira el robot x cant de grados hacia su izquierda"
 
-    | partial_dir |
-    partial_dir := self direction - degrees.
-    partial_dir < 0
-      ifTrue: [ partial_dir := partial_dir + 360 ].
-    self direction: partial_dir
+  | partial_dir |
+  partial_dir := self direction - degrees.
+  partial_dir < 0
+    ifTrue: [ partial_dir := partial_dir + 360 ].
+  self direction: partial_dir
 ```
 ```smalltalk
-  rotateRight: degrees
-    "Gira el robot x cant de grados hacia su derecha"
+rotateRight: degrees
+  "Gira el robot x cant de grados hacia su derecha"
 
-    | partial_dir |
-    partial_dir := self direction + degrees.
-    partial_dir > 360
-      ifTrue: [ partial_dir := partial_dir - 360 ].
-    self direction: partial_dir
+  | partial_dir |
+  partial_dir := self direction + degrees.
+  partial_dir > 360
+    ifTrue: [ partial_dir := partial_dir - 360 ].
+  self direction: partial_dir
 ```
 ```smalltalk
-  squareOfSize: aSize
-    "Realiza un cuadrado con una esquina en su posición actual y de lado aSize."
+squareOfSize: aSize
+  "Realiza un cuadrado con una esquina en su posición actual y de lado aSize."
 
-    self brushDown.
-    4 timesRepeat: [
-      self move: aSize;
-      rotateRight: 90.
-    ].
-    self brushUp.
+  self brushDown.
+  4 timesRepeat: [
+    self move: aSize;
+    rotateRight: 90.
+  ].
+  self brushUp.
 ```
 
 ```smalltalk
-  squareOfSize: aSize at: aPoint
-    "Realiza un cuadrado con una esquina en el punto aPoint y de lado aSize."
+squareOfSize: aSize at: aPoint
+  "Realiza un cuadrado con una esquina en el punto aPoint y de lado aSize."
 
-    self
-      position: aPoint;
-      squareOfSize: aSize
+  self
+    position: aPoint;
+    squareOfSize: aSize
 ```
 
 ```smalltalk
@@ -133,7 +133,7 @@ Ejercicio 3: PatrolCouple
 Una PatrolCouple (pareja de guardia) está formada por dos robots: uno conocido como patrol (patrulla) y el
 otro conocido como sniper (francotirador).
 
-1) Defina la clase PatrolCouple y cree una instancia en el workspace.
+1. Defina la clase PatrolCouple y cree una instancia en el workspace.
 PatrolCouple debe implementar el mensaje #patrol: sniper: que toma dos robots
 como parámetros y los guarda en las variables de instancia que correspondan.
 
@@ -143,18 +143,21 @@ instanceVariableNames: 'patrol sniper'
 classVariableNames: ''
 category: 'BotArena'
 ```
+
 ```smalltalk
 sniper: aRobot
  "Asigna un robot a sniper"
 
  sniper := aRobot.
 ```
+
 ```smalltalk
 patrol: aRobot
   "Asigna un robot a patrol"
 
    patrol := aRobot.
 ```
+
 ```smalltalk
 patrol: aPatrol sniper: aSniper
   "Asigna un patrol y un sniper"
@@ -163,40 +166,44 @@ patrol: aPatrol sniper: aSniper
     patrol: aPatrol;
     sniper: aSniper
 ```
+
 ```smalltalk
 sniper
   "Retorna un sniper"
 
   ^ sniper
 ```
+
 ```smalltalk
 patrol
   "Retorna un patrol"
 
   ^ patrol
 ```
-2) Cree dos robos diferentes para que sean patrol y sniper respectivamente.
+
+2. Cree dos robos diferentes para que sean patrol y sniper respectivamente.
 Cree una instancia de PatrolCouple. Por último, envíe el mensaje #patrol:
 sniper: con los robots como parámetros de instancia de PatrolCouple.
-```smalltalk
-  | patrol_couple patrol sniper|
-  patrol_couple := PatrolCouple new.
-  patrol := WalkingBrushRobot new.
-  sniper := WalkingBrushRobot new.
 
-  patrol_couple patrol: patrol sniper: sniper
+```smalltalk
+| patrol_couple patrol sniper|
+patrol_couple := PatrolCouple new.
+patrol := WalkingBrushRobot new.
+sniper := WalkingBrushRobot new.
+
+patrol_couple patrol: patrol sniper: sniper
 ```
 
-3) Según lo visto en la teoría, implemente el o los métodos necesarios para que
+3. Según lo visto en la teoría, implemente el o los métodos necesarios para que
 se puedan inicializar las instancias de PatrolCouple con los robots que lo
 conforman por medio de un método de clase que se encargue de la "creación e
 inicialización".
 
 ```smalltalk
-  newWithPatrol: aPatrol andSniper: aSniper
-    "Crea e inicializa un PatrolCouple con robots."
+newWithPatrol: aPatrol andSniper: aSniper
+  "Crea e inicializa un PatrolCouple con robots."
 
-    ^ self new patrol: aPatrol sniper: aSniper
+  ^ self new patrol: aPatrol sniper: aSniper
 ```
 
 Ejercicio 4:
@@ -208,39 +215,39 @@ En este ejercicio agregaremos comportamiento a PatrolCouple con la siguiente
 definición de mensajes:
 
 ```smalltalk
-  reset
-    "Ambos robots se posicionan enfrentados a distancia 5 uno del otro (uno mira al
-      south y el otro al north, uno de ellos posicionado en 20@20"
+reset
+  "Ambos robots se posicionan enfrentados a distancia 5 uno del otro (uno mira al
+    south y el otro al north, uno de ellos posicionado en 20@20"
 
-    self patrol
-      north;
-      position: (20@20).
-    self sniper
-      south;
-      position: (20@5).
+  self patrol
+    north;
+    position: (20@20).
+  self sniper
+    south;
+    position: (20@5).
 ```
 
 ```smalltalk
-  regularPatrol
-    "patrol hace un cuadrado de lado 10 rotado 45 grados alrededor de sniper,
-      sniper en el centro gira en sentido de las agujas del reloj."
+regularPatrol
+  "patrol hace un cuadrado de lado 10 rotado 45 grados alrededor de sniper,
+    sniper en el centro gira en sentido de las agujas del reloj."
 
-    self patrol rotatedSquareOfSize: 10 at: ((self sniper position x - 5)@(self sniper position y))
-    4 timesRepeat: [self sniper rotateRight: 90]
+  self patrol rotatedSquareOfSize: 10 at: ((self sniper position x - 5)@(self sniper position y))
+  4 timesRepeat: [self sniper rotateRight: 90]
 ```
 
 
 ```smalltalk
-  regularPatrolTrace
-    "Similar a regularPatrol pero patrol realiza un trazo con el brush"
+regularPatrolTrace
+  "Similar a regularPatrol pero patrol realiza un trazo con el brush"
 
-    self patrol brushDown.
-    self regularPatrol.
-    self brushUp.
+  self patrol brushDown.
+  self regularPatrol.
+  self brushUp.
 ```
 
 ```smalltalk
-WalkingBrushRobot >> Instance
+WalkingBrushRobot >> InstanceMethods
 
 canDoPatrol: movements
   ^self battery charge >= (movements * 4 + 5)
@@ -311,15 +318,24 @@ Implemente los siguientes métodos:
 
 ```smalltalk
 regularWatch
-  "los robots realizan un cuadrado de lado 3 en su correspondiente
-  flanco."
+
+  "los robots realizan un cuadrado de lado 3 en su correspondiente flanco."
+
+  self brushDown.
+  self robots do: [ :robot| robot squareOfSize: 3]
+  self brushUp
 ```
 
 
 ```smalltalk
 paranoicWatch
-  "cada robot realiza un recorrido del flanco completo, dibujando un
-  rectangulo de 4x10"
+
+  "cada robot realiza un recorrido del flanco completo, dibujando un rectangulo
+  de 4x10"
+  self brushDown.
+  self robots do: [ :robot | robot rectangleWithBase: 10 high: 4 ].
+  self brushUp
+
 ```
 
 

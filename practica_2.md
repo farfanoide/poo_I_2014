@@ -240,31 +240,37 @@ definición de mensajes:
 ```
 
 ```smalltalk
+WalkingBrushRobot >> Instance
+
 canDoPatrol: movements
   ^self battery charge >= (movements * 4 + 5)
 
 canDoRegularPatrol
   ^self canDoPatrol: 10
 ```
-    <!-- TODO -->
+
 ```smalltalk
-  doTheRegularPatrol
-    "Los guardias repiten regularPatrol 5 veces, pero luego de cada una se
-    corren 5 hacia el este. Considere usar bateria con suficiente carga"
-    5 timesRepeat: [
-      self patrol canDoRegularPatrol and: [self sniper battery charge >= 9]
-        ifTrue: [
-          self regularPatrol
-        ]
-    ]
+doTheRegularPatrol
+
+  "Los guardias repiten regularPatrol 5 veces, pero luego de cada una se corren
+  5 hacia el este. Considere usar bateria con suficiente carga"
+
+  5 timesRepeat: [
+    self patrol canDoRegularPatrol and: [self sniper battery charge >= 9]
+      ifTrue: [ self regularPatrol ]
+  ]
 ```
 
 ```smalltalk
-  doTheRegularPatrolTrace
+doTheRegularPatrolTrace
 
-      "Similar a doTheRegularPatrol pero cada robot deja un trazo en la arena
-      con el brush"
+  "Similar a doTheRegularPatrol pero cada robot deja un trazo en la arena con
+  el brush"
 
+  5 timesRepeat: [
+    self patrol canDoRegularPatrol and: [self sniper battery charge >= 9]
+      ifTrue: [ self regularPatrolTrace ]
+  ]
 ```
 
 1. Realice el diagrama de clases.
@@ -278,6 +284,8 @@ Ejercicio 5: Castle Watch
 
 Castle’s Watch es un antigua orden de robots que protegen un castillo.
 
+![imagen castle watch](img/practica_2/castle_watch.png)
+
 Para lanzar el ambiente con el castillo antes debe:
 
 1. Cerrar su simulación y workspace arena.
@@ -285,13 +293,13 @@ Para lanzar el ambiente con el castillo antes debe:
 2. Actualizar el ambiente del robot evaluando la siguiente sentencia:
 
 ```smalltalk
-  ConfigurationOfBotArena loadDevelopment
+ConfigurationOfBotArena loadDevelopment
 ```
 
 3) Lanzar el ambiente con la simulación de castillo:
 
 ```smalltalk
-  BGSArenaWindow expertViewOn: (CastleSimulation batteryWalkingBrush).
+BGSArenaWindow expertViewOn: (CastleSimulation batteryWalkingBrush).
 ```
 
 
@@ -300,7 +308,6 @@ guardianes conocidos como northWatch, southWatch, eastWatch y westWatch. Cada
 guardián debe cubrir el correspondiente flanco del castillo.
 
 Implemente los siguientes métodos:
-
 
 ```smalltalk
 regularWatch
@@ -320,7 +327,7 @@ Note que siempre los robots deben dejar el rastro de su patrullaje. Por ej. el r
 regularWatch podria ser:
 
 
-<!-- TODO: ver imagen -->
+![imagen regular watch](img/practica_2/regular_watch.png)
 
 
 
@@ -328,7 +335,7 @@ Mientras que el resultado del paranoicWatch podría ser:
 
 
 
-<!-- TODO: ver imagen -->
+![imagen paranoic watch](img/practica_2/paranoic_watch.png)
 
 
 
@@ -370,7 +377,7 @@ Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
   likes
     "Retorna la cantidad de "me gusta""
 
-    ^ self likes
+    ^ likes
 ```
 
 
@@ -448,19 +455,21 @@ el post (definir su texto, hacer like y dislike, marcarlo como destacado).
 
 Para abrir la ventana puede evaluar la siguiente expresión en el workspace:
 
- WallpostUI on: (Wallpost new)
+```smalltalk
+WallpostUI on: (Wallpost new)
+```
 
-1. En la expresión:
- WallpostUI on: (Wallpost new)
+![imagen wallpost ui](img/practica_2/wallpost_ui.png)
 
-Se instancian 2 objetos, el wallpost y la ventana. Discuta con un ayudante
+1. En la expresión: ` WallpostUI on: (Wallpost new) ` se instancian 2 objetos,
+el wallpost y la ventana. Discuta con un ayudante
 
-1.a ¿En qué difieren las instanciaciones?
+  * ¿En qué difieren las instanciaciones?
 
-1.b En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo
-invoca? Ayuda: coloque un breakpoint en el método initialize para ver quién lo
-invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia self
-halt. al código del método #initialize.
+  * En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo
+  invoca? Ayuda: coloque un breakpoint en el método initialize para ver quién
+  lo invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia
+  self halt. al código del método #initialize.
 
 
 
@@ -473,11 +482,11 @@ y sus métodos responda:
 
 1. ¿Los nombres de clase comienzan con minúscula o mayúscula?
 ```
-- Mayuscula
+- En Mayuscula.
 ```
 2. ¿Cómo se escriben los nombres de métodos?
 ```
-- En minuscula
+- En minuscula.
 ```
 3. ¿Para qué se usan los protocolos?
 ```
@@ -618,12 +627,12 @@ e. Implemente en Smalltalk y verifique su correcto funcionamiento.
  5. Dada la siguiente expresión:
 
  ```smalltalk
-   3 + 5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]
+   3 + 5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ] "=> 4"
  ```
 
  ¿Qué valor se obtiene al ser evaluada? ¿Cómo la modificaría para obtener el valor 8?
 ```smalltalk
-  3 + (5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ])
+  3 + (5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]) "=> 8"
  ```
 
 Ejercicio 10:

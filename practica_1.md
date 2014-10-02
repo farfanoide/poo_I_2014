@@ -28,6 +28,8 @@ Para ejecutar código:
 
 2. Click derecho ­> (Menu)”Do it”
 
+![imagen menu pharo](img/practica_1/do_it.png)
+
 4. En el Workspace copie el siguiente código que se conecta a un repositorio y
 descarga el ambiente de trabajo de esta práctica
 
@@ -63,6 +65,8 @@ BGSArenaWindow beginnerViewOn: (OnTheFlyConfigurableSimulation batteryWalkingBru
   * Seleccionar todo el código y desde el menú del boton derecho del mouse
     elegir “Do It”.
 
+    ![imagen mundo robot](img/practica_1/mundo_robot.png)
+
 Esto ejecutará el código Smalltalk y como resultado se abrirá una nueva ventana
 con el mundo del robot.
 
@@ -83,7 +87,7 @@ El robot puede girar mirando hacia la dirección indicada (0 es norte, 270 oeste
 y así siguiendo). Tenga en cuenta que el robot sólo puede mirar en direcciones
 rectas o diagonales (ej, 45, 90, 135 pero no 91, 120).
 
-                                North 0°
+                              North 0°
 
         West 270°           Posición Actual       East 90°
 

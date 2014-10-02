@@ -328,13 +328,25 @@ regularWatch
 
 
 ```smalltalk
+WalkingBrushRobot >> InstanceMethods
+
+rectangleWithBase: aBase andHeight: aHeight
+  2 timesRepeat: [
+    self
+      move: aBase;
+      rotateRight: 90;
+      move: aHeight;
+      rotateRight: 90 ]
+```
+```smalltalk
 paranoicWatch
 
   "cada robot realiza un recorrido del flanco completo, dibujando un rectangulo
   de 4x10"
+
   self brushDown.
-  self robots do: [ :robot | robot rectangleWithBase: 10 high: 4 ].
-  self brushUp
+  self robots do: [ :robot | robot rectangleWithBase: 4 high: 10 ].
+  self brushUp.
 
 ```
 
@@ -376,86 +388,86 @@ Object subclass: #Wallpost
 Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
 
 ```smalltalk
-  text
-    "Retorna el texto descriptivo de la publicación"
+text
+  "Retorna el texto descriptivo de la publicación"
 
-    ^ text
+  ^ text
 ```
 
 ```smalltalk
-  text: aString
-    "Setea el texto descriptivo de la publicación"
+text: aString
+  "Setea el texto descriptivo de la publicación"
 
-    text := aString
+  text := aString
 ```
 
 ```smalltalk
-  likes
-    "Retorna la cantidad de "me gusta""
+likes
+  "Retorna la cantidad de "me gusta""
 
-    ^ likes
+  ^ likes
 ```
 
 
 ```smalltalk
-  likes: aNumber
-    "Setter para likes"
+likes: aNumber
+  "Setter para likes"
 
-    likes := aNumber
+  likes := aNumber
 ```
 
 ```smalltalk
-  like
-    "Incrementa la cantidad de likes en uno"
+like
+  "Incrementa la cantidad de likes en uno"
 
-    self likes: self likes + 1
+  self likes: self likes + 1
 ```
 
 ```smalltalk
-  dislike
-    "Decrementa la cantidad de likes en uno. Si ya es 0, no hace nada"
+dislike
+  "Decrementa la cantidad de likes en uno. Si ya es 0, no hace nada"
 
-    self likes > 0 ifTrue: [ self likes: self likes - 1 ]
+  self likes > 0 ifTrue: [ self likes: self likes - 1 ]
 ```
 
 ```smalltalk
-  featured
-    "getter para featured"
+featured
+  "getter para featured"
 
-    ^ featured
+  ^ featured
 ```
 
 ```smalltalk
-  featured: aValue
-    "setter para featured"
+featured: aValue
+  "setter para featured"
 
-    featured := aValue
+  featured := aValue
 ```
 
 ```smalltalk
-  isFeatured
-    "Retorna true si el post esta marcado como destacado, false en caso contrario"
+isFeatured
+  "Retorna true si el post esta marcado como destacado, false en caso contrario"
 
-    ^ self featured
+  ^ self featured
 ```
 
 ```smalltalk
-  toggleFeatured
-    "Cambia el post del estado destacado a no destacado y viceversa"
+toggleFeatured
+  "Cambia el post del estado destacado a no destacado y viceversa"
 
-    self featured: self featured not
+  self featured: self featured not
 ```
 
 ```smalltalk
-  initialize
-    "Inicializa el estado de las variables de instancia del Wallpost. Luego de
-    la invocación el Wallpost debe tener como texto: "Undefined post", no debe
-    estar marcado como destacado y la cantidad de "Me gusta" deben ser 0."
+initialize
+  "Inicializa el estado de las variables de instancia del Wallpost. Luego de
+  la invocación el Wallpost debe tener como texto: "Undefined post", no debe
+  estar marcado como destacado y la cantidad de "Me gusta" deben ser 0."
 
-    self
-      text: 'Undefined post';
-      featured: false;
-      likes: 0.
+  self
+    text: 'Undefined post';
+    featured: false;
+    likes: 0.
 ```
 
 Utilice el test provisto por la cátedra para comprobar que su implementación de
@@ -480,13 +492,17 @@ WallpostUI on: (Wallpost new)
 1. En la expresión: ` WallpostUI on: (Wallpost new) ` se instancian 2 objetos,
 el wallpost y la ventana. Discuta con un ayudante
 
-  * ¿En qué difieren las instanciaciones?
+* ¿En qué difieren las instanciaciones?
 
-  * En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo
-  invoca? Ayuda: coloque un breakpoint en el método initialize para ver quién
-  lo invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia
-  self halt. al código del método #initialize.
+    `- Una esta hecha con un constructor con parametros y la otra simplemente
+    ejecuta el new (y si esta definido el initialize)`
 
+* En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo
+invoca? Ayuda: coloque un breakpoint en el método initialize para ver quién
+lo invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia
+self halt. al código del método #initialize.
+
+  `- El initialize es invocado por el new.`
 
 
 Ejercicio 8: Leyendo código
@@ -497,32 +513,41 @@ Smalltalk. Utilizando el browser y mirando cualquier clase o conjunto de clases
 y sus métodos responda:
 
 1. ¿Los nombres de clase comienzan con minúscula o mayúscula?
-  ```
-  - En Mayuscula.
-  ```
+
+    `- En Mayuscula.`
+
 2. ¿Cómo se escriben los nombres de métodos?
-  ```
-  - En minuscula.
-  ```
+
+    ` - En minuscula.  `
+
 3. ¿Para qué se usan los protocolos?
-  ```
-  - Para organizar los metodos de los objetos.
-  ```
+
+    ` - Para organizar los metodos de los objetos.  `
+
 4. ¿Qué pasa si un método no tiene un protocolo asignado?
-  ```
-  - Absolutamente nada, solamente aparecera dentro de 'as yet unclassified'
-  ```
+
+    ` - Absolutamente nada, solamente aparecera dentro de 'as yet unclassified' `
+
 5. Busque la clase DateAndTime y:
 
   1. Mencione al menos 3 clases a las que se haga referencia desde el código de
   la clase DateAndTime.
 
+    `- SecondsInDay, DosTimestamp, Duration`
+
   2. Busque el método más largo de la clase. ¿Qué pasa en el browser cuando
   aparece un método largo?. ¿Qué conclusión puede sacar al respecto?
+
+    `- 'printOn: withLeadingSpace:' Aparece una senial de alerta. esta mal
+    visto tener metodos demasiado largos, deberian ser modularizados`
 
   3. Busque un método que haga uso de variables temporales, y dos métodos que
   usen de instancia.  Discuta con el ayudante sobre el uso que se les da a las
   variables temporales.
+
+    `- Las variables temporales se usan para datos que se pueden perder,
+    mientras que las variables de instancia se utilizan para preservar estado
+    de los objetos.`
 
 
 
@@ -544,7 +569,8 @@ por las evaluaciones previas.
 
  5 timesRepeat: [x := x + y]. "=> 1445"
 
- 'objeto' at:2 isVowel. "revienta porq se le esta mandando el mensaje al 2 en vez de la 'b'"
+ 'objeto' at:2 isVowel. "revienta porq se le esta mandando el mensaje al 2 en
+ vez de la letra 'b'"
 ```
 
 2. Dado un triángulo rectángulo representado por las variables temporales base
@@ -559,78 +585,81 @@ category: 'triangulos'
 
 a. La superficie
 ```smalltalk
-  superficie
-    "calcula la superficie del triangulo"
+superficie
+  "calcula la superficie del triangulo"
 
-    ^(self base * self altura) / 2
+  ^(self base * self altura) / 2
 ```
 b. La hipotenusa
 ```smalltalk
-  hipotenusa
-    "calcula la hipotenusa del triangulo"
+hipotenusa
+  "calcula la hipotenusa del triangulo"
 
-    ^(self base squared + self altura squared) sqrt
+  ^(self base squared + self altura squared) sqrt
 ```
 c. El perímetro
 ```smalltalk
-  perimetro
-    "calcula el perimetro del triangulo"
-    ^self base + self altura + self hipotenusa.
+perimetro
+  "calcula el perimetro del triangulo"
+
+  ^self base + self altura + self hipotenusa.
 ```
 d. true si el perímetro es mayor a unPerimetro o false en caso contrario
 ```smalltalk
-  perimetro_mayor_que: unPerimetro
+perimetro_mayor_que: unPerimetro
 
-    ^ self perimetro > unPerimetro
+  ^ self perimetro > unPerimetro
 ```
 e. Implemente en Smalltalk y verifique su correcto funcionamiento.
 
 
- 3. Dada la clase Wallpost creada anteriormente, escriba las siguientes expresiones en Smalltalk:
- ```smalltalk
+3. Dada la clase Wallpost creada anteriormente, escriba las siguientes expresiones en Smalltalk:
+
+  a. Cree una instancia de Wallpost, unWallpost.
+  ```smalltalk
   |unWallpost|
   unWallpost := Wallpost new.
- ```
- b. Incremente los likes de unWallPost hasta llegar a 20.
- ```smalltalk
+  ```
+  b. Incremente los likes de unWallPost hasta llegar a 20.
+  ```smalltalk
   [ unWallpost likes < 20 ] whileTrue: [ unWallpost like ]
- ```
- c. Cree otra instancia de Wallpost, otroWallpost.
- ```smalltalk
+  ```
+  c. Cree otra instancia de Wallpost, otroWallpost.
+  ```smalltalk
   otroWallpost := Wallpost new.
- ```
- d. Obtener el texto del Wallpost con más likes.
+  ```
+  d. Obtener el texto del Wallpost con más likes.
 
- ```smalltalk
+  ```smalltalk
   unWallpost likes > otroWallpost likes
     ifTrue: [ unWallpost text ]
     ifFalse: [ otroWallpost text ]
- ```
+  ```
 
- e. Si el post unWallpost tiene más de 100 likes, márquelo como featured.
+  e. Si el post unWallpost tiene más de 100 likes, márquelo como featured.
 
- ```smalltalk
+  ```smalltalk
   unWallpost likes > 100
     ifTrue: [ unWallpost featured: true ].
- ```
+  ```
 
- f. Evalúe a true si ambos tienen más de 20 likes
+  f. Evalúe a true si ambos tienen más de 20 likes
 
- ```smalltalk
+  ```smalltalk
   (unWallpost likes > 20) & (otroWallpost likes > 20).
- ```
+  ```
 
- g. Cree una nueva instancia de Wallpost que sea la "concatenación" de ambos.
- Esto es que el texto debe ser la concatenación de los textos de ambos, sus
- likes deben ser la suma de ambos likes, y debe estar marcado como featured si
- al menos alguno de ellos lo está.
+  g. Cree una nueva instancia de Wallpost que sea la "concatenación" de ambos.
+  Esto es que el texto debe ser la concatenación de los textos de ambos, sus
+  likes deben ser la suma de ambos likes, y debe estar marcado como featured si
+  al menos alguno de ellos lo está.
 
- ```smalltalk
+  ```smalltalk
   union := Wallpost new.
   union text: unWallpost text,otroWallpost text.
   union likes: unWallpost likes + otroWallpost likes.
   union featured: unWallpost isFeatured | otroWallpost isFeatured.
- ```
+  ```
 
  4. Dada una variable aNumber, escriba la expresión para calcular la suma de los primeros aNumber
  números naturales.
@@ -646,10 +675,11 @@ e. Implemente en Smalltalk y verifique su correcto funcionamiento.
    3 + 5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ] "=> 4"
  ```
 
- ¿Qué valor se obtiene al ser evaluada? ¿Cómo la modificaría para obtener el valor 8?
-```smalltalk
-  3 + (5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]) "=> 8"
- ```
+   * ¿Qué valor se obtiene al ser evaluada? ¿Cómo la modificaría para obtener el valor 8?
+
+    ```smalltalk
+      3 + (5 > 6 ifTrue: [ 4 ] ifFalse: [ 5 ]) "=> 8"
+     ```
 
 Ejercicio 10:
 -------------
@@ -661,6 +691,7 @@ estuvieran allí.
 
 
 Ejercicio 11: Documentar la batería con UML
+-------------------------------------------
 
  1. Utilizando el System Browser de Pharo, acceda a la definición de la clase
  Battery.

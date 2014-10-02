@@ -72,14 +72,16 @@ Tareas:
 3. Considerando el fragmento de código (los nros a la izquierda indican número
 de línea de código):
 
-1. | doc |
-2. doc:= Document titled:'Objetos'.
-3. doc size.
-4. doc class.
-5. doc class allInstances.
-6. Document allInstances.
-7. doc addLine: 'bla'.
-8. doc class == Document
+```smalltalk
+| doc |
+doc:= Document titled:'Objetos'.
+doc size.
+doc class.
+doc class allInstances.
+Document allInstances.
+doc addLine: 'bla'.
+doc class == Document
+```
 
 
 Conteste:

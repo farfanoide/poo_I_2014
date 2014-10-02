@@ -266,13 +266,13 @@ la definición del robot para que la información que aparece en el  inspector s
 muestre en español.
 
 ```smalltalk
-  printOn: aStream
+printOn: aStream
 
-    aStream
-      nextPutAll: 'Robot en ';
-      nextPutAll: self position printString;
-      nextPutAll: ', direccion ';
-      nextPutAll: self direction printString.
+  aStream
+    nextPutAll: 'Robot en ';
+    nextPutAll: self position printString;
+    nextPutAll: ', direccion ';
+    nextPutAll: self direction printString.
 ```
 
 b) Luego de estudiar el metodo `#move:` del robot, considere las diferentes
@@ -282,15 +282,15 @@ Ud.  considere se acerca a lo visto en la teoria de la materia sobre reuso y
 programacion orientada a objetos
 
 ```smalltalk
-  trace: aDistance
-    "dibuja una linea de una distancia dada"
+trace: aDistance
+  "dibuja una linea de una distancia dada"
 
-    aDistance
-      timesRepeat: [
-        self
-          brushDown;
-          brushUp;
-          move: 1 ]
+  aDistance
+    timesRepeat: [
+      self
+        brushDown;
+        brushUp;
+        move: 1 ]
 ```
 
 Ejercicio 9

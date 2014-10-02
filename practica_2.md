@@ -716,35 +716,36 @@ initialize
   self steps: 0
 ```
 
+(no usar este metodo, rompe los tests de la catedra)
 ```smalltalk
-  canConsume: amount
-    "considera si puede avanzar, tiene en cuenta recargas"
-    ^self charge + (amount + steps // 10) >= amount
+canConsume: amount
+  "considera si puede avanzar, tiene en cuenta recargas"
+  ^self charge + (amount + steps // 10) >= amount
 ```
 
 ```smalltalk
-  consume: amount
+consume: amount
 
-    | full |
-    full := amount + self steps.
-    (self canConsume: amount)
-      ifTrue: [
-        self
-        charge: (self charge - amount + (full // 10));
-        steps: full \\ 10 ]
-      ifFalse: [ EmptyBatteryError signal ]
+  | full |
+  full := amount + self steps.
+  (self canConsume: amount)
+    ifTrue: [
+      self
+      charge: (self charge - amount + (full // 10));
+      steps: full \\ 10 ]
+    ifFalse: [ EmptyBatteryError signal ]
 ```
 
 ```smalltalk
-  steps: aNumber
-    "setters"
+steps: aNumber
+  "setters"
 
-    steps:= aNumber
+  steps:= aNumber
 ```
 
 ```smalltalk
-  steps
-    "getters"
+steps
+  "getters"
 
-    ^ steps
+  ^ steps
 ```

@@ -497,21 +497,21 @@ Smalltalk. Utilizando el browser y mirando cualquier clase o conjunto de clases
 y sus métodos responda:
 
 1. ¿Los nombres de clase comienzan con minúscula o mayúscula?
-```
-- En Mayuscula.
-```
+  ```
+  - En Mayuscula.
+  ```
 2. ¿Cómo se escriben los nombres de métodos?
-```
-- En minuscula.
-```
+  ```
+  - En minuscula.
+  ```
 3. ¿Para qué se usan los protocolos?
-```
-- Para organizar los metodos de los objetos.
-```
+  ```
+  - Para organizar los metodos de los objetos.
+  ```
 4. ¿Qué pasa si un método no tiene un protocolo asignado?
-```
-- Absolutamente nada, solamente aparecera dentro de 'as yet unclassified'
-```
+  ```
+  - Absolutamente nada, solamente aparecera dentro de 'as yet unclassified'
+  ```
 5. Busque la clase DateAndTime y:
 
   1. Mencione al menos 3 clases a las que se haga referencia desde el código de

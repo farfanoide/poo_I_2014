@@ -312,17 +312,17 @@ ConfigurationOfBotArena loadDevelopment
 BGSArenaWindow expertViewOn: (CastleSimulation batteryWalkingBrush).
 ```
 
-
 Defina la clase CastleWatch, la cual debe coordinar el accionar de los 4
 guardianes conocidos como northWatch, southWatch, eastWatch y westWatch. Cada
 guardián debe cubrir el correspondiente flanco del castillo.
 
 ```smalltalk
 Object subclass: #CastleWatch
-  instanceVariableNames: 'northWatch southWatch eastWatch y westWatch'
+  instanceVariableNames: 'northWatch southWatch eastWatch westWatch robots'
   classVariableNames: ''
   category: 'BotArena'
 ```
+
 Implemente los siguientes métodos:
 
 ```smalltalk
@@ -346,7 +346,6 @@ paranoicWatch
   self brushUp.
 
 ```
-
 
 ```smalltalk
 WalkingBrushRobot >> InstanceMethods
@@ -402,7 +401,7 @@ northWatch: aRobotN southWatch: aRobotS eastWatch: aRobotE westWatch: aRobotW
 
 ```smalltalk
 eastWatch
-  ^eastWatch
+  ^ eastWatch
 
 eastWatch: aRobot
   eastWatch := aRobot
@@ -410,7 +409,7 @@ eastWatch: aRobot
 
 ```smalltalk
 northWatch
-  ^northWatch
+  ^ northWatch
 
 northWatch: aRobot
   northWatch := aRobot
@@ -418,7 +417,7 @@ northWatch: aRobot
 
 ```smalltalk
 westWatch
-  ^westWatch
+  ^ westWatch
 
 westWatch: aRobot
   westWatch := aRobot
@@ -426,7 +425,7 @@ westWatch: aRobot
 
 ```smalltalk
 southWatch
-  ^southWatch 
+  ^ southWatch
 
 southWatch: aRobot
   southWatch := aRobot
@@ -713,21 +712,21 @@ a. La superficie
 superficie
   "calcula la superficie del triangulo"
 
-  ^(self base * self altura) / 2
+  ^ (self base * self altura) / 2
 ```
 b. La hipotenusa
 ```smalltalk
 hipotenusa
   "calcula la hipotenusa del triangulo"
 
-  ^(self base squared + self altura squared) sqrt
+  ^ (self base squared + self altura squared) sqrt
 ```
 c. El perímetro
 ```smalltalk
 perimetro
   "calcula el perimetro del triangulo"
 
-  ^self base + self altura + self hipotenusa.
+  ^ self base + self altura + self hipotenusa.
 ```
 d. true si el perímetro es mayor a unPerimetro o false en caso contrario
 ```smalltalk
@@ -846,7 +845,7 @@ initialize
 ```smalltalk
 canConsume: amount
   "considera si puede avanzar, tiene en cuenta recargas"
-  ^self charge + (amount + steps // 10) >= amount
+  ^ self charge + (amount + steps // 10) >= amount
 ```
 
 ```smalltalk

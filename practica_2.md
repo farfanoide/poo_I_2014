@@ -358,14 +358,14 @@ rectangleWithBase: aBase andHeight: aHeight
       move: aHeight;
       rotateRight: 90 ]
 
-resetPosition
-  self position: defaultPosition
-
 defaultPosition: aPosition
   defaultPosition := aPosition
 
 defaultPosition
   ^ defaultPosition
+
+resetPosition
+  self position: defaultPosition
 ```
 
 (algunos extra para que funcione lo de arriba)
@@ -376,6 +376,11 @@ initialize
 ```
 
 ```smalltalk
+robots
+  ^ robots
+```
+
+```smalltalk
 brushDown
   self robots do: [ :robot | robot brushDown ]
 ```
@@ -383,11 +388,6 @@ brushDown
 ```smalltalk
 brushUp
   self robots do: [ :robot | robot brushUp ]
-```
-
-```smalltalk
-robots
-  ^ robots
 ```
 
 ```smalltalk

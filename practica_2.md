@@ -58,6 +58,7 @@ rotateLeft: degrees
     ifTrue: [ partial_dir := partial_dir + 360 ].
   self direction: partial_dir
 ```
+
 ```smalltalk
 rotateRight: degrees
   "Gira el robot x cant de grados hacia su derecha"
@@ -68,6 +69,7 @@ rotateRight: degrees
     ifTrue: [ partial_dir := partial_dir - 360 ].
   self direction: partial_dir
 ```
+
 ```smalltalk
 squareOfSize: aSize
   "Realiza un cuadrado con una esquina en su posición actual y de lado aSize."
@@ -852,13 +854,11 @@ canConsume: amount
 consume: amount
 
   | full |
+  super consume: amount.
   full := amount + self steps.
-  (self canConsume: amount)
-    ifTrue: [
-      self
-      charge: (self charge - amount + (full // 10));
-      steps: full \\ 10 ]
-    ifFalse: [ EmptyBatteryError signal ]
+  self
+        charge: (self charge + (full // 10));
+    steps: full \\ 10
 ```
 
 ```smalltalk

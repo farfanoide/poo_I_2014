@@ -362,7 +362,7 @@ resetPosition
   self position: defaultPosition
 
 defaultPosition: aPosition
-  defaultPosition  := aPosition
+  defaultPosition := aPosition
 
 defaultPosition
   ^ defaultPosition
@@ -470,7 +470,7 @@ setWestWatch: aRobot
 
 ```smalltalk
 reset
-  self robots do: [ :robot| robot position: robot defaultPosition ]
+  self robots do: [ :robot| robot resetPosition ]
 ```
 
 

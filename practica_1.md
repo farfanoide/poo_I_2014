@@ -258,10 +258,11 @@ objetos a los que conoce. ¿Qué mensajes envía en esa interacción?
 
 c) ¿Cual es el protocolo (cara visible) de la batería del robot?
 
+
 Ejercicio 8
 -----------
 
-a)  Al hacer click en el robot se abre una ventana llamada inspector. Modifique
+1.  Al hacer click en el robot se abre una ventana llamada inspector. Modifique
 la definición del robot para que la información que aparece en el  inspector se
 muestre en español.
 
@@ -275,7 +276,7 @@ printOn: aStream
     nextPutAll: self direction printString.
 ```
 
-b) Luego de estudiar el metodo `#move:` del robot, considere las diferentes
+2. Luego de estudiar el metodo `#move:` del robot, considere las diferentes
 maneras de implementar el metodo `#trace:`. El metodo `#trace:` dibuja una
 linea de la longitud que se pasa como parametro. Implemente la alternativa que
 Ud.  considere se acerca a lo visto en la teoria de la materia sobre reuso y
@@ -353,7 +354,7 @@ robotech battery: EndlessBattery new
 
 ```
 EndlessBattery es una clase q basicamente reimplementa `canConsume` y
-`consume:` para que funcionen siempre
+`consume:` para que funcionen siempre.
 ```
 
 2. Basado en los metodos `#move:` y `#trace:` implemente el metodo  `#dash:`.
@@ -362,13 +363,14 @@ parametro del metodo, y haciendo que los puntos y los espacios de la linea
 punteada sean de longitud uno
 
 ```smalltalk
-  dash: aNumber
-    "hace una linea punteada de longitud anumber"
+dash: aNumber
+  "hace una linea punteada de longitud anumber"
 
-    aNumber // 2
-      timesRepeat: [
-        self trace: 1.
-        self move: 1 ].
-    aNumber odd
-      ifTrue: [ self trace: 1 ]
+  aNumber // 2
+    timesRepeat: [
+      self
+        trace: 1;
+        move: 1 ].
+  aNumber odd
+    ifTrue: [ self trace: 1 ]
 ```

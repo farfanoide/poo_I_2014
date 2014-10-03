@@ -44,7 +44,7 @@ squareOfSize: aSize
     west;
     move: aSize;
     north;
-    brushUp;
+    brushUp.
 ```
 Alternativamente:
 
@@ -95,7 +95,6 @@ squareAtHomeOfSize: aSize
   self squareOfSize: aSize at: (25@25)
 ```
 
-
 ```smalltalk
 rotatedSquareOfSize: aSize
   "Realiza un cuadrado con una esquina en su posición actual, de lado aSize,
@@ -104,7 +103,6 @@ rotatedSquareOfSize: aSize
     rotateRight: 45;
     squareOfSize: aSize.
 ```
-
 
 ```smalltalk
 rotatedSquareOfSize: aSize at: aPoint
@@ -130,8 +128,9 @@ Discuta el por qué con un ayudante.
 
 Ejercicio 3: PatrolCouple
 -------------------------
-Una PatrolCouple (pareja de guardia) está formada por dos robots: uno conocido como patrol (patrulla) y el
-otro conocido como sniper (francotirador).
+
+Una PatrolCouple (pareja de guardia) está formada por dos robots: uno conocido
+como patrol (patrulla) y el otro conocido como sniper (francotirador).
 
 1. Defina la clase PatrolCouple y cree una instancia en el workspace.
 PatrolCouple debe implementar el mensaje #patrol: sniper: que toma dos robots
@@ -221,10 +220,10 @@ reset
 
   self patrol
     north;
-    position: (20@20).
+    position: (20@30).
   self sniper
     south;
-    position: (20@5).
+    position: (20@25).
 ```
 
 ```smalltalk
@@ -232,7 +231,7 @@ regularPatrol
   "patrol hace un cuadrado de lado 10 rotado 45 grados alrededor de sniper,
     sniper en el centro gira en sentido de las agujas del reloj."
 
-  self patrol rotatedSquareOfSize: 10 at: ((self sniper position x - 5)@(self sniper position y))
+  self patrol rotatedSquareOfSize: 10 at: ((self sniper position x - 10)@(self sniper position y)).
   4 timesRepeat: [self sniper rotateRight: 90]
 ```
 
@@ -243,7 +242,7 @@ regularPatrolTrace
 
   self patrol brushDown.
   self regularPatrol.
-  self brushUp.
+  self patrol brushUp.
 ```
 
 ```smalltalk
@@ -263,8 +262,10 @@ doTheRegularPatrol
   5 hacia el este. Considere usar bateria con suficiente carga"
 
   5 timesRepeat: [
-    self patrol canDoRegularPatrol and: [self sniper battery charge >= 9]
-      ifTrue: [ self regularPatrol ]
+      self patrol canDoRegularPatrol & (self sniper battery charge >= 9)
+        ifTrue: [
+          self patrol north.
+          self regularPatrol ]
   ]
 ```
 
@@ -275,8 +276,10 @@ doTheRegularPatrolTrace
   el brush"
 
   5 timesRepeat: [
-    self patrol canDoRegularPatrol and: [self sniper battery charge >= 9]
-      ifTrue: [ self regularPatrolTrace ]
+      self patrol canDoRegularPatrol & (self sniper battery charge >= 9)
+        ifTrue: [
+          self patrol north.
+          self regularPatrol ]
   ]
 ```
 
@@ -314,6 +317,12 @@ Defina la clase CastleWatch, la cual debe coordinar el accionar de los 4
 guardianes conocidos como northWatch, southWatch, eastWatch y westWatch. Cada
 guardián debe cubrir el correspondiente flanco del castillo.
 
+```smalltalk
+Object subclass: #CastleWatch
+  instanceVariableNames: 'northWatch southWatch eastWatch y westWatch'
+  classVariableNames: ''
+  category: 'BotArena'
+```
 Implemente los siguientes métodos:
 
 ```smalltalk
@@ -337,6 +346,15 @@ rectangleWithBase: aBase andHeight: aHeight
       rotateRight: 90;
       move: aHeight;
       rotateRight: 90 ]
+
+resetPosition
+  self position: defaultPosition
+
+defaultPosition: aPosition
+  defaultPosition  := aPosition
+
+defaultPosition
+  ^ defaultPosition
 ```
 ```smalltalk
 paranoicWatch
@@ -345,9 +363,113 @@ paranoicWatch
   de 4x10"
 
   self brushDown.
-  self robots do: [ :robot | robot rectangleWithBase: 4 high: 10 ].
+  self robots do: [ :robot | robot rectangleWithBase: 4 andHeight: 10 ].
   self brushUp.
 
+```
+
+(algunos extra para que funcione lo de arriba)
+
+```smalltalk
+initialize
+  robots := OrderedCollection new
+```
+
+```smalltalk
+brushDown
+  self robots do: [ :r | r brushDown ]
+```
+
+```smalltalk
+brushUp
+  self robots do: [ :r | r brushUp ]
+```
+
+```smalltalk
+robots
+  ^ robots
+```
+```smalltalk
+northWatch: aRobotN southWatch: aRobotS eastWatch: aRobotE westWatch: aRobotW
+  self
+    setNorthWatch: aRobotN;
+    setSouthWatch: aRobotS;
+    setEastWatch: aRobotE;
+    setWestWatch: aRobotW.
+```
+
+```smalltalk
+eastWatch
+  ^eastWatch
+
+eastWatch: aRobot
+	eastWatch := aRobot
+```
+
+```smalltalk
+northWatch
+  ^northWatch
+
+northWatch: aRobot
+  northWatch := aRobot
+```
+
+```smalltalk
+westWatch
+	^westWatch
+
+westWatch: aRobot
+	westWatch := aRobot
+```
+
+```smalltalk
+southWatch
+  ^southWatch 
+
+southWatch: aRobot
+	southWatch := aRobot
+```
+
+```smalltalk
+reset
+  self robots do: [ :robot| robot position: robot defaultPosition ]
+```
+
+```smalltalk
+
+setEastWatch: aRobot
+  self eastWatch: aRobot.
+  self eastWatch
+      defaultPosition: (36@26);
+      east.
+    robots add: eastWatch.
+```
+
+```smalltalk
+setNorthWatch: aRobot
+  self northWatch: aRobot.
+  self northWatch
+    defaultPosition: (26@16);
+    north.
+  robots add: northWatch
+```
+
+```smalltalk
+setSouthWatch: aRobot
+  self southWatch: aRobot.
+  self southWatch
+    defaultPosition: (26@36);
+    south.
+  robots add: southWatch
+```
+
+```smalltalk
+setWestWatch: aRobot
+  self westWatch: aRobot.
+  self westWatch
+    defaultPosition: (16@26);
+    west.
+  robots add: westWatch.
 ```
 
 
@@ -382,7 +504,7 @@ de likes ("me gusta") y una marca que indica si es destacado o no.
 Object subclass: #Wallpost
   instanceVariableNames: 'likes featured text'
   classVariableNames: ''
-  category: 'unclassified'
+  category: 'WallPost'
 ```
 
 Defina la clase Wallpost en Smalltalk, con los siguientes mensajes:
@@ -403,7 +525,7 @@ text: aString
 
 ```smalltalk
 likes
-  "Retorna la cantidad de "me gusta""
+  "Retorna la cantidad de 'me gusta' "
 
   ^ likes
 ```
@@ -461,8 +583,8 @@ toggleFeatured
 ```smalltalk
 initialize
   "Inicializa el estado de las variables de instancia del Wallpost. Luego de
-  la invocación el Wallpost debe tener como texto: "Undefined post", no debe
-  estar marcado como destacado y la cantidad de "Me gusta" deben ser 0."
+  la invocación el Wallpost debe tener como texto: 'Undefined post', no debe
+  estar marcado como destacado y la cantidad de 'Me gusta' deben ser 0."
 
   self
     text: 'Undefined post';
@@ -717,6 +839,7 @@ initialize
 ```
 
 (no usar este metodo, rompe los tests de la catedra)
+
 ```smalltalk
 canConsume: amount
   "considera si puede avanzar, tiene en cuenta recargas"

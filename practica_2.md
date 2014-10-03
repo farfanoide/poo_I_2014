@@ -335,6 +335,18 @@ regularWatch
   self brushUp
 ```
 
+```smalltalk
+paranoicWatch
+
+  "cada robot realiza un recorrido del flanco completo, dibujando un rectangulo
+  de 4x10"
+
+  self brushDown.
+  self robots do: [ :robot | robot rectangleWithBase: 4 andHeight: 10 ].
+  self brushUp.
+
+```
+
 
 ```smalltalk
 WalkingBrushRobot >> InstanceMethods
@@ -356,17 +368,6 @@ defaultPosition: aPosition
 defaultPosition
   ^ defaultPosition
 ```
-```smalltalk
-paranoicWatch
-
-  "cada robot realiza un recorrido del flanco completo, dibujando un rectangulo
-  de 4x10"
-
-  self brushDown.
-  self robots do: [ :robot | robot rectangleWithBase: 4 andHeight: 10 ].
-  self brushUp.
-
-```
 
 (algunos extra para que funcione lo de arriba)
 
@@ -377,18 +378,19 @@ initialize
 
 ```smalltalk
 brushDown
-  self robots do: [ :r | r brushDown ]
+  self robots do: [ :robot | robot brushDown ]
 ```
 
 ```smalltalk
 brushUp
-  self robots do: [ :r | r brushUp ]
+  self robots do: [ :robot | robot brushUp ]
 ```
 
 ```smalltalk
 robots
   ^ robots
 ```
+
 ```smalltalk
 northWatch: aRobotN southWatch: aRobotS eastWatch: aRobotE westWatch: aRobotW
   self
@@ -403,7 +405,7 @@ eastWatch
   ^eastWatch
 
 eastWatch: aRobot
-	eastWatch := aRobot
+  eastWatch := aRobot
 ```
 
 ```smalltalk
@@ -416,10 +418,10 @@ northWatch: aRobot
 
 ```smalltalk
 westWatch
-	^westWatch
+  ^westWatch
 
 westWatch: aRobot
-	westWatch := aRobot
+  westWatch := aRobot
 ```
 
 ```smalltalk
@@ -427,12 +429,7 @@ southWatch
   ^southWatch 
 
 southWatch: aRobot
-	southWatch := aRobot
-```
-
-```smalltalk
-reset
-  self robots do: [ :robot| robot position: robot defaultPosition ]
+  southWatch := aRobot
 ```
 
 ```smalltalk
@@ -471,6 +468,12 @@ setWestWatch: aRobot
     west.
   robots add: westWatch.
 ```
+
+```smalltalk
+reset
+  self robots do: [ :robot| robot position: robot defaultPosition ]
+```
+
 
 
 Note que siempre los robots deben dejar el rastro de su patrullaje. Por ej. el resultado de
@@ -702,7 +705,7 @@ y altura, escriba las expresiones en Smalltalk para calcular:
 Object subclass: #TrianguloRectangulo
 instanceVariableNames: 'base altura'
 classVariableNames: ''
-category: 'triangulos'
+category: 'Triangulos'
 ```
 
 a. La superficie

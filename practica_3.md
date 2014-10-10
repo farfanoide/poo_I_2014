@@ -11,15 +11,19 @@ Abra el Browser Nautilus y desarrolle las siguientes tareas:
 
 1. Busque la clases ProtoObject y Object.
 
-2. Lea los comentarios de los métodos #=  (en Object) y #== (en ProtoObject) y
-explique la diferencia entre ambos. Verfique con un ayudante.
+2. Lea los comentarios de los métodos `#=`  (en Object) y `#==` (en
+ProtoObject) y explique la diferencia entre ambos. Verfique con un ayudante.
 
-3. Encuentre todas las implementaciones del método #= e #== a.Una manera de
-hacerlo es seleccionar el método y utilizar el menu contextual: “Implementors
-of...”
+`Ambos son metodos para comparar dos objetos, pero el '#=' esta hecho para
+poder ser redefinido ya que lo unico que hace es llamar al '#==' que hereda de
+'ProtoObject'`
 
-4. Encuentre todos los métodos donde a algún objeto se le envía el mensaje #==
-y #=.
+3. Encuentre todas las implementaciones del método `#=` e `#==` a. Una manera
+de hacerlo es seleccionar el método y utilizar el menu contextual:
+“Implementors of...”
+
+4. Encuentre todos los métodos donde a algún objeto se le envía el mensaje
+`#==` y `#=`.
 
 a.Una manera de hacerlo es seleccionar cada uno de los métodos y utilizar el
 menu contextual: “Senders of”
@@ -171,18 +175,23 @@ de los siguientes ejemplos?
 
 Ejemplo 1:
 
+```smalltalk
 nrb := NonRechargeableBattery new.
 nrb consume: 70.
 nrb consume: 35.
+```
 
 
 Ejemplo 2:
+```smalltalk
 rab := RechargeableAlkalineBattery new.
 rab consume: 70.
 rab consume: 35.
+```
 
 
 Ejercicio  4: Perfil y Karma
+----------------------------
 
 
 Sea una red social en la que se requiere representar el perfil de una persona
@@ -298,10 +307,3 @@ Tareas
 funciona de la manera esperada.
 
 5. Implemente esos casos de prueba y ejecútelos en un workspace.
-
-
-
-
-
-
-

@@ -54,7 +54,7 @@ porque se ejecuta ese método vacio.`
 8. Si inspecciona el protocolo de Boolean, en browser, al lado de los mensajes,
 verá flechas verde. ¿Qué indican las flechas hacia arriba? ¿Y hacia abajo?
 
-![imagen nautilus]('img/practica_3/nautilus.png')
+![imagen nautilus](img/practica_3/nautilus.png)
 
 ` Significa que ese mensaje esta definido en su clase padre o esta definida en
 una de sus subclases.`

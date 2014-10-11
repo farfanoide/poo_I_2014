@@ -153,7 +153,7 @@ Ejercicio 3: Method Lookup
 Se tienen definidas en Smalltalk las siguientes clases con el siguiente
 comportamiento
 
-![imagen clases method lookup](img/practica_2/clases.png)
+![imagen clases method lookup](img/practica_3/clases.png)
 
 ```smalltalk
 Object subclass: #Battery

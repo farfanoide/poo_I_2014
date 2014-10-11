@@ -1,8 +1,8 @@
-Orientación a Objetos 1 ­ 2014
-==============================
+Orientación a Objetos 1 - 2014 - Práctica 1
+===========================================
 
-Práctica 1 Introducción
------------------------
+ Introducción
+-------------
 
 En esta práctica usted aplicará los conceptos de objeto, envío de mensajes
 método, resultado de un método y conocimiento (o estructura interna de un

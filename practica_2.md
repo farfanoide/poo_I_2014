@@ -1,8 +1,8 @@
-Orientación a Objetos 1 ­ 2014
-==============================
+Orientación a Objetos 1 - 2014 - Práctica 2
+===========================================
 
-Práctica 2 - Introducción
--------------------------
+ Introducción
+-------------
 
 En esta práctica deberá utilizar el ambiente del robot en una versión más
 avanzada, para ello copie, pegue en un workspace y ejecute el siguiente código:
@@ -46,7 +46,7 @@ squareOfSize: aSize
     north;
     brushUp.
 ```
-Alternativamente:
+*Alternativamente:*
 
 ```smalltalk
 rotateLeft: degrees
@@ -115,7 +115,7 @@ rotatedSquareOfSize: aSize at: aPoint
 ```
 
 
-Nota: implemente los métodos re­utilizando los métodos previamente definidos.
+*Nota: implemente los métodos re­utilizando los métodos previamente definidos.*
 
 
 Ejercicio 2:
@@ -210,7 +210,7 @@ newWithPatrol: aPatrol andSniper: aSniper
 Ejercicio 4:
 ------------
 
-PatrolCouple con comportamiento
+*PatrolCouple con comportamiento*
 
 En este ejercicio agregaremos comportamiento a PatrolCouple con la siguiente
 definición de mensajes:
@@ -308,7 +308,7 @@ Para lanzar el ambiente con el castillo antes debe:
 ConfigurationOfBotArena loadDevelopment
 ```
 
-3) Lanzar el ambiente con la simulación de castillo:
+3. Lanzar el ambiente con la simulación de castillo:
 
 ```smalltalk
 BGSArenaWindow expertViewOn: (CastleSimulation batteryWalkingBrush).
@@ -325,7 +325,7 @@ Object subclass: #CastleWatch
   category: 'BotArena'
 ```
 
-Implemente los siguientes métodos:
+*Implemente los siguientes métodos:*
 
 ```smalltalk
 regularWatch
@@ -370,7 +370,7 @@ resetPosition
   self position: defaultPosition
 ```
 
-(algunos extra para que funcione lo de arriba)
+*(algunos extra para que funcione lo de arriba)*
 
 ```smalltalk
 initialize

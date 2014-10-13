@@ -26,7 +26,7 @@ envía mensajes a objetos polimórficos.
 
 
 Ejercicio 2: Intervalo de tiempo
-================================
+--------------------------------
 
 En Smalltalk, las fechas se representan con instancias de la clase `Date`. Por
 ejemplo, el envío del mensaje `#today` a la clase `Date` retorna la fecha actual.
@@ -52,29 +52,29 @@ que se encuentran en el archivo `Date`Lapse.st, completándola de acuerdo a la
 siguiente especificación. Una instancia de esta clase entiende los mensajes:
 
 ```smalltalk
-#from
+from
   "Retorna la fecha de inicio del rango"
 ```
  
 ```smalltalk
-#to
+to
 "Retorna la fecha de fin del rango"
 ```
  
 ```smalltalk
-#from: aDateFrom to: aDateTo
+from: aDateFrom to: aDateTo
 
   "Es un método privado que asigna la fecha inicial y final de un objeto
   DateLapse"  
 ```
 
 ```smalltalk
-#sizeInDays
+sizeInDays
   "retorna la cantidad de días entre la fecha from y la fecha to"
 ```
  
 ```smalltalk
-#includesDate: aDate
+includesDate: aDate
 
   "recibe un objeto Date y retorna true si la fecha está entre el from y el to del
   receptor y false en caso contrario"
@@ -172,30 +172,30 @@ definidas de acuerdo con las siguientes tablas de verdad:
 
 *Implies:*
 
-a     | b     | a implies: b
-------|-------|-------------
-false | false | true
-false | true  | true
-true  | false | false
-true  | true  | true
+  a     | b     | a implies: b
+  ------|-------|-------------
+  false | false | true
+  false | true  | true
+  true  | false | false
+  true  | true  | true
 
-*Nand*
+  *Nand*
 
-a     | b     | a nand: b
-------|-------|-----------
-false | false | true
-false | true  | true
-true  | false | true
-true  | true  | false
+  a     | b     | a nand: b
+  ------|-------|-----------
+  false | false | true
+  false | true  | true
+  true  | false | true
+  true  | true  | false
 
-*Nor*
+  *Nor*
 
-a     | b     | a nor: b
-------|-------|-------------
-false | false | true
-false | true  | false
-true  | false | false
-true  | true  | false
+  a     | b     | a nor: b
+  ------|-------|-------------
+  false | false | true
+  false | true  | false
+  true  | false | false
+  true  | true  | false
 
 Utilice los TestCases provistos por la cátedra para probar su implementación.
 
@@ -338,90 +338,56 @@ le envían.
 
 2. Realice el diagrama de secuencia donde se muestra lo que ocurre cuando el mensaje
 
-Ejercicio 4 Triangulación de Delaunay I
----------------------------------------
-
-#on es   enviado a la computadora.
-
-3. Implemente en Smalltalk.
-
-
-Ejercicio 10
-------------
-
-Indique qué efecto tienen en una OrderedCollection los mensajes:
-
-`#add:`
-
-`#remove:`
-
-`#size`
-
-`#last`
-
-`#first`
-
-`#includes:`
-
-`#at:put:.`
-
-1. Clasifíquelos según si el objetivo principal del mensaje es modificar al
-objeto receptor u obtener información.
-
-2. ¿Los mensajes que modifican el objeto receptor retornan algo?
-
-3. Imagine dos ejemplos donde se utilizan al menos tres de los métodos listados
-arriba
-
 Ejercicio 11
 ------------
 
-Para cada uno de los mensajes enunciados abajo: lea los comentarios, analice y
-compare (codificando ejemplos si lo cree conveniente) su comportamiento para
-cada una de estas clases: OrderedCollection, SortedCollection, Array,
-Dictionary, Bag y Set.
+Para cada uno de los mensajes enunciados abajo: lea los comentarios,
+analice y compare (codificando ejemplos si lo cree conveniente) su
+comportamiento para cada una de estas
+clases: OrderedCollection, SortedCollection, Array, Dictionary, Bag y Set.
 
-`#add: #at: #at:put:`
-`#size #do: #detect:`
-`#select: #collect: #reject:`
-`#inject:into: #includes: #isEmpty`
+```smalltalk
+ #add: #at: #at:put:
+ #size #do: #detect:
+ #select: #collect: #reject:
+ #inject:into: #includes: #isEmpty
+```
 
-*Responda a las siguientes preguntas:*
+Responda a las siguientes preguntas:
+ 1. ¿Es posible que algunos mensajes no sean aplicables para algunas colecciones? Por
+ ejemplo, ¿Se le puede enviar el mensaje #add: a un Array? ¿Y a un Set? ¿Se le
+ puede enviar el mensaje #at: y #at:put: a un Set?
 
-1. ¿Es posible que algunos mensajes no sean aplicables para algunas
-colecciones? Por ejemplo, ¿Se le puede enviar el mensaje #add: a un Array? ¿Y a
-un Set? ¿Se le puede enviar el mensaje #at: y #at:put: a un Set?
+ 2. En respuesta al mensaje #select:, ¿qué retorna un Array? ¿Y un Dictionary? ¿Y
+ una SortedCollection?
 
-2. En respuesta al mensaje #select:, ¿qué retorna un Array? ¿Y un Dictionary?
-¿Y una SortedCollection?
+ 3. En respuesta al mensaje #size, ¿qué retorna un Array creado con Array new:10?
+ ¿Qué retorna una OrderedCollection creada con OrderedCollection
+ new:10?
 
-3. En respuesta al mensaje #size, ¿qué retorna un Array creado con Array
-new:10?  ¿Qué retorna una OrderedCollection creada con OrderedCollection
-new:10?
+ 4. ¿Cómo se elimina un elemento de un Array? ¿Es posible?
 
-4. ¿Cómo se elimina un elemento de un Array? ¿Es posible?
+ 5. ¿Como se averigua la posición de un elemento en un Array? ¿Y la del primer elemento
+ que  cumple una condición? ¿Es posible hacerlo en un Set?.
 
-5. ¿Como se averigua la posición de un elemento en un Array? ¿Y la del primer
-elemento que  cumple una condición? ¿Es posible hacerlo en un Set?.
+ 6. Indique la diferencia entre #detect: y #detect:ifNone:. ¿Para qué sirve el bloque
+ que se  envía como parámetro en #ifNone:?
 
-6. Indique la diferencia entre #detect: y #detect:ifNone:. ¿Para qué sirve el
-bloque que se  envía como parámetro en #ifNone:?
+ 7. ¿Cómo crea una SortedCollection para contener instancias de String
+ ordenadas por   tamaño? ¿Cómo crea una SortedCollection para contener
+ instancias de String ordenadas alfabéticamente?
 
-7. ¿Cómo crea una SortedCollection para contener instancias de String ordenadas
-por tamaño? ¿Cómo crea una SortedCollection para contener instancias de String
-ordenadas alfabéticamente?
+ 8. ¿Cómo consigue los elementos en un Array eliminado las repeticiones?
 
-8. ¿Cómo consigue los elementos en un Array eliminado las repeticiones?
+ 9. ¿Cuál es el problema con la siguiente expresión si col es un Set con elementos? ¿Y si
+ fuera una OrderedCollection?  
 
-9. ¿Cuál es el problema con la siguiente expresión si col es un Set con
-elementos? ¿Y si fuera una OrderedCollection?  
+ a. col do: [ :each | col remove: each]
 
-`a. col do: [ :each | col remove: each]`
+ 10. ¿Cuál es el efecto de enviar el mensaje `#add:` con nil como parámetro a una
+ OrderedCollection? ¿Por qué?
 
-10. ¿Cuál es el efecto de enviar el mensaje #add: con nil como parámetro a una
-OrderedCollection? ¿Por qué?
-
-11. ¿Qué diferencia hay entre los mensajes #includes: y #contains:?
+ 11. ¿Qué diferencia hay entre los mensajes `#includes:` y `#contains:`?
 
 
 
@@ -434,46 +400,54 @@ documenta en el siguiente diagrama. 
 Note que los vértices se guardan ahora en una colección en lugar de tres
 variables.
 
-Figura 3
+<!-- TODO: agregar imagen -->
+ Figura 3
 
 Ejercicio 13
 ------------
 
 Analice el siguiente Diagrama de Clases
+<!-- TODO: agregar imagen -->
+ Figura 4
 
-
-
-
-
-Figura 4
-
-Como puede apreciarse, la clase Producto posee el siguiente protocolo: #precio,
-#descripcion, #peso, #vencimiento, #estaVencido. En base a esto se desea
+Como puede apreciarse, la clase Producto posee el siguiente protocolo: `#precio`,
+`#descripcion`, `#peso`, `#vencimiento`, `#estaVencido`. En base a esto se desea
 modificar el código de los métodos de la clase Comercio de forma tal que
 utilicen métodos de colecciones de mayor nivel de abstracción sin alterar el
 comportamiento original.
 
-#productosProximosAVencer
-"Retorna los productos que vencen en siete días"
+```smalltalk
+productosProximosAVencer
+  "Retorna los productos que vencen en siete días"
 
-|nextWeek results|  
-nextWeek:= Date today addDays:7.  
-results:= OrderedCollection new.
-self productos do:[ :producto | producto vencimiento = nextWeek
-ifTrue:[ results add:producto] ].
-^results
+  |nextWeek results|  
+  nextWeek:= Date today addDays:7.  
+  results:= OrderedCollection new.
+  self productos do: [ :producto |
+    producto vencimiento = nextWeek
+      ifTrue:[ results add:producto]
+    ].
+  ^results
+```
 
-#obtenerCostoDeProductosDePrecioMenorA: unPrecio yPesoMenorA:unPeso
-"retorna la suma del precio de todos los productos recibidos como parámetros
-que su valor individual sea menor a unPrecio y su peso individual sea menor a
-unPeso" 
+```smalltalk
+obtenerCostoDeProductosDePrecioMenorA: unPrecio yPesoMenorA:unPeso
 
-|results total|
-total:=0.
-self productos do:[ :p | p peso < unPeso
-ifTrue:[ p precio < unPrecio ifTrue:[ total:= total + p precio]. ].
-].
-^total
+  "retorna la suma del precio de todos los productos recibidos como parámetros
+  que su valor individual sea menor a unPrecio y su peso individual sea menor a
+  unPeso" 
+
+  |results total|
+   
+  total:=0.
+  self productos do: [ :p |
+    p peso < unPeso
+      ifTrue: [ p precio < unPrecio
+        ifTrue: [ total:= total + p precio].
+      ].
+    ].
+  ^total
+```
 
 Ejercicio 14 (Avanzado)
 -----------------------
@@ -491,10 +465,11 @@ DelaunayMesh esta compuesto por un conjunto de triángulos (DelaunayElement) y
 puede calcular el área y el perímetro. El área es la sumatoria de los
 triángulos que conforman el DelaunayMesh. El perímetro resulta de la sumatoria
 de los "lados externos" o los "lados no compartidos" de los triángulos que
-conforman el DelaunayMesh.  DelaunayMesh tiene un constructor #fromVertices:
-que recibe los vértices de los triángulos.  El siguiente diagrama de clases
-muestra una vista preliminar que puede utilizar para diseñar y programar su
-solución.
+conforman el DelaunayMesh.
+
+DelaunayMesh tiene un constructor #fromVertices: que recibe los vértices de los
+triángulos.  El siguiente diagrama de clases muestra una vista preliminar que
+puede utilizar para diseñar y programar su solución.
 
 
 

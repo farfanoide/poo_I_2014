@@ -45,40 +45,49 @@ Sugerencia: vea los métodos de instancia que `Date` hereda de   Magnitude (pr
 testing).
 
 3. Un objeto `Date`Lapse representa el lapso de tiempo entre dos fechas. La primera
-fecha se conoce como ´from’ y la segunda como ’to’.
+fecha se conoce como `from` y la segunda como `to`.
  
 Implemente la clase `Date`Lapse (lapso de tiempo). Para ello, debe utilizar la definición
 que se encuentran en el archivo `Date`Lapse.st, completándola de acuerdo a la
 siguiente especificación. Una instancia de esta clase entiende los mensajes:
 
+```smalltalk
 #from
-"Retorna la fecha de inicio del rango"
+  "Retorna la fecha de inicio del rango"
+```
  
-
+```smalltalk
 #to
 "Retorna la fecha de fin del rango"
+```
  
-
+```smalltalk
 #from: aDateFrom to: aDateTo
-"Es un método privado que asigna la fecha inicial y final de un objeto DateLapse"
- 
 
+  "Es un método privado que asigna la fecha inicial y final de un objeto
+  DateLapse"  
+```
+
+```smalltalk
 #sizeInDays
-"retorna la cantidad de días entre la fecha ’from’ y la fecha ’to’"
+  "retorna la cantidad de días entre la fecha from y la fecha to"
+```
  
-
+```smalltalk
 #includesDate: aDate
-"recibe un objeto Date y retorna true si la fecha está entre el ’from’ y el ’to’ del
+
+  "recibe un objeto Date y retorna true si la fecha está entre el from y el to del
+  receptor y false en caso contrario"
+```
  
-receptor y false en caso contrario"
 
 4. Ejecute los tests provistos por la cátedra para verificar su implementación,
 los mismos se encuentran definidos en la clase `Date`LapseTest, en el archivo
 `Date`LapseTest.st.
 
 5. Asumiendo que implementó la clase `DateLapse` con dos variables de instancia
-’from’ y ’to’, modifique la implementación de la clase para que su
-representación sea a través de los atributos ’from’ y ’sizeInDays’. Es decir,
+`from` y `to`, modifique la implementación de la clase para que su
+representación sea a través de los atributos `from` y `sizeInDays`. Es decir,
 debe basar su nueva implementación en estas variables de instancia solamente.
 Sugerencia: si quiere conservar la versión original, antes de realizar algún
 cambio haga un fileOut de la clase `DateLapse`.
@@ -90,7 +99,7 @@ seguir usándolo de la misma forma.
 
 
 Ejercicio 3: DateLapse
-======================
+----------------------
 
 Defina ahora los mensajes necesarios para crear una instancia de `DateLapse` a
 partir del envío de un mensaje a un objeto `Date`. Usted debería escribir algo de
@@ -150,7 +159,7 @@ Considere los siguientes puntos:
   * La operación isNeighborElement() retorna un booleano que dice si dos
   triangulos son vecinos: no son el mismo y comparten un lado.
 
-
+![imagen delaunay clases](img/practica_4/delaunay_1.png)
 
 
 
@@ -161,12 +170,32 @@ Implementar en Pharo las siguientes operaciones lógicas: `implies`, `nand` y
 `nor`.  Las operaciones deben ser mensajes enviados a objetos booleanos y están
 definidas de acuerdo con las siguientes tablas de verdad:
 
- Implies Nand Nor
+*Implies:*
 
+a     | b     | a implies: b
+------|-------|-------------
+false | false | true
+false | true  | true
+true  | false | false
+true  | true  | true
 
+*Nand*
 
+a     | b     | a nand: b
+------|-------|-----------
+false | false | true
+false | true  | true
+true  | false | true
+true  | true  | false
 
+*Nor*
 
+a     | b     | a nor: b
+------|-------|-------------
+false | false | true
+false | true  | false
+true  | false | false
+true  | true  | false
 
 Utilice los TestCases provistos por la cátedra para probar su implementación.
 
@@ -207,51 +236,47 @@ Ejercicio 8: Diagramas UML
 
 Analice los siguientes Diagramas de Clases y conteste las preguntas:
 
-
-
-
+![imagen uml battery](img/practica_4/uml_battery.png)
 
 *Responda:*
 
 1. Liste los mensajes que entiende una instancia de RechargeableFuelBattery.
 
-2. ¿A una instancia de RechargeableAlkalineBattery se le puede enviar el
-mensaje consume: anInteger? Justifique su respuesta.
+2. ¿A una instancia de `RechargeableAlkalineBattery` se le puede enviar el
+mensaje `consume: anInteger`? Justifique su respuesta.
 
 3. ¿Qué significa un mensaje subrayado en un diagrama de clases?
 
 4. ¿Qué significa el nombre de una clase en cursivas en un diagrama de clases?
 ¿y en el nombre de los métodos?
 
-5. ¿Qué significa el simbolo - delante de las variables de instancia? y los
-símbolos + y - delante de los mensajes?
+5. ¿Qué significa el simbolo `-` delante de las variables de instancia? y los
+símbolos `+` y `-` delante de los mensajes?
 
-6. ¿Por qué el mensaje basicConsume está definido en Battery, en
-RechargeableBattery, pero no en NonRechargeableBattery? Justifique su
+6. ¿Por qué el mensaje `basicConsume` está definido en `Battery`, en
+`RechargeableBattery`, pero no en `NonRechargeableBattery`? Justifique su
 respuesta.
 
 
 
-
-
-
+![imagen uml http](img/practica_4/uml_http.png)
 
 *Responda:*
 
-1. Liste los mensajes que entiende una instancia de HttpsUrl
+1. Liste los mensajes que entiende una instancia de `HttpsUrl`
 
-2. ¿A una instancia de HttpsUrl se le puede enviar el mensaje
-parseContent(text:String)?
+2. ¿A una instancia de `HttpsUrl` se le puede enviar el mensaje
+`parseContent(text:String)`?
 
 3. ¿Qué significa que un método esté subrayado en el diagrama de clases?
 
-4. ¿Qué significan los + y ­ adelante de los métodos?
+4. ¿Qué significan los `+` y `­` adelante de los métodos?
 
 5. ¿Qué significa que un método este en cursiva?
 
-6. ¿Por qué cree que ambas clases implementan el método fromString(:String)?
+6. ¿Por qué cree que ambas clases implementan el método `fromString(:String)`?
 
-7. ¿Qué mensajes pueden enviarse a la clase HttpsUrl?
+7. ¿Qué mensajes pueden enviarse a la clase `HttpsUrl`?
 
 
 
@@ -262,13 +287,20 @@ Dada la jerarquía mostrada a la izquierda de la Figura 1, cuya implementación
 se muestra en la tabla de la derecha, indique qué retornan las siguientes
 expresiones:
 
+![imagen uml empleado](img/practica_4/uml_empleado.png)
 
 En base a los siguientes workspaces, resuelva las preguntas según corresponda:
 
 ```smalltalk
-| gerente | | gerente |
-gerente := Gerente new. gerente := Gerente new.
-gerente aportes gerente calcularSueldo
+| gerente |
+gerente := Gerente new.
+gerente aportes
+```
+
+```smalltalk
+| gerente |
+gerente := Gerente new.
+gerente calcularSueldo
 ```
 
 1. Liste los métodos que son invocados después como resultado del envio del
@@ -284,7 +316,7 @@ características:
 
 * Memoria (cantidad de GB)
 
-* Procesador (tipo de juego de instrucciones del procesador – x86, ARM, 
+* Procesador (tipo de juego de instrucciones del procesador – x86, ARM,
 Itanium –, Ghz de velocidad)
 
 * Disco rígido (cantidad de GB)

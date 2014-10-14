@@ -372,9 +372,26 @@ documente las variables de instancia
 
 6. Modifique la clase `WalkingBrushRobot` para que se inicialize con otros tipos de "body"
 
-    `Puede buscar una clase usando la combinación de teclas Cmd o Ctrl + F,C`
+    >Una opcion seria redefinir el mensaje 'bodyClass' para que devuelva otras clases
 
-    `Para ver la jerarquía haga click en el botón Hierarchy.`
+    ```smalltalk
+    OTFRobot>> bodyClass
+      ^OtraClase
+    ```
+
+    >Otro opcion seria definir algun constructor que reciba una instancia de un
+    >'body' u otra clase y la instancie.
+
+    ```smalltalk
+    WalkingBrushRobot>> newWithBody: aBodyClass
+      super new
+      self body: aBodyClass new
+      yourself
+    ```
+
+`Puede buscar una clase usando la combinación de teclas Cmd o Ctrl + F,C`
+
+`Para ver la jerarquía haga click en el botón Hierarchy.`
 
 Ejercicio 7: Carrito de compras
 -------------------------------

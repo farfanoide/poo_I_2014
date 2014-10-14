@@ -11,9 +11,9 @@ Abra el Browser Nautilus y desarrolle las siguientes tareas:
 2. Lea los comentarios de los métodos `#=`  (en Object) y `#==` (en
 ProtoObject) y explique la diferencia entre ambos. Verfique con un ayudante.
 
-`Ambos son metodos para comparar dos objetos, pero el '#=' esta hecho para
-poder ser redefinido ya que lo unico que hace es llamar al '#==' que hereda de
-'ProtoObject'`
+>Ambos son metodos para comparar dos objetos, pero el '#=' esta hecho para
+>poder ser redefinido ya que lo unico que hace es llamar al '#==' que hereda
+>de 'ProtoObject'
 
 3. Encuentre todas las implementaciones del método `#=` e `#==` a. Una manera
 de hacerlo es seleccionar el método y utilizar el menu contextual:
@@ -22,13 +22,13 @@ de hacerlo es seleccionar el método y utilizar el menu contextual:
 4. Encuentre todos los métodos donde a algún objeto se le envía el mensaje
 `#==` y `#=`.
 
-`'#==' Esta implentado solo una vez mientras que '#=' esta implementado en
-varias clases.`
+>'#==' Esta implentado solo una vez mientras que '#=' esta implementado en
+>varias clases.
 
 a.Una manera de hacerlo es seleccionar cada uno de los métodos y utilizar el
 menu contextual: "Senders of"
 
-b. ¿Puede asegurar para cada caso que método #== y #= será ejecutado?
+b. ¿Puede asegurar para cada caso que método `#==` y `#=` será ejecutado?
 
 c. ¿Por qué?
 
@@ -40,24 +40,24 @@ a.Una manera de hacerlo es seleccionar el método y utilizar el menu contextual:
 6. ¿Qué uso se da al protocolo private? ¿Qué implica que un método esté en el
 protocolo private?
 
-`El protocolo privado sirve para agrupar métodos, es un nombre nomas. Implica
-que esos metodos no podrian usarse.`
+>El protocolo privado sirve para agrupar métodos, es un nombre nomas.
+>Implica que esos metodos no podrian usarse.
 
 7. Busque la implementación por default de  `#initialize`. Discuta con un
 ayudante el porqué de dicha implementación.
 
-`La implimentacion de initialize esta vacia.
-
-Para que cada clase lo puedo sobreescribir y si no lo hace no pasa nada,
-porque se ejecuta ese método vacio.`
+>La implimentacion de initialize esta vacia.
+>
+>Para que cada clase lo puedo sobreescribir y si no lo hace no pasa nada,
+>porque se ejecuta ese método vacio.
 
 8. Si inspecciona el protocolo de Boolean, en browser, al lado de los mensajes,
 verá flechas verde. ¿Qué indican las flechas hacia arriba? ¿Y hacia abajo?
 
 ![imagen nautilus](img/practica_3/nautilus.png)
 
-` Significa que ese mensaje esta definido en su clase padre o esta definida en
-una de sus subclases.`
+>Significa que ese mensaje esta definido en su clase padre o esta definida en
+>una de sus subclases.
 
 
 Ejercicio 2: Clases Vs. Instancias
@@ -129,23 +129,22 @@ doc class == Document
 
 a. ¿doc es una clase a una instancia?
 
-`doc es un instancia de la clase Document.`
+>doc es un instancia de la clase Document.
 
 b. Al evaluar la línea 3, ¿de qué clase es el resultado de dicha evaluación?
 
-`Float`
+>Float
 
 c. El resultado de la evaluación de la línea 4,  ¿es una clase o una instancia?
 
-`Es una clase.`
+>Es una clase.
 
 d. ¿Cuál es el resultado de evaluar la línea 8? ¿Qué conclusión puede sacar al respecto?
 
-` El resultado es 'true'.
-
-  doc es una instancia de la clase Document. doc class retorna Document.
-  Document == Document Si.
-`
+>El resultado es 'true'.
+>
+>doc es una instancia de la clase Document. doc class retorna Document.
+>Document == Document Si.
 
 Ejercicio 3: Method Lookup
 --------------------------
@@ -304,8 +303,8 @@ Considerando la implementación del ejercicio anterior determine:
 definir una clase de ese tipo?
 
 
-Ejercicio 6: Robot
-------------------
+Ejercicio 6: Robot (Avanzado)
+-----------------------------
 
 Analice la jerarquía de clases correspondientes al robot que usó en las 2
 primeras prácticas (WalkingBrushRobot).
@@ -313,39 +312,45 @@ primeras prácticas (WalkingBrushRobot).
 1. Analice la implementacion de `#position` en toda la jerarquía. ¿Es necesaria
 la redefinición que se hizo en `WalkingBrushRobot`? Justifique.
 
-` No, no es necesaria la redefinicion de #position, porque los dos métodos son
-iguales, estan definidos de la misma manera `
+>No, no es necesaria la redefinicion de #position, porque los dos métodos
+son iguales, estan definidos de la misma manera
 
 2. ¿Cuáles son los constructores que se definieron? ¿Para qué sirve cada uno?
 
-  `withBattery`      instancia un robot con bateria.
-  `withoutBattery`   instancia un robot sin bateria.
-  `newWithPosition:` instancia un robot en una posicion dada.
+>`withBattery`      instancia un robot con bateria.
+
+>`withoutBattery`   instancia un robot sin bateria.
+
+>`newWithPosition:` instancia un robot en una posicion dada.
 
 3. Analice las clases Battery y EndlessBattery.
 
 ¿Cuál es el protocolo en común?
 
-`El protocolo común es #consume: y #canConsume: `
+>El protocolo común es #consume: y #canConsume:
 
 ¿Qué puede concluir al respecto?
 
-`Se puede concluir que hay polimorfismo.`
+>Se puede concluir que hay polimorfismo.
 
 ¿Es necesario que objetos polimórficos pertenezcan a la misma jerarquía?
 
-`No no es necesario que pertenezcan a la misma jerarquia.
-
-Hay Polimorfismo cuando es posible enviar mensajes sintácticamente iguales a objetos de tipos distintos.`
+>No no es necesario que pertenezcan a la misma jerarquia.
+>
+>Hay Polimorfismo cuando es posible enviar mensajes sintácticamente iguales
+a objetos de tipos distintos.
 
 
 4. Liste las clases de las cuales hereda WalkingBrushRobot y para cada caso
 documente las variables de instancia
 
-  `WalkingBrushRobot` hereda de OTFRobot variables son: 'commands semaphore'
-  `OTFRobot`          hereda de BGSRobot variables de instancia son: 'id body'
-  `BGSRobot`          hereda de Objects no tiene variables de instancia.
-  `Objects`           hereda de ProtoObjects no tiene variables de intancia.
+>`WalkingBrushRobot` hereda de OTFRobot variables son: 'commands semaphore'
+>
+>`OTFRobot`          hereda de BGSRobot variables de instancia son: 'id body'
+>
+>`BGSRobot`          hereda de Objects no tiene variables de instancia.
+>
+>`Objects`           hereda de ProtoObjects no tiene variables de intancia.
 
 
 5. Analize las referencias a la variable de instancia #body de la clase BGSRobot,
@@ -364,7 +369,7 @@ documente las variables de instancia
 
   b. que retorna el mensaje `#bodyClass` de la clase `BGSRobot`?
 
-`Retorna un objeto clase BGSRobotBody.`
+>Retorna un objeto clase BGSRobotBody.
 
 6. Modifique la clase `WalkingBrushRobot` para que se inicialize con otros tipos de "body"
 

@@ -40,9 +40,9 @@ package: 'ConfigurationOfBotArena';
 load.
 ```
 
-```smalltalk
-#ConfigurationOfBotArena asClass loadDevelopment
-```
+    ```smalltalk
+    #ConfigurationOfBotArena asClass loadDevelopment
+    ```
 
 5. Abrir el menú World nuevamente y elegir Save Image para guardar los cambios
 producidos en la imagen Pharo. De esta forma, la próxima vez que abramos el
@@ -160,7 +160,7 @@ son correctas  (sugerencia: utilice `print it` o `inspect it`, en lugar de
 
 2. Abriendo un nuevo ambiente del robot investigue ¿Cuánta carga de batería
 tiene al inicio? y ¿cuántas unidades puede avanzar el robot con esa carga?
-`Tiene 100 de carga inicial con lo que puede avanzar 100 pasos.`
+>Tiene 100 de carga inicial con lo que puede avanzar 100 pasos.
 
 Ejercicio 4
 -----------
@@ -251,7 +251,7 @@ Explore la implementación de los mensajes del robot (los definidos en la
 introducción).
 
 a. ¿Cuáles son los objetos con los que el robot colabora?
-`battery`
+>battery
 
 b) Preste atención, en cada caso, a la forma en que el robot interactúa con los
 objetos a los que conoce. ¿Qué mensajes envía en esa interacción?

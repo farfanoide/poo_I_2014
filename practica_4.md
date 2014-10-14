@@ -113,7 +113,7 @@ al ser evaluada retorna un objeto `Point` con coordenada x=3 y con coordenada
 y=5.
 
 
-Ejercicio 4 Triangulación de Delaunay I
+Ejercicio 4: Triangulación de Delaunay I
 ---------------------------------------
 
 Una Triangulación de Delaunay es una red de triángulos que suele ser utilizado

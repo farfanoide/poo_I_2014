@@ -7,7 +7,9 @@ Orientación a Objetos 1 - 2014 - Práctica 2
 En esta práctica deberá utilizar el ambiente del robot en una versión más
 avanzada, para ello copie, pegue en un workspace y ejecute el siguiente código:
 
-`BGSArenaWindow expertViewOn: (OnTheFlyConfigurableSimulation batteryWalkingBrush).`
+```smalltalk
+BGSArenaWindow expertViewOn: (OnTheFlyConfigurableSimulation batteryWalkingBrush).
+```
 
 Ejercicio 1:
 -------------
@@ -620,15 +622,15 @@ el wallpost y la ventana. Discuta con un ayudante
 
 * ¿En qué difieren las instanciaciones?
 
-    `- Una esta hecha con un constructor con parametros y la otra simplemente
-    ejecuta el new (y si esta definido el initialize)`
+>Una esta hecha con un constructor con parametros y la otra simplemente
+>ejecuta el new (y si esta definido el initialize)
 
 * En el ej. anterior ud.implementó el método #initialize, pero, ¿quien lo
 invoca? Ayuda: coloque un breakpoint en el método initialize para ver quién
 lo invoca. Ayuda de la ayuda: para poner un breakpoint agregue la sentencia
 self halt. al código del método #initialize.
 
-  `- El initialize es invocado por el new.`
+>El initialize es invocado por el new.
 
 
 Ejercicio 8: Leyendo código
@@ -640,40 +642,40 @@ y sus métodos responda:
 
 1. ¿Los nombres de clase comienzan con minúscula o mayúscula?
 
-    `- En Mayuscula.`
+>En Mayuscula.
 
 2. ¿Cómo se escriben los nombres de métodos?
 
-    ` - En minuscula.  `
+>En minuscula.  
 
 3. ¿Para qué se usan los protocolos?
 
-    ` - Para organizar los metodos de los objetos.  `
+>Para organizar los metodos de los objetos.  
 
 4. ¿Qué pasa si un método no tiene un protocolo asignado?
 
-    ` - Absolutamente nada, solamente aparecera dentro de 'as yet unclassified' `
+>Absolutamente nada, solamente aparecera dentro de 'as yet unclassified' 
 
 5. Busque la clase DateAndTime y:
 
   1. Mencione al menos 3 clases a las que se haga referencia desde el código de
   la clase DateAndTime.
 
-    `- SecondsInDay, DosTimestamp, Duration`
+    >SecondsInDay, DosTimestamp, Duration
 
   2. Busque el método más largo de la clase. ¿Qué pasa en el browser cuando
   aparece un método largo?. ¿Qué conclusión puede sacar al respecto?
 
-    `- 'printOn: withLeadingSpace:' Aparece una senial de alerta. esta mal
-    visto tener metodos demasiado largos, deberian ser modularizados`
+    >'printOn: withLeadingSpace:' Aparece una senial de alerta. esta mal
+    >visto tener metodos demasiado largos, deberian ser modularizados
 
   3. Busque un método que haga uso de variables temporales, y dos métodos que
   usen de instancia.  Discuta con el ayudante sobre el uso que se les da a las
   variables temporales.
 
-    `- Las variables temporales se usan para datos que se pueden perder,
-    mientras que las variables de instancia se utilizan para preservar estado
-    de los objetos.`
+    >Las variables temporales se usan para datos que se pueden perder,
+    >mientras que las variables de instancia se utilizan para preservar estado
+    >de los objetos.
 
 
 
@@ -825,7 +827,7 @@ Ejercicio 11: Documentar la batería con UML
  2. Viendo la definición de la clase Battery, realice un diagrama de Clases UML
  que la documente.
 
-Ejercicio 12 (Avanzado):
+Ejercicio 12: (Avanzado)
 ------------------------
 
 Implemente un nuevo tipo batería que se llama EnergyRecoveryCell. Este tipo de

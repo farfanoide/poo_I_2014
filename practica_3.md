@@ -325,25 +325,21 @@ la redefinición que se hizo en `WalkingBrushRobot`? Justifique.
 
 3. Analice las clases Battery y EndlessBattery.
 
-¿Cuál es el protocolo en común?
+      1. ¿Cuál es el protocolo en común?
+           > El protocolo común es #consume: y #canConsume:
 
-    >El protocolo común es #consume: y #canConsume:
+      2. ¿Qué puede concluir al respecto?
+           > Se puede concluir que hay polimorfismo.
 
-¿Qué puede concluir al respecto?
-
-    >Se puede concluir que hay polimorfismo.
-
-¿Es necesario que objetos polimórficos pertenezcan a la misma jerarquía?
-
-    >No no es necesario que pertenezcan a la misma jerarquia.
-    >
-    >Hay Polimorfismo cuando es posible enviar mensajes sintácticamente iguales
-    a objetos de tipos distintos.
-
+      3. ¿Es necesario que objetos polimórficos pertenezcan a la misma
+         jerarquía?
+          > No no es necesario que pertenezcan a la misma jerarquia.
+          >
+          > Hay Polimorfismo cuando es posible enviar mensajes sintácticamente
+          > iguales a objetos de tipos distintos.
 
 4. Liste las clases de las cuales hereda WalkingBrushRobot y para cada caso
 documente las variables de instancia
-
     >`WalkingBrushRobot` hereda de OTFRobot variables son: 'commands semaphore'
     >
     >`OTFRobot`          hereda de BGSRobot variables de instancia son: 'id body'

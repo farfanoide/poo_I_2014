@@ -340,8 +340,6 @@ Considere que cuando se crea un usuario debe tener sus contadores y nombre
 correctamente inicializados. Por lo tanto implemente el constructor
 correspondiente.
 
-
-
 Ejercicio 5: Perfil y Karma Extendido
 -------------------------------------
 
@@ -469,6 +467,17 @@ supera los $10.000 se le aplica un 5% de descuento.
 2. ¿Qué comportamiento debe proveer el carrito?
 
 3. Implemente en Smalltalk (recuerde implementar los constructores)
+```smalltalk
+Object subclass: #Producto
+  instanceVariableNames: 'name preis'
+  classVariableNames: ''
+  category: 'BotArena'.
+
+Producto class>> newWithName: aName preis: aPreis
+  ^self new
+    name: aName;
+    preis: aPreis.
+```
 
 4. Piense 3 casos de prueba que le permitan verificar que su implementación
 funciona de la manera esperada.

@@ -844,7 +844,7 @@ initialize
   self steps: 0
 ```
 
-(no usar este metodo, rompe los tests de la catedra)
+> (no usar este metodo, rompe los tests de la catedra)
 
 ```smalltalk
 canConsume: amount
@@ -875,4 +875,44 @@ steps
   "getters"
 
   ^ steps
+```
+
+### EnergyRecoveryCell con cantidad de carga por parametro.
+
+La idea es instanciar una `EnergyRecoveryCell` especificando la cantida que va
+a recargar cada 10 pasos.
+
+```smalltalk
+Battery subclass: #EnergyRecoveryCell
+  instanceVariableNames: 'steps defaultCharge'
+  classVariableNames: ''
+  category: 'BotArena-Modules'.
+
+EnergyRecoveryCell class>> newWithDefaultCharge: aCharge
+  ^ self new defaultCharge: aCharge.
+
+EnergyRecoveryCell>> initialize
+  super initialize.
+  self
+    steps: 0;
+    defaultCharge: 1.
+
+EnergyRecoveryCell>> consume: amount
+  | full |
+  super consume: amount.
+  full := amount + self steps.
+  self
+        charge: (self charge + (full // 10 * self defaultCharge));
+    steps: full \\ 10.
+
+```
+
+Esto se usaria de esta manera:
+
+```smalltalk
+|batt|
+batt := EnergyRecoveryCell newWithDefaultCharge: 5.
+batt charge: 100;
+    consume: 10;
+    charge. 95
 ```

@@ -11,9 +11,9 @@ Abra el Browser Nautilus y desarrolle las siguientes tareas:
 2. Lea los comentarios de los métodos `#=`  (en Object) y `#==` (en
 ProtoObject) y explique la diferencia entre ambos. Verfique con un ayudante.
 
-    >Ambos son metodos para comparar dos objetos, pero el '#=' esta hecho para
-    >poder ser redefinido ya que lo unico que hace es llamar al '#==' que hereda
-    >de 'ProtoObject'
+    > Ambos son metodos para comparar dos objetos, pero el '#=' esta hecho para
+    > poder ser redefinido ya que lo unico que hace es llamar al '#==' que
+    > hereda de 'ProtoObject'
 
 3. Encuentre todas las implementaciones del método `#=` e `#==` a. Una manera
 de hacerlo es seleccionar el método y utilizar el menu contextual:
@@ -22,8 +22,8 @@ de hacerlo es seleccionar el método y utilizar el menu contextual:
 4. Encuentre todos los métodos donde a algún objeto se le envía el mensaje
 `#==` y `#=`.
 
-    >'#==' Esta implentado solo una vez mientras que '#=' esta implementado en
-    >varias clases.
+    > '#==' Esta implentado solo una vez mientras que '#=' esta implementado en
+    > varias clases.
 
     `Una manera de hacerlo es seleccionar cada uno de los métodos y utilizar el
     menu contextual: "Senders of"`
@@ -34,30 +34,28 @@ de hacerlo es seleccionar el método y utilizar el menu contextual:
 
 5. Encuentre todas las implementaciones del método `#size`.
 
-    >Una manera de hacerlo es seleccionar el método y utilizar el menu contextual:
-    >"Implementors of.."
+    `Una manera de hacerlo es seleccionar el método y utilizar el menu
+    contextual: "Implementors of.."`
 
 6. ¿Qué uso se da al protocolo private? ¿Qué implica que un método esté en el
 protocolo private?
-
-    >El protocolo privado sirve para agrupar métodos, es un nombre nomas.
-    >Implica que esos metodos no podrian usarse.
+    > El protocolo privado sirve para agrupar métodos, es un nombre nomas.
+    > Implica que esos metodos no podrian usarse.
 
 7. Busque la implementación por default de  `#initialize`. Discuta con un
 ayudante el porqué de dicha implementación.
-
-    >La implimentacion de initialize esta vacia.
+    > La implimentacion de initialize esta vacia.
     >
-    >Para que cada clase lo puedo sobreescribir y si no lo hace no pasa nada,
-    >porque se ejecuta ese método vacio.
+    > Para que cada clase lo puedo sobreescribir y si no lo hace no pasa nada,
+    > porque se ejecuta ese método vacio.
 
 8. Si inspecciona el protocolo de Boolean, en browser, al lado de los mensajes,
 verá flechas verde. ¿Qué indican las flechas hacia arriba? ¿Y hacia abajo?
 
     ![imagen nautilus](img/practica_3/nautilus.png)
 
-    >Significa que ese mensaje esta definido en su clase padre o esta definida en
-    >una de sus subclases.
+    > Significa que ese mensaje esta definido en su clase padre o esta definida en
+    > una de sus subclases.
 
 
 Ejercicio 2: Clases Vs. Instancias
@@ -66,6 +64,11 @@ Ejercicio 2: Clases Vs. Instancias
 En un procesador de texto la clase Document representa un documento de texto
 que debe tener un título (title) y un texto principal (body).  Document debe
 responder a los siguientes mensajes:
+
+```smalltalk
+Object subclass: #Document
+instanceVariables: 'title body'.
+```
 
 ```smalltalk
 title: aTitle
@@ -77,10 +80,10 @@ title
 
 ```smalltalk
 body: aBody
-  body := aBody
+  body := aBody.
 
 body
-  ^body
+  ^ body.
 ```
 
 ```smalltalk
@@ -88,14 +91,14 @@ Document>> size
   "retorna el tamaño del documento que es la suma del tamaño del título, el
   tamaño del body y el overhead del documento que siempre es el 10% del body"
 
-  ^ self body size + self title size + (self body size * 0.1)
+  ^ self body size + self title size + (self body size * 0.1).
 ```
 
 ```smalltalk
 Document>> addLine: aString
   "agrega (concatena) al body la linea aString"
 
-  self body: self body, aString
+  self body: self body, aString.
 ```
 
 ```smalltalk
@@ -127,7 +130,7 @@ doc class == Document
 
 *Conteste:*
 
-1. ¿doc es una clase a una instancia?
+1. ¿doc es una clase o una instancia?
 
     >doc es un instancia de la clase Document.
 
@@ -156,7 +159,7 @@ comportamiento
 
 ```smalltalk
 Object subclass: #Battery
-instanceVariables: 'capacity charge'
+instanceVariables: 'capacity charge'.
 
 Battery>> initialize
   capacity := 100.
@@ -168,15 +171,15 @@ Battery>> consume: anInteger
     ifFalse:[Transcript show: 'Batería descargada']
 
 Battery>> canConsume: anInteger
-  ^ self subclassResponsibility
+  ^ self subclassResponsibility.
 
 Battery>> basicConsume: anInteger
-  charge := charge ­ anInteger
+  charge := charge - anInteger.
 
 Battery subclass: #NonRechargeableBattery
 
 NonRechargeableBattery>> canConsume: anInteger
-  ^ charge >= anInteger
+  ^ charge >= anInteger.
 ```
 
 ```smalltalk
@@ -188,10 +191,10 @@ RechargeableBattery>> basicConsume: anInteger
     ifTrue: [self recharge]
 
 RechargeableBattery>> canConsume: anInteger
-  ^ anInteger <= capacity
+  ^ anInteger <= capacity.
 
 RechargeableBattery>> recharge
-  ^ self subclassResponsibility
+  ^ self subclassResponsibility.
 
 ```
 
@@ -204,9 +207,9 @@ RechargeableAlkalineBattery>> recharge
 ```
 
 ```smalltalk
-RechargeableBattery subclass: #RechargeableFuelBattery
+RechargeableBattery subclass: #RechargeableFuelBattery.
 
-RechargeableFuelBattery >> recharge
+RechargeableFuelBattery>> recharge
   charge := capacity.
   Transcript show: 'Recharging fuel battery...'
 ```
@@ -312,16 +315,16 @@ primeras prácticas (WalkingBrushRobot).
 1. Analice la implementacion de `#position` en toda la jerarquía. ¿Es necesaria
 la redefinición que se hizo en `WalkingBrushRobot`? Justifique.
 
-    >No, no es necesaria la redefinicion de #position, porque los dos métodos
-    >son iguales, estan definidos de la misma manera
+    > No, no es necesaria la redefinicion de #position, porque los dos métodos
+    > son iguales, estan definidos de la misma manera
 
 2. ¿Cuáles son los constructores que se definieron? ¿Para qué sirve cada uno?
 
-    >`withBattery`      instancia un robot con bateria.
+    > `withBattery`      instancia un robot con bateria.
     >
-    >`withoutBattery`   instancia un robot sin bateria.
+    > `withoutBattery`   instancia un robot sin bateria.
     >
-    >`newWithPosition:` instancia un robot en una posicion dada.
+    > `newWithPosition:` instancia un robot en una posicion dada.
 
 3. Analice las clases Battery y EndlessBattery.
 
@@ -340,13 +343,13 @@ la redefinición que se hizo en `WalkingBrushRobot`? Justifique.
 
 4. Liste las clases de las cuales hereda WalkingBrushRobot y para cada caso
 documente las variables de instancia
-    >`WalkingBrushRobot` hereda de OTFRobot variables son: 'commands semaphore'
+    > `WalkingBrushRobot` hereda de OTFRobot variables son: 'commands semaphore'
     >
-    >`OTFRobot`          hereda de BGSRobot variables de instancia son: 'id body'
+    > `OTFRobot`          hereda de BGSRobot variables de instancia son: 'id body'
     >
-    >`BGSRobot`          hereda de Objects no tiene variables de instancia.
+    > `BGSRobot`          hereda de Objects no tiene variables de instancia.
     >
-    >`Objects`           hereda de ProtoObjects no tiene variables de intancia.
+    > `Objects`           hereda de ProtoObjects no tiene variables de intancia.
 
 5. Analize las referencias a la variable de instancia #body de la clase BGSRobot,
 
@@ -363,26 +366,25 @@ documente las variables de instancia
         ```
 
   2. que retorna el mensaje `#bodyClass` de la clase `BGSRobot`?
-
-        >Retorna un objeto clase BGSRobotBody.
+        > Retorna un objeto clase BGSRobotBody.
 
 6. Modifique la clase `WalkingBrushRobot` para que se inicialize con otros tipos de "body"
 
-    >Una opcion seria redefinir el mensaje 'bodyClass' para que devuelva otras clases
+    > Una opcion seria redefinir el mensaje 'bodyClass' para que devuelva otras clases
 
     ```smalltalk
     OTFRobot>> bodyClass
-      ^OtraClase
+      ^OtraClase.
     ```
 
-    >Otro opcion seria definir algun constructor que reciba una instancia de un
-    >'body' u otra clase y la instancie.
+    > Otro opcion seria definir algun constructor que reciba una instancia de un
+    > 'body' u otra clase y la instancie.
 
     ```smalltalk
     WalkingBrushRobot>> newWithBody: aBodyClass
-      super new
-      self body: aBodyClass new
-      yourself
+      ^ self new
+          body: aBodyClass new;
+          yourself
     ```
 
 `Puede buscar una clase usando la combinación de teclas Cmd o Ctrl + F,C`
@@ -394,12 +396,12 @@ Ejercicio 7: Carrito de compras
 
 En un sitio de compras por internet un cliente puede comprar muchos productos
 que pone en su carrito. Al finalizar la compra se debe calcular el total a
-abonar.  De cada producto se conoce su nombre y su precio. El carrito debe
+abonar. De cada producto se conoce su nombre y su precio. El carrito debe
 permitir ir sumando de a uno los productos, hasta que el cliente decide hacer
 el checkout. No es necesario almacenar los productos, sino sumar el valor total
 de la compra y la cantidad de productos adquiridos. Si la cantidad de productos
-supera los 10, debe aplicar un descuento del 10%. Si el monto total a abonar
-supera los 10.000$ se le aplica un 5% de descuento.
+supera los $10, debe aplicar un descuento del 10%. Si el monto total a abonar
+supera los $10.000 se le aplica un 5% de descuento.
 
 *Tareas*
 

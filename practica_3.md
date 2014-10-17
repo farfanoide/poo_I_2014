@@ -176,19 +176,22 @@ Battery>> canConsume: anInteger
 Battery>> basicConsume: anInteger
   charge := charge - anInteger.
 
-Battery subclass: #NonRechargeableBattery
+```
+
+```smalltalk
+Battery subclass: #NonRechargeableBattery.
 
 NonRechargeableBattery>> canConsume: anInteger
   ^ charge >= anInteger.
 ```
 
 ```smalltalk
-Battery subclass: #RechargeableBattery
+Battery subclass: #RechargeableBattery.
 
 RechargeableBattery>> basicConsume: anInteger
   charge := charge - anInteger.
   charge <= (capacity / 10)
-    ifTrue: [self recharge]
+    ifTrue: [self recharge].
 
 RechargeableBattery>> canConsume: anInteger
   ^ anInteger <= capacity.
@@ -224,16 +227,16 @@ de los siguientes ejemplos?
 
 ```smalltalk
 nrb := NonRechargeableBattery new.
-nrb consume: 70.
-nrb consume: 35.
+nrb consume: 70. "=> true, tiene carga suficiente"
+nrb consume: 35. "=> Batería descargada"
 ```
 
 
 *Ejemplo 2:*
 ```smalltalk
 rab := RechargeableAlkalineBattery new.
-rab consume: 70.
-rab consume: 35.
+rab consume: 70. "=> true, tiene carga suficiente"
+rab consume: 35. "=> Recharging alkaline battery..., queda en 100 la carga"
 ```
 
 
@@ -271,6 +274,64 @@ mensuales se setean en 0 nuevamente.
 2. Realice un diagrama de clases.
 
 3. Implemente en Smalltalk.
+
+```smalltalk
+Object subclass: #Profile
+  instanceVariableNames: 'name likes posts karma'
+  classVariableNames: ''
+  category: 'ProfileAndKarma'.
+
+Profile>> like
+  self likes: self likes + 1.
+
+Profile>> incPosts
+  self posts: self posts + 10.
+
+Profile>> initialize
+  self
+    karma: 0;
+    resetear.
+
+Profile>> newWithName: aName
+   ^ self new name: aName.
+
+Profile>> resetear
+  self
+    posts: 0;
+    likes: 0.
+
+Profile>> set_points
+  |var|
+  var:= self calcKarma.
+  (var between: 31 and: 50)
+    ifTrue: [ self karma: self karma + 2 ].
+  (var > 50)
+    ifTrue: [ self karma: self karma + 3 ].
+  self resetear.
+
+Profile>> calcKarma
+  ^ self subclassResponsibility
+```
+
+```smalltalk
+Profile subclass: #Gold
+  instanceVariableNames: ''
+  classVariableNames: ''
+  category: 'ProfileAndKarma'.
+
+Gold>> calcKarma
+  ^ self posts * self likes / Float halfPi.
+```
+
+```smalltalk
+Profile subclass: #Silver
+  instanceVariableNames: ''
+  classVariableNames: ''
+  category: 'ProfileAndKarma'.
+
+Silver>> calcKarma
+  ^ self posts * self likes / Float pi.
+```
 
 4. Instancie en un workspace y verifique que el cálculo de karma funciona
 correctamente
@@ -314,19 +375,17 @@ primeras prácticas (WalkingBrushRobot).
 
 1. Analice la implementacion de `#position` en toda la jerarquía. ¿Es necesaria
 la redefinición que se hizo en `WalkingBrushRobot`? Justifique.
-
     > No, no es necesaria la redefinicion de #position, porque los dos métodos
     > son iguales, estan definidos de la misma manera
 
 2. ¿Cuáles son los constructores que se definieron? ¿Para qué sirve cada uno?
-
     > `withBattery`      instancia un robot con bateria.
     >
     > `withoutBattery`   instancia un robot sin bateria.
     >
     > `newWithPosition:` instancia un robot en una posicion dada.
 
-3. Analice las clases Battery y EndlessBattery.
+3. Analice las clases `Battery` y `EndlessBattery`.
 
       1. ¿Cuál es el protocolo en común?
            > El protocolo común es #consume: y #canConsume:
@@ -347,9 +406,9 @@ documente las variables de instancia
     >
     > `OTFRobot`          hereda de BGSRobot variables de instancia son: 'id body'
     >
-    > `BGSRobot`          hereda de Objects no tiene variables de instancia.
+    > `BGSRobot`          hereda de Object no tiene variables de instancia.
     >
-    > `Objects`           hereda de ProtoObjects no tiene variables de intancia.
+    > `Object`            hereda de ProtoObject no tiene variables de intancia.
 
 5. Analize las referencias a la variable de instancia #body de la clase BGSRobot,
 
@@ -381,7 +440,7 @@ documente las variables de instancia
     > 'body' u otra clase y la instancie.
 
     ```smalltalk
-    WalkingBrushRobot>> newWithBody: aBodyClass
+    WalkingBrushRobot>> newWithBodyClass: aBodyClass
       ^ self new
           body: aBodyClass new;
           yourself

@@ -8,10 +8,12 @@ Ejecute paso a paso las siguientes expresiones utilizando la acción `Into` del
 Debugger para responder las preguntas que se hallan a continuación:
 
 ```smalltalk
-$4 between: $t and: $y.  "=> tu entorno de mierda se me cuelga cuando hago esto"
+$4 between: $t and: $y.
 ```
  
-`3@3 between: 1@1 and: 3@4.`
+```smalltalk
+3@3 between: 1@1 and: 3@4.
+```
 
 *Responda:*
 
@@ -34,7 +36,6 @@ $4 between: $t and: $y.  "=> tu entorno de mierda se me cuelga cuando hago esto"
 4. Busque en `Magnitude` otro ejemplo similar a `#between:and:` donde un método
 envía mensajes a objetos polimórficos.
     > `max:`
-
 
 Ejercicio 2: Intervalo de tiempo:
 ---------------------------------
@@ -60,9 +61,9 @@ Tareas:
 '29/06/1986' y '29/06/2018'
 
     ```smalltalk
-        fecha := Date newDay: 29 month: 06 year: 1986
-        fecha2 := Date  newDay: 29 month: 06 year: 2018
-        Date today between: fecha and: fecha2
+        fecha := Date newDay: 29 month: 06 year: 1986.
+        fecha2 := Date  newDay: 29 month: 06 year: 2018.
+        Date today between: fecha and: fecha2.
     ```
 
     ```

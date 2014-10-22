@@ -73,40 +73,39 @@ Tareas:
 3. Un objeto `Date`Lapse representa el lapso de tiempo entre dos fechas. La
 primera fecha se conoce como `from` y la segunda como `to`.
 
-Implemente la clase `DateLapse` (lapso de tiempo). Para ello, debe utilizar la
-definición que se encuentran en el archivo `DateLapse.st`, completándola de
-acuerdo a la siguiente especificación. Una instancia de esta clase entiende los
-mensajes:
+  Implemente la clase `DateLapse` (lapso de tiempo). Para ello, debe utilizar la
+  definición que se encuentran en el archivo `DateLapse.st`, completándola de
+  acuerdo a la siguiente especificación. Una instancia de esta clase entiende los
+  mensajes:
 
     ```smalltalk
-    from
+    DateLapse>> from
       "Retorna la fecha de inicio del rango"
     ```
      
     ```smalltalk
-    to
-    "Retorna la fecha de fin del rango"
+    DateLapse>> to
+      "Retorna la fecha de fin del rango"
     ```
      
     ```smalltalk
-    from: aDateFrom to: aDateTo
-
+    DateLapse>> from: aDateFrom to: aDateTo
       "Es un método privado que asigna la fecha inicial y final de un objeto
       DateLapse"  
     ```
 
     ```smalltalk
-    sizeInDays
+    DateLapse>> sizeInDays
       "retorna la cantidad de días entre la fecha from y la fecha to"
     ```
      
     ```smalltalk
-    includesDate: aDate
-
-      "recibe un objeto Date y retorna true si la fecha está entre el from y el to del
-      receptor y false en caso contrario"
+    DateLapse>> includesDate: aDate
+      "recibe un objeto Date y retorna true si la fecha está entre
+      el from y el to del receptor y false en caso contrario"
     ```
- 
+   
+  > [Solucion](src/practica_4/DateLapse.st)
 
 4. Ejecute los tests provistos por la cátedra para verificar su implementación,
 los mismos se encuentran definidos en la clase `DateLapseTest`, en el archivo
@@ -118,6 +117,8 @@ representación sea a través de los atributos `from` y `sizeInDays`. Es decir,
 debe basar su nueva implementación en estas variables de instancia solamente.
 Sugerencia: si quiere conservar la versión original, antes de realizar algún
 cambio haga un fileOut de la clase `DateLapse`.
+
+  > [Solucion](src/practica_4/DateLapseSizeInDays.st)
 
 6. Vuelva a correr los tests. Los cambios en la estructura interna de un objeto
 sólo deben afectar a la implementación de sus métodos. Estos cambios deben ser

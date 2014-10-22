@@ -211,9 +211,9 @@ definidas de acuerdo con las siguientes tablas de verdad:
   true  | true  | true
 
 ```smalltalk
-implies: aBoolean
+Boolean>> implies: aBoolean
 
-  ^self ==> [  aBoolean ]
+  ^self ==> [ aBoolean ].
 ```
 
 *Nand*
@@ -225,6 +225,19 @@ implies: aBoolean
   true  | false | true
   true  | true  | false
 
+```smalltalk
+Boolean>> nand: aBoolean
+  ^ (self & aBoolean) not.
+
+"Alternativamente:"
+
+False>> nand: aBoolean
+  ^ self not.
+
+True>> nand: aBoolean
+  ^ self xor: aBoolean.
+```
+
 *Nor*
 
   a     | b     | a nor: b
@@ -233,6 +246,12 @@ implies: aBoolean
   false | true  | false
   true  | false | false
   true  | true  | false
+
+```smalltalk
+Boolea>> nor: aBoolean
+
+  ^ (self | aBoolean) not.
+```
 
 Utilice los TestCases provistos por la cátedra para probar su implementación.
 

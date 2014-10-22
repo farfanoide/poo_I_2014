@@ -7,83 +7,110 @@ Ejercicio 1: El mensaje #between:and:
 Ejecute paso a paso las siguientes expresiones utilizando la acción `Into` del
 Debugger para responder las preguntas que se hallan a continuación:
 
-`$4 between: $t and: $y.`
+```smalltalk
+$4 between: $t and: $y.  "=> tu entorno de mierda se me cuelga cuando hago esto"
+```
  
 `3@3 between: 1@1 and: 3@4.`
 
 *Responda:*
 
 1. ¿Dónde está implementado el código de `#between:and:`?
+    > Esta implementado en la clase `Magnitude`
 
 2. ¿Dónde están implementados los métodos `#<=` y `#>=`?
+    > Estan implementados en las clases que heredan de `Magnitude` y necesitan
+    > modificar su funcionamiento
 
-3. ¿Los caracteres y los puntos necesitan implementar `#between:and:`? ¿Los
-caracteres y los puntos necesitan implementar los métodos `#<=` y `#>=`?
-*Justifique.*
+3. ¿Los caracteres y los puntos necesitan implementar `#between:and:`?
+    > No, ya que redefinen `>`, `<` y `=`
+
+    ¿Los caracteres y los puntos necesitan implementar los métodos `#<=` y `#>=`?
+    > Si, ya que los conceptos mediante los cuales hacen las comparaciones
+    > pertinentes difieren entre clase y clase
+
+    *Justifique.*
 
 4. Busque en `Magnitude` otro ejemplo similar a `#between:and:` donde un método
 envía mensajes a objetos polimórficos.
+    > `max:`
 
 
-Ejercicio 2: Intervalo de tiempo
---------------------------------
+Ejercicio 2: Intervalo de tiempo:
+---------------------------------
 
 En Smalltalk, las fechas se representan con instancias de la clase `Date`. Por
 ejemplo, el envío del mensaje `#today` a la clase `Date` retorna la fecha actual.
 
 Tareas:
-1. Investigue cómo hacer para crear una fecha determinada, por ejemplo 29/06/1986.
-Sugerencia: vea los mensajes de clase de la clase `Date`, en el protocolo instance­
- 
- 
-creation.
 
-2. Investigue cómo hacer para ver si la fecha de hoy está entre las fechas 29/06/1986 y
-29/06/2018
- 
-Sugerencia: vea los métodos de instancia que `Date` hereda de   Magnitude (protocolo
-testing).
+1. Investigue cómo hacer para crear una fecha determinada, por ejemplo
+'29/06/1986'.
 
-3. Un objeto `Date`Lapse representa el lapso de tiempo entre dos fechas. La primera
-fecha se conoce como `from` y la segunda como `to`.
- 
-Implemente la clase `Date`Lapse (lapso de tiempo). Para ello, debe utilizar la definición
-que se encuentran en el archivo `Date`Lapse.st, completándola de acuerdo a la
-siguiente especificación. Una instancia de esta clase entiende los mensajes:
+    ```smalltalk
+    fecha := Date newDay: 29 month: 06 year: 1986
+    ```
 
-```smalltalk
-from
-  "Retorna la fecha de inicio del rango"
-```
- 
-```smalltalk
-to
-"Retorna la fecha de fin del rango"
-```
- 
-```smalltalk
-from: aDateFrom to: aDateTo
+    ```
+    Sugerencia: vea los mensajes de clase de la clase `Date`, en el protocolo
+    instance creation.
+    ```
 
-  "Es un método privado que asigna la fecha inicial y final de un objeto
-  DateLapse"  
-```
+2. Investigue cómo hacer para ver si la fecha de hoy está entre las fechas
+'29/06/1986' y '29/06/2018'
 
-```smalltalk
-sizeInDays
-  "retorna la cantidad de días entre la fecha from y la fecha to"
-```
- 
-```smalltalk
-includesDate: aDate
+    ```smalltalk
+        fecha := Date newDay: 29 month: 06 year: 1986
+        fecha2 := Date  newDay: 29 month: 06 year: 2018
+        Date today between: fecha and: fecha2
+    ```
 
-  "recibe un objeto Date y retorna true si la fecha está entre el from y el to del
-  receptor y false en caso contrario"
-```
+    ```
+    Sugerencia: vea los métodos de instancia que `Date` hereda de `Magnitude`
+    (protocolo testing).
+    ```
+
+3. Un objeto `Date`Lapse representa el lapso de tiempo entre dos fechas. La
+primera fecha se conoce como `from` y la segunda como `to`.
+
+Implemente la clase `DateLapse` (lapso de tiempo). Para ello, debe utilizar la
+definición que se encuentran en el archivo `DateLapse.st`, completándola de
+acuerdo a la siguiente especificación. Una instancia de esta clase entiende los
+mensajes:
+
+    ```smalltalk
+    from
+      "Retorna la fecha de inicio del rango"
+    ```
+     
+    ```smalltalk
+    to
+    "Retorna la fecha de fin del rango"
+    ```
+     
+    ```smalltalk
+    from: aDateFrom to: aDateTo
+
+      "Es un método privado que asigna la fecha inicial y final de un objeto
+      DateLapse"  
+    ```
+
+    ```smalltalk
+    sizeInDays
+      "retorna la cantidad de días entre la fecha from y la fecha to"
+    ```
+     
+    ```smalltalk
+    includesDate: aDate
+
+      "recibe un objeto Date y retorna true si la fecha está entre el from y el to del
+      receptor y false en caso contrario"
+    ```
  
 
 4. Ejecute los tests provistos por la cátedra para verificar su implementación,
-los mismos se encuentran definidos en la clase `Date`LapseTest, en el archivo
-`Date`LapseTest.st.
+los mismos se encuentran definidos en la clase `DateLapseTest`, en el archivo
+`DateLapseTest.st`.
 
 5. Asumiendo que implementó la clase `DateLapse` con dos variables de instancia
 `from` y `to`, modifique la implementación de la clase para que su
@@ -102,15 +129,21 @@ Ejercicio 3: DateLapse
 ----------------------
 
 Defina ahora los mensajes necesarios para crear una instancia de `DateLapse` a
-partir del envío de un mensaje a un objeto `Date`. Usted debería escribir algo de
-la siguiente forma para instanciar el `DateLapse`.
+partir del envío de un mensaje a un objeto `Date`. Usted debería escribir algo
+de la siguiente forma para instanciar el `DateLapse`.
 
 `unaFecha ~> otraFecha`
 
+```smalltalk
+Date>> ~> aDate
+
+  ^DateLapse from: self to: aDate
+```
+
 Notar que esto es similar a lo que ocurre con los objetos Point que se pueden
 crear a partir del envío de un mensaje a un objeto número. La expresión `3@5`
-al ser evaluada retorna un objeto `Point` con coordenada x=3 y con coordenada
-y=5.
+al ser evaluada retorna un objeto `Point` con coordenada `x=3` y con coordenada
+`y=5`.
 
 
 Ejercicio 4: Triangulación de Delaunay I
@@ -161,8 +194,6 @@ Considere los siguientes puntos:
 
 ![imagen delaunay clases](img/practica_4/delaunay_1.png)
 
-
-
 Ejercicio 5
 -----------
 
@@ -179,7 +210,13 @@ definidas de acuerdo con las siguientes tablas de verdad:
   true  | false | false
   true  | true  | true
 
-  *Nand*
+```smalltalk
+implies: aBoolean
+
+  ^self ==> [  aBoolean ]
+```
+
+*Nand*
 
   a     | b     | a nand: b
   ------|-------|-----------
@@ -188,7 +225,7 @@ definidas de acuerdo con las siguientes tablas de verdad:
   true  | false | true
   true  | true  | false
 
-  *Nor*
+*Nor*
 
   a     | b     | a nor: b
   ------|-------|-------------
@@ -205,6 +242,11 @@ Ejercicio 6
 
 Tanto `and:` como `&` representan al "y" lógico. Investigue qué recibe como
 parámetro cada uno de estos mensajes y cómo influye en las operaciones lógicas.
+
+> Dentro de `False` tanto `and:` como `&` devuelven `self`
+>
+> Dentro de `True` `and:` recibe un bloque el cual es evaluado, mientras q
+> `&` recibe `aBoolean` y retorna su valor
 
 Ejercicio 7: el mensaje #whileTrue:
 -----------------------------------

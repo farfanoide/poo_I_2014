@@ -410,45 +410,56 @@ comportamiento para cada una de estas
 clases: OrderedCollection, SortedCollection, Array, Dictionary, Bag y Set.
 
 ```smalltalk
- #add: #at: #at:put:
- #size #do: #detect:
- #select: #collect: #reject:
- #inject:into: #includes: #isEmpty
+  #add:
+  #at:
+  #at:put:
+  #size
+  #do:
+  #detect:
+  #select:
+  #collect:
+  #reject:
+  #inject:into:
+  #includes:
+  #isEmpty
 ```
 
-Responda a las siguientes preguntas:
- 1. ¿Es posible que algunos mensajes no sean aplicables para algunas colecciones? Por
- ejemplo, ¿Se le puede enviar el mensaje #add: a un Array? ¿Y a un Set? ¿Se le
- puede enviar el mensaje #at: y #at:put: a un Set?
+*Responda a las siguientes preguntas:*
 
- 2. En respuesta al mensaje #select:, ¿qué retorna un Array? ¿Y un Dictionary? ¿Y
- una SortedCollection?
+1. ¿Es posible que algunos mensajes no sean aplicables para algunas
+colecciones? Por ejemplo, ¿Se le puede enviar el mensaje #add: a un Array? ¿Y a
+un Set? ¿Se le puede enviar el mensaje #at: y #at:put: a un Set?
 
- 3. En respuesta al mensaje #size, ¿qué retorna un Array creado con Array new:10?
- ¿Qué retorna una OrderedCollection creada con OrderedCollection
+ 2. En respuesta al mensaje #select:, ¿qué retorna un Array? ¿Y un Dictionary?
+ ¿Y una SortedCollection?
+
+ 3. En respuesta al mensaje #size, ¿qué retorna un Array creado con Array
+ new:10?  ¿Qué retorna una OrderedCollection creada con OrderedCollection
  new:10?
 
  4. ¿Cómo se elimina un elemento de un Array? ¿Es posible?
 
- 5. ¿Como se averigua la posición de un elemento en un Array? ¿Y la del primer elemento
- que  cumple una condición? ¿Es posible hacerlo en un Set?.
+ 5. ¿Como se averigua la posición de un elemento en un Array? ¿Y la del primer
+ elemento que cumple una condición? ¿Es posible hacerlo en un Set?.
 
- 6. Indique la diferencia entre #detect: y #detect:ifNone:. ¿Para qué sirve el bloque
- que se  envía como parámetro en #ifNone:?
+ 6. Indique la diferencia entre #detect: y #detect:ifNone:. ¿Para qué sirve el
+ bloque que se envía como parámetro en #ifNone:?
 
  7. ¿Cómo crea una SortedCollection para contener instancias de String
- ordenadas por   tamaño? ¿Cómo crea una SortedCollection para contener
- instancias de String ordenadas alfabéticamente?
+ ordenadas por tamaño? ¿Cómo crea una SortedCollection para contener instancias
+ de String ordenadas alfabéticamente?
 
  8. ¿Cómo consigue los elementos en un Array eliminado las repeticiones?
 
- 9. ¿Cuál es el problema con la siguiente expresión si col es un Set con elementos? ¿Y si
- fuera una OrderedCollection?  
+ 9. ¿Cuál es el problema con la siguiente expresión si col es un Set con
+ elementos? ¿Y si fuera una OrderedCollection?  
 
- a. col do: [ :each | col remove: each]
+ ```smalltalk
+   a. col do: [ :each | col remove: each]
+ ```
 
- 10. ¿Cuál es el efecto de enviar el mensaje `#add:` con nil como parámetro a una
- OrderedCollection? ¿Por qué?
+ 10. ¿Cuál es el efecto de enviar el mensaje `#add:` con nil como parámetro a
+ una OrderedCollection? ¿Por qué?
 
  11. ¿Qué diferencia hay entre los mensajes `#includes:` y `#contains:`?
 
@@ -465,6 +476,8 @@ variables.
 
 <!-- TODO: agregar imagen -->
  Figura 3
+
+> [Solucion](src/practica_4/DelaunayElement.st)
 
 Ejercicio 13
 ------------

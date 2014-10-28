@@ -327,20 +327,26 @@ respuesta.
 *Responda:*
 
 1. Liste los mensajes que entiende una instancia de `HttpsUrl`
+    > Los mismos que HttpUrl mas sus mensajes.
 
 2. ¿A una instancia de `HttpsUrl` se le puede enviar el mensaje
 `parseContent(text:String)`?
+    > Si.
 
 3. ¿Qué significa que un método esté subrayado en el diagrama de clases?
+    > Que es un metodo de clase.
 
 4. ¿Qué significan los `+` y `­` adelante de los métodos?
+    > Indican si son metodos privados o publicos
 
 5. ¿Qué significa que un método este en cursiva?
+    > Que es abstracto
 
 6. ¿Por qué cree que ambas clases implementan el método `fromString(:String)`?
+    > Porque estan implementados de distinta manera.
 
 7. ¿Qué mensajes pueden enviarse a la clase `HttpsUrl`?
-
+    > `fromString:`
 
 
 Ejercicio 9
@@ -369,7 +375,26 @@ gerente calcularSueldo
 1. Liste los métodos que son invocados después como resultado del envio del
 último mensaje.
 
+```smalltalk
+Gerente>> aportes.
+Gerente>> montoBasico.
+```
+
+```smalltalk
+EmpleadoJerarquico>> calcularSueldo.
+Empleado>> sueldoBasico.
+Gerente>> aportes.
+Gerente>> montoBasico.
+EmpleadoJerarquico>> bonoPorCategoria.
+```
+
 2. Responda que retorna la última expresión en cada caso
+```smalltalk
+gerente aportes "=> 50"
+```
+```smalltalk
+gerente calcularSueldo "=> 1150"
+```
 
 Ejercicio 10
 ------------

@@ -490,7 +490,7 @@ documenta en el siguiente diagrama. 
 Note que los vértices se guardan ahora en una colección en lugar de tres
 variables.
 
-<!-- TODO: agregar imagen -->
+![uml delaunay element ej 12](im/practica_4/delaunay.jpg)
  Figura 3
 
 > [Solucion](src/practica_4/DelaunayElement.st)
@@ -500,7 +500,7 @@ Ejercicio 13
 
 Analice el siguiente Diagrama de Clases
 
-![uml producto](img/practica_4/producto.svg?raw=true)
+![uml producto](img/practica_4/producto.jpg)
 
 Como puede apreciarse, la clase Producto posee el siguiente protocolo:
 `#precio`, `#descripcion`, `#peso`, `#vencimiento`, `#estaVencido`. En base a

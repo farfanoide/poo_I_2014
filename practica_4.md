@@ -389,9 +389,11 @@ gerente calcularSueldo
   ```
 
 2. Responda que retorna la última expresión en cada caso
+
   ```smalltalk
   gerente aportes "=> 50"
   ```
+
   ```smalltalk
   gerente calcularSueldo "=> 1150"
   ```
@@ -522,6 +524,12 @@ productosProximosAVencer
   ^results
 ```
 
+> Solucion:
+
+```smalltalk
+ ^ productos select: [ :producto| producto vencimiento = nextWeek ]
+```
+
 ```smalltalk
 obtenerCostoDeProductosDePrecioMenorA: unPrecio yPesoMenorA:unPeso
 
@@ -541,28 +549,33 @@ obtenerCostoDeProductosDePrecioMenorA: unPrecio yPesoMenorA:unPeso
   ^total
 ```
 
+> Solucion:
+
+```smalltalk
+^ (productos select: [:p | p precio < unPrecio])
+    inject: 0 into: [ :subTotal :next| subTotal + next precio ]
+```
+
 Ejercicio 14 (Avanzado)
 -----------------------
 
 Utilizando la última versión disponible del entorno de simulación de robots
-(BotArena) mejore la implementación del robot para que implemente una nueva
+(`BotArena`) mejore la implementación del robot para que implemente una nueva
 manera de "mover" que ­ mientras no ha cumplido con la distancia pedida­ sortea
 obstáculos como: paredes u otros robots.
 
 Ejercicio 15 (Avanzado)
 -----------------------
 
-Complete el modelo del ejercicio 12 e implemente la clase DelaunayMesh.
-DelaunayMesh esta compuesto por un conjunto de triángulos (DelaunayElement) y
-puede calcular el área y el perímetro. El área es la sumatoria de los
-triángulos que conforman el DelaunayMesh. El perímetro resulta de la sumatoria
-de los "lados externos" o los "lados no compartidos" de los triángulos que
-conforman el DelaunayMesh.
+Complete el modelo del ejercicio 12 e implemente la clase `DelaunayMesh`.
+`DelaunayMesh` esta compuesto por un conjunto de triángulos (`DelaunayElement`)
+y puede calcular el área y el perímetro. El área es la sumatoria de los
+triángulos que conforman el `DelaunayMesh`. El perímetro resulta de la
+sumatoria de los "lados externos" o los "lados no compartidos" de los
+triángulos que conforman el `DelaunayMesh`.
 
-DelaunayMesh tiene un constructor #fromVertices: que recibe los vértices de los
-triángulos.  El siguiente diagrama de clases muestra una vista preliminar que
-puede utilizar para diseñar y programar su solución.
+`DelaunayMesh` tiene un constructor `#fromVertices:` que recibe los vértices de
+los triángulos.  El siguiente diagrama de clases muestra una vista preliminar
+que puede utilizar para diseñar y programar su solución.
 
-
-
-
+![uml delaunay mesh](img/practica_4/delaunay_mesh.jpg)

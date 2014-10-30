@@ -1,1 +1,62 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="533px" height="433px" version="1.1"><defs/><g transform="translate(0.5,0.5)"><rect x="186" y="1" width="160" height="170" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(186,1)"><switch><foreignObject pointer-events="all" width="162" height="172" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.26; vertical-align: top; width: 160px; height: 170px; white-space: nowrap;"><p style="margin: 0px ; margin-top: 4px ; text-align: center"><b>Producto</b></p><hr /><p style="margin: 0px ; margin-left: 4px">Atributo</p><p style="margin: 0px ; margin-left: 4px">Atributo</p><hr /><p style="margin: 0px ; margin-left: 4px">+ precio(): Float</p><p style="margin: 0px ; margin-left: 4px">+ descripcion(): String</p><p style="margin: 0px ; margin-left: 4px">+ peso(): Float</p><p style="margin: 0px ; margin-left: 4px">+ vencimiento(): Date</p><p style="margin: 0px ; margin-left: 4px">+ estaVencido(): Boolean</p><p style="margin: 0px ; margin-left: 4px"><br /></p></div></foreignObject><text x="81" y="92" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text></switch></g><rect x="1" y="341" width="530" height="90" fill="#ffffff" stroke="#000000" pointer-events="none"/><g transform="translate(1,341)"><switch><foreignObject pointer-events="all" width="532" height="92" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility"><div xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.26; vertical-align: top; width: 530px; height: 90px; white-space: nowrap;"><p style="margin: 0px ; margin-top: 4px ; text-align: center"><b>Comercio</b></p><hr /><p style="margin: 0px ; margin-left: 4px"></p><p style="margin: 0px ; margin-left: 4px">+ productosProximosAVencer(): OrderedCollection</p><p style="margin: 0px ; margin-left: 4px">+ obtenerCostosDeProductosDePrecioMenorAyesoMenorA(float,float): OrderedCollection</p></div></foreignObject><text x="266" y="52" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text></switch></g><path d="M 266 341 L 266 179" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><path d="M 266 172 L 270 179 L 263 179 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/><g fill="#000000" font-family="Helvetica" font-size="11px"><rect fill="#ffffff" stroke="none" x="288" y="239" width="50" height="14" stroke-width="0"/><text x="288" y="248">productos</text></g><g fill="#000000" font-family="Helvetica" font-size="10px"><rect fill="#ffffff" stroke="none" x="268" y="328" width="8" height="13" stroke-width="0"/><text x="268" y="336">1</text></g></g></svg>
+<svg
+    xmlns="http://www.w3.org/2000/svg"
+    xmlns:xlink="http://www.w3.org/1999/xlink" width="533px" height="433px" version="1.1"
+    fill="#ffffff">
+    <defs/>
+    <g transform="translate(0.5,0.5)">
+        <rect x="186" y="1" width="160" height="170" fill="#ffffff" stroke="#000000" pointer-events="none"/>
+        <g transform="translate(186,1)">
+            <switch>
+                <foreignObject pointer-events="all" width="162" height="172" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div
+                        xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.26; vertical-align: top; width: 160px; height: 170px; white-space: nowrap;">
+                        <p style="margin: 0px ; margin-top: 4px ; text-align: center">
+                            <b>Producto</b>
+                        </p>
+                        <hr />
+                        <p style="margin: 0px ; margin-left: 4px">Atributo</p>
+                        <p style="margin: 0px ; margin-left: 4px">Atributo</p>
+                        <hr />
+                        <p style="margin: 0px ; margin-left: 4px">+ precio(): Float</p>
+                        <p style="margin: 0px ; margin-left: 4px">+ descripcion(): String</p>
+                        <p style="margin: 0px ; margin-left: 4px">+ peso(): Float</p>
+                        <p style="margin: 0px ; margin-left: 4px">+ vencimiento(): Date</p>
+                        <p style="margin: 0px ; margin-left: 4px">+ estaVencido(): Boolean</p>
+                        <p style="margin: 0px ; margin-left: 4px">
+                            <br />
+                        </p>
+                    </div>
+                </foreignObject>
+                <text x="81" y="92" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+            </switch>
+        </g>
+        <rect x="1" y="341" width="530" height="90" fill="#ffffff" stroke="#000000" pointer-events="none"/>
+        <g transform="translate(1,341)">
+            <switch>
+                <foreignObject pointer-events="all" width="532" height="92" requiredFeatures="http://www.w3.org/TR/SVG11/feature#Extensibility">
+                    <div
+                        xmlns="http://www.w3.org/1999/xhtml" style="display: inline-block; font-size: 12px; font-family: Helvetica; color: rgb(0, 0, 0); line-height: 1.26; vertical-align: top; width: 530px; height: 90px; white-space: nowrap;">
+                        <p style="margin: 0px ; margin-top: 4px ; text-align: center">
+                            <b>Comercio</b>
+                        </p>
+                        <hr />
+                        <p style="margin: 0px ; margin-left: 4px"></p>
+                        <p style="margin: 0px ; margin-left: 4px">+ productosProximosAVencer(): OrderedCollection</p>
+                        <p style="margin: 0px ; margin-left: 4px">+ obtenerCostosDeProductosDePrecioMenorAyesoMenorA(float,float): OrderedCollection</p>
+                    </div>
+                </foreignObject>
+                <text x="266" y="52" fill="#000000" text-anchor="middle" font-size="12px" font-family="Helvetica">[Not supported by viewer]</text>
+            </switch>
+        </g>
+        <path d="M 266 341 L 266 179" fill="none" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <path d="M 266 172 L 270 179 L 263 179 Z" fill="#000000" stroke="#000000" stroke-miterlimit="10" pointer-events="none"/>
+        <g fill="#000000" font-family="Helvetica" font-size="11px">
+            <rect fill="#ffffff" stroke="none" x="288" y="239" width="50" height="14" stroke-width="0"/>
+            <text x="288" y="248">productos</text>
+        </g>
+        <g fill="#000000" font-family="Helvetica" font-size="10px">
+            <rect fill="#ffffff" stroke="none" x="268" y="328" width="8" height="13" stroke-width="0"/>
+            <text x="268" y="336">1</text>
+        </g>
+    </g>
+</svg>

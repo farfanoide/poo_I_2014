@@ -375,26 +375,26 @@ gerente calcularSueldo
 1. Liste los métodos que son invocados después como resultado del envio del
 último mensaje.
 
-```smalltalk
-Gerente>> aportes.
-Gerente>> montoBasico.
-```
+  ```smalltalk
+  Gerente>> aportes.
+  Gerente>> montoBasico.
+  ```
 
-```smalltalk
-EmpleadoJerarquico>> calcularSueldo.
-Empleado>> sueldoBasico.
-Gerente>> aportes.
-Gerente>> montoBasico.
-EmpleadoJerarquico>> bonoPorCategoria.
-```
+  ```smalltalk
+  EmpleadoJerarquico>> calcularSueldo.
+  Empleado>> sueldoBasico.
+  Gerente>> aportes.
+  Gerente>> montoBasico.
+  EmpleadoJerarquico>> bonoPorCategoria.
+  ```
 
 2. Responda que retorna la última expresión en cada caso
-```smalltalk
-gerente aportes "=> 50"
-```
-```smalltalk
-gerente calcularSueldo "=> 1150"
-```
+  ```smalltalk
+  gerente aportes "=> 50"
+  ```
+  ```smalltalk
+  gerente calcularSueldo "=> 1150"
+  ```
 
 Ejercicio 10
 ------------
@@ -424,67 +424,58 @@ le envían.
 
 1. Realice el diagrama de clases.
 
-2. Realice el diagrama de secuencia donde se muestra lo que ocurre cuando el mensaje
+2. Realice el diagrama de secuencia donde se muestra lo que ocurre cuando el
+mensaje `on` es enviado a la computadora.
+
+3. Implemente en Smalltalk.
 
 Ejercicio 11
 ------------
 
-Para cada uno de los mensajes enunciados abajo: lea los comentarios,
-analice y compare (codificando ejemplos si lo cree conveniente) su
-comportamiento para cada una de estas
-clases: OrderedCollection, SortedCollection, Array, Dictionary, Bag y Set.
+Para cada uno de los mensajes enunciados abajo: lea los comentarios, analice y
+compare (codificando ejemplos si lo cree conveniente) su comportamiento para
+cada una de estas clases: `OrderedCollection`, `SortedCollection`, `Array`,
+`Dictionary`, `Bag` y `Set`.
 
-```smalltalk
-  #add:
-  #at:
-  #at:put:
-  #size
-  #do:
-  #detect:
-  #select:
-  #collect:
-  #reject:
-  #inject:into:
-  #includes:
-  #isEmpty
-```
+`#add:`, `#at:`, `#at:put:`, `#size`, `#do:`, `#detect:`, `#select:`,
+`#collect:`, `#reject:`, `#inject:into:`, `#includes:`, `#isEmpty`
 
 *Responda a las siguientes preguntas:*
 
 1. ¿Es posible que algunos mensajes no sean aplicables para algunas
-colecciones? Por ejemplo, ¿Se le puede enviar el mensaje #add: a un Array? ¿Y a
-un Set? ¿Se le puede enviar el mensaje #at: y #at:put: a un Set?
+colecciones? Por ejemplo, ¿Se le puede enviar el mensaje `#add:` a un `Array`?
+¿Y a un `Set`? ¿Se le puede enviar el mensaje `#at:` y `#at:put:` a un `Set`?
 
- 2. En respuesta al mensaje #select:, ¿qué retorna un Array? ¿Y un Dictionary?
- ¿Y una SortedCollection?
+ 2. En respuesta al mensaje `#select:`, ¿qué retorna un `Array`? ¿Y un
+ `Dictionary`?  ¿Y una `SortedCollection`?
 
- 3. En respuesta al mensaje #size, ¿qué retorna un Array creado con Array
- new:10?  ¿Qué retorna una OrderedCollection creada con OrderedCollection
- new:10?
+ 3. En respuesta al mensaje `#size`, ¿qué retorna un `Array` creado con `Array
+ new:10`?  ¿Qué retorna una `OrderedCollection` creada con `OrderedCollection
+ new:10`?
 
- 4. ¿Cómo se elimina un elemento de un Array? ¿Es posible?
+ 4. ¿Cómo se elimina un elemento de un `Array`? ¿Es posible?
 
- 5. ¿Como se averigua la posición de un elemento en un Array? ¿Y la del primer
- elemento que cumple una condición? ¿Es posible hacerlo en un Set?.
+ 5. ¿Como se averigua la posición de un elemento en un `Array`? ¿Y la del primer
+ elemento que cumple una condición? ¿Es posible hacerlo en un `Set`?.
 
- 6. Indique la diferencia entre #detect: y #detect:ifNone:. ¿Para qué sirve el
- bloque que se envía como parámetro en #ifNone:?
+ 6. Indique la diferencia entre `#detect:` y `#detect:ifNone:`. ¿Para qué sirve
+ el bloque que se envía como parámetro en `#ifNone:`?
 
- 7. ¿Cómo crea una SortedCollection para contener instancias de String
- ordenadas por tamaño? ¿Cómo crea una SortedCollection para contener instancias
- de String ordenadas alfabéticamente?
+ 7. ¿Cómo crea una `SortedCollection` para contener instancias de `String`
+ ordenadas por tamaño? ¿Cómo crea una `SortedCollection` para contener
+ instancias de `String` ordenadas alfabéticamente?
 
- 8. ¿Cómo consigue los elementos en un Array eliminado las repeticiones?
+ 8. ¿Cómo consigue los elementos en un `Array` eliminado las repeticiones?
 
- 9. ¿Cuál es el problema con la siguiente expresión si col es un Set con
- elementos? ¿Y si fuera una OrderedCollection?  
+ 9. ¿Cuál es el problema con la siguiente expresión si col es un `Set` con
+ elementos? ¿Y si fuera una `OrderedCollection`?  
 
  ```smalltalk
-   a. col do: [ :each | col remove: each]
+   col do: [ :each | col remove: each]
  ```
 
  10. ¿Cuál es el efecto de enviar el mensaje `#add:` con nil como parámetro a
- una OrderedCollection? ¿Por qué?
+ una `OrderedCollection`? ¿Por qué?
 
  11. ¿Qué diferencia hay entre los mensajes `#includes:` y `#contains:`?
 
@@ -508,14 +499,14 @@ Ejercicio 13
 ------------
 
 Analice el siguiente Diagrama de Clases
-<!-- TODO: agregar imagen -->
- Figura 4
 
-Como puede apreciarse, la clase Producto posee el siguiente protocolo: `#precio`,
-`#descripcion`, `#peso`, `#vencimiento`, `#estaVencido`. En base a esto se desea
-modificar el código de los métodos de la clase Comercio de forma tal que
-utilicen métodos de colecciones de mayor nivel de abstracción sin alterar el
-comportamiento original.
+![uml producto](img/practica_4/producto.svg)
+
+Como puede apreciarse, la clase Producto posee el siguiente protocolo:
+`#precio`, `#descripcion`, `#peso`, `#vencimiento`, `#estaVencido`. En base a
+esto se desea modificar el código de los métodos de la clase Comercio de forma
+tal que utilicen métodos de colecciones de mayor nivel de abstracción sin
+alterar el comportamiento original.
 
 ```smalltalk
 productosProximosAVencer

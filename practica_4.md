@@ -500,7 +500,7 @@ Ejercicio 13
 
 Analice el siguiente Diagrama de Clases
 
-![uml producto](https://rawgit.com/farfanoide/poo_I_2014/master/img/practica_4/producto.svg)
+![uml producto](img/practica_4/producto.svg?raw=true)
 
 Como puede apreciarse, la clase Producto posee el siguiente protocolo:
 `#precio`, `#descripcion`, `#peso`, `#vencimiento`, `#estaVencido`. En base a

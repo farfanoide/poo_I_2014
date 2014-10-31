@@ -578,7 +578,9 @@ triángulos que conforman el `DelaunayMesh`.
 los triángulos.  El siguiente diagrama de clases muestra una vista preliminar
 que puede utilizar para diseñar y programar su solución.
 
-> Solucion: [Edge](src/practica_4/Edge.st)
-> Solucion: [DelaunayElementWithEdges](src/practica_4/DelaunayElementWithEdges.st)
-> Solucion: [DelaunayMesh](src/practica_4/DelaunayMesh.st)
+> Solucion:
+  [Edge](src/practica_4/Edge.st)
+  [DelaunayElementWithEdges](src/practica_4/DelaunayElementWithEdges.st)
+  [DelaunayMesh](src/practica_4/DelaunayMesh.st)
+
 ![uml delaunay mesh](img/practica_4/delaunay_mesh.jpg)

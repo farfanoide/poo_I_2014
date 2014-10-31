@@ -106,7 +106,7 @@ primera fecha se conoce como `from` y la segunda como `to`.
       el from y el to del receptor y false en caso contrario"
     ```
    
-  > [Solucion](src/practica_4/DateLapse.st)
+  > Solucion: [DateLapse](src/practica_4/DateLapse.st)
 
 4. Ejecute los tests provistos por la cátedra para verificar su implementación,
 los mismos se encuentran definidos en la clase `DateLapseTest`, en el archivo
@@ -119,7 +119,7 @@ debe basar su nueva implementación en estas variables de instancia solamente.
 Sugerencia: si quiere conservar la versión original, antes de realizar algún
 cambio haga un fileOut de la clase `DateLapse`.
 
-  > [Solucion](src/practica_4/DateLapseSizeInDays.st)
+  > Solucion: [DateLapseSizeInDays](src/practica_4/DateLapseSizeInDays.st)
 
 6. Vuelva a correr los tests. Los cambios en la estructura interna de un objeto
 sólo deben afectar a la implementación de sus métodos. Estos cambios deben ser
@@ -495,7 +495,7 @@ variables.
 ![uml delaunay element ej 12](im/practica_4/delaunay.jpg)
  Figura 3
 
-> [Solucion](src/practica_4/DelaunayElement.st)
+> Solucion: [DelaunayElement](src/practica_4/DelaunayElement.st)
 
 Ejercicio 13
 ------------
@@ -578,4 +578,5 @@ triángulos que conforman el `DelaunayMesh`.
 los triángulos.  El siguiente diagrama de clases muestra una vista preliminar
 que puede utilizar para diseñar y programar su solución.
 
+> Solucion: [DelaunayMesh](src/practica_4/DelaunayMesh.st)
 ![uml delaunay mesh](img/practica_4/delaunay_mesh.jpg)

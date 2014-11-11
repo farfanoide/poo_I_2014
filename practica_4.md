@@ -563,18 +563,19 @@ Utilizando la última versión disponible del entorno de simulación de robots
 (`BotArena`) mejore la implementación del robot para que implemente una nueva
 manera de "mover" que mientras no ha cumplido con la distancia pedida, sortea
 obstáculos como: paredes u otros robots.
+
 ```smalltalk
 WalkingBrushRobot>> moveAndDodge: aDistance
-  | stepsDone positionBefore |
-  stepsDone := 0.
-  positionBefore := self position.
-  [ stepsDone < aDistance ]
-    whileTrue: [
-      self move: aDistance.
-      stepsDone := stepsDone + (self position dist: positionBefore).
-      positionBefore = self position
-        ifTrue: [ self right ].
-      positionBefore := self position ]
+    "Verifico que la distancia sea un valor válido, mayor que cero."
+
+    | temp |
+    [ aDistance > 0 ]
+        whileTrue: [
+            temp := self position.
+            self move: 1.
+            aDistance := aDistance - 1.
+            temp = self position
+                ifTrue: [ self direction: self direction + 45 ] ]
 ```
 
 Ejercicio 15 (Avanzado)

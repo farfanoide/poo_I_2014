@@ -1,9 +1,6 @@
 Orientación a Objetos 1 - 2014 - Práctica 5
 ============================================
 
-
-
-
 Ejercicio 1
 -----------
 
@@ -15,8 +12,6 @@ avisados cuando un amigo hizo una publicación en su muro.
 Implemente la red social con la particularidad de que el muro de cada usuario
 solo permite 10 mensajes como máximo (cuando llega el mensaje número 11 se
 descarta el mensaje más viejo).
-
-
 
 ```smalltalk
 Wall>>post:aMessage
@@ -38,82 +33,65 @@ Wall>>numberOfMessages
   "Retorna la cantidad de mensajes posteados en el muro"
 ```
 
-
-
 Los usuarios tienen un nombre, el muro y su lista de amigos.Cuando un usuario
 publica (con el mensaje #post:) algo en su muro, sus amigos deben ser
 notificados. Considere que la clase que implementa al usuario debe contener el
 siguiente protocolo:
 
-
+```smalltalk
 User>>name
+  "Retorna el nombre del usuario"
+```
 
-"Retorna el nombre del usuario"
-
-
-
+```smalltalk
 User>>name: aString
+  "Cambia el nombre del usuario por el valor recibido"
+```
 
-"Cambia el nombre del usuario por el valor recibido"
-
-
-
+```smalltalk
 User>>addFriend: anotherUser
+  "Agregar anotherUser a la lista de amigos"
+```
 
-"Agregar anotherUser a la lista de amigos"
-
-
-
+```smalltalk
 User>>post:aMessage
+  "Publica un mensaje en muro"
+```
 
-"Publica un mensaje en muro"
-
-
-
-
-
+```smalltalk
 User>>newMessage:aMessage from:anotherUser
+  "Los usuarios reciben este mensaje cuando el amigo indicado por el parámetro
+  anotherUser publicó el mensaje aMessage en su propio muro"
+```
 
-"Los usuarios reciben este mensaje cuando el amigo indicado por el parámetro anotherUser publicó el mensaje aMessage en su propio muro"
-
-
-
-
-
-Tareas
-
+*Tareas:*
 
 1. Realice un diagrama de Clases.
 
-2. Realice un diagrama de secuencia para mostrar cómo un usuario que tiene dos amigos agrega algo a su muro (y se agrega a los muros de los amigos).
+2. Realice un diagrama de secuencia para mostrar cómo un usuario que tiene dos
+amigos agrega algo a su muro (y se agrega a los muros de los amigos).
 
 3. Implemente en Pharo.
 
+  1. Incluya código de prueba en un workspace.
 
-
-3.1 Incluya código de prueba en un workspace.
-
-
-
-3.2 Con la asistencia de un ayudante, implemente un test case en base al código del punto anterior.
+  2. Con la asistencia de un ayudante, implemente un test case en base al
+     código del punto anterior.
 
 Ejercicio 2
 -----------
 
-En la red social del ejercicio anterior se desea implementar la funcionalidad que responde a la premisa: "Los amigos de mis amigos también son mis amigos". Implemente el método #floodPost: el cual es similar a #post, pero le llega "a los amigos de mis amigos''.
-
-
+En la red social del ejercicio anterior se desea implementar la funcionalidad
+que responde a la premisa: "Los amigos de mis amigos también son mis amigos".
+Implemente el método `#floodPost:` el cual es similar a `#post`, pero le llega "a
+los amigos de mis amigos".
 
 Ejemplo:
 
-Si Juan es amigo de Pedro, Pedro es amigo de Carlos y sin importar si Juan y Carlos son amigos, cuando Juan hace un floodPost:, Carlos debe enterarse.
+Si Juan es amigo de Pedro, Pedro es amigo de Carlos y sin importar si Juan y
+Carlos son amigos, cuando Juan hace un `floodPost:`, Carlos debe enterarse.
 
-
-
-
-
-Tareas
-
+*Tareas:*
 
 1. Realice un diagrama de secuencia para el ejemplo.
 
@@ -122,23 +100,37 @@ Tareas
 Ejercicio 3
 -----------
 
-Diseñe e implemente un cliente de correo electrónico de acuerdo con la siguiente especificación: Un email tiene como atributos principales la dirección de correo del remitente, la del destinatario, un asunto, un cuerpo y una fecha. El sistema debe almacenar todos los emails que recibe en la bandeja de entrada. Además, la aplicación permite eliminar un mensaje de la bandeja de entrada, y en ese caso, pasa a otra bandeja de la que dispone el cliente de correo que es la bandeja de eliminados. De la bandeja de eliminados, también se pueden borrar los mails, pero al eliminarlos de allí se borran definitivamente del cliente de correo.
+Diseñe e implemente un cliente de correo electrónico de acuerdo con la
+siguiente especificación: Un email tiene como atributos principales la
+dirección de correo del remitente, la del destinatario, un asunto, un cuerpo y
+una fecha. El sistema debe almacenar todos los emails que recibe en la bandeja
+de entrada. Además, la aplicación permite eliminar un mensaje de la bandeja de
+entrada, y en ese caso, pasa a otra bandeja de la que dispone el cliente de
+correo que es la bandeja de eliminados. De la bandeja de eliminados, también se
+pueden borrar los mails, pero al eliminarlos de allí se borran definitivamente
+del cliente de correo.
 
 La aplicación debe permitir:
 
-● marcar un email como "leído"
+    * Marcar un email como "leído"
 
-● recuperar (en una colección) todos los emails no leídos de una bandeja.
+    * Recuperar (en una colección) todos los emails no leídos de una bandeja.
 
-● determinar el espacio ocupado por una bandeja de entrada (para esto considere que el tamaño de un email se calcula como el tamaño de su cuerpo, siendo el cuerpo un String).
+    * Determinar el espacio ocupado por una bandeja de entrada (para esto
+      considere que el tamaño de un email se calcula como el tamaño de su
+      cuerpo, siendo el cuerpo un String).
 
-● retornar (en una colección) el campo asunto de los emails de cualquier bandeja.
+    * Retornar (en una colección) el campo asunto de los emails de cualquier
+      bandeja.
 
-● retornar los mails de una bandeja ordenados cronológicamente ● retornar los mails de una bandeja ordenados por tamaño.
+    * Retornar los mails de una bandeja ordenados cronológicamente
 
-● eliminar mails de las bandejas respetando el comportamiento explicado anteriormente.
+    * Retornar los mails de una bandeja ordenados por tamaño.
 
-Tareas:
+    * Eliminar mails de las bandejas respetando el comportamiento explicado
+      anteriormente.
+
+*Tareas:*
 
 1. Realice el diagrama de clases.
 
@@ -147,19 +139,33 @@ Tareas:
 Ejercicio 4
 -----------
 
-Sea una empresa telefónica que brinda servicios de comunicación a sus abonados. Las comunicaciones pueden ser locales, interurbanas e internacionales. De cada comunicación se conoce el momento de su comienzo, la distancia entre los destinos (que llama y que recibe) y la duración. Cada una de las llamadas se factura de una forma distinta. Las locales tienen un costo fijo por minuto. Las interurbanas tienen un valor que depende de la ciudad destino y en función de la distancia (hay 3 rangos discriminados) es el costo de la misma. Y por último, para las llamadas internacionales el costo depende de la hora en la que comience la misma. Si comienza entre las 08:00 y las 20:00 tienen un costo, mientras que de noche tienen un costo menor.
+Sea una empresa telefónica que brinda servicios de comunicación a sus abonados.
+Las comunicaciones pueden ser locales, interurbanas e internacionales. De cada
+comunicación se conoce el momento de su comienzo, la distancia entre los
+destinos (que llama y que recibe) y la duración. Cada una de las llamadas se
+factura de una forma distinta. Las locales tienen un costo fijo por minuto. Las
+interurbanas tienen un valor que depende de la ciudad destino y en función de
+la distancia (hay 3 rangos discriminados) es el costo de la misma. Y por
+último, para las llamadas internacionales el costo depende de la hora en la que
+comience la misma. Si comienza entre las 08:00 y las 20:00 tienen un costo,
+mientras que de noche tienen un costo menor.
 
-Por otro lado, los abonados se clasifican en dos categorías. Están los particulares a los que se les factura el precio neto y las entidades gubernamentales que reciben un 10% de descuento.
+Por otro lado, los abonados se clasifican en dos categorías. Están los
+particulares a los que se les factura el precio neto y las entidades
+gubernamentales que reciben un 10% de descuento.
 
-Tareas:
+*Tareas:*
 
 1. Realice el diagrama de clases.
 
 2. Implemente el mensaje para calcular el monto que cada abonado debe pagar.
 
-3. Implemente el mensaje para calcular la llamada de mayor duración entre todas las llamadas de entre todos los abonados, para las llamadas realizadas dentro de los últimos 30 días.
+3. Implemente el mensaje para calcular la llamada de mayor duración entre todas
+las llamadas de entre todos los abonados, para las llamadas realizadas dentro
+de los últimos 30 días.
 
-4. Implemente el mensaje para calcular el abonado con mayor tiempo total de comunicación para las llamadas realizadas dentro de los últimos 30 días.
+4. Implemente el mensaje para calcular el abonado con mayor tiempo total de
+comunicación para las llamadas realizadas dentro de los últimos 30 días.
 
 Ejercicio 5
 -----------
@@ -188,7 +194,7 @@ mensajes en el protocolo de la clase Computadora:
     "Imprime en Transcript el contenido del disco rígido"
 ```
 
-Además de la clase Computadora modifique todo lo necesario para completar la
+Además de la clase `Computadora` modifique todo lo necesario para completar la
 funcionalidad indicada.
 
 Utilice los mensajes que definió sin implementar para completar el
@@ -199,16 +205,14 @@ almacenamiento en memoria y disco rígido.
 1. Actualice el diagrama de clases con el diseño completo.
 
 2. Realice un diagrama de secuencia para mostrar la interacción entre objetos
-que tiene lugar cuando la computadora recibe #memoria:"Esto va a la memoria" .
+que tiene lugar cuando la computadora recibe `#memoria: "Esto va a la memoria"`.
 
 3. Implemente todas las modificaciones.
 
     1. Incluya código de prueba en un workspace.
 
-
-
     2. Con la asistencia de un ayudante, implemente un test case en base al
-    código del punto anterior.
+       código del punto anterior.
 
 Ejercicio 6
 -----------
@@ -229,39 +233,42 @@ farola con dos vecinas que estan apagadas y se conocen mutuamente.
 
 3. Implemente en Pharo los siguientes métodos para las farolas:
 
-```smalltalk
-  #initialize
-    "Inicializa a la farola como apagada"
-```
+    ```smalltalk
+      #initialize
+        "Inicializa a la farola como apagada"
+    ```
 
-```smalltalk
-  #pairWithNeighbor: otraFarola
-    "Crea la relación de vecinos entre las farolas. Tenga presente que la relación de vecinos entre las farolas es recíproca, es decir el receptor del mensaje será vecino de otraFarola, al igual que otraFarola también se convertirá en vecina del receptor del mensaje "
-```
+    ```smalltalk
+      #pairWithNeighbor: otraFarola
+        "Crea la relación de vecinos entre las farolas. Tenga presente que la
+        relación de vecinos entre las farolas es recíproca, es decir el receptor
+        del mensaje será vecino de otraFarola, al igual que otraFarola también se
+        convertirá en vecina del receptor del mensaje "
+    ```
 
-```smalltalk
-  #turnOn
-    "Si la farola no esta encendida, la enciende y propaga la accion"
-```
+    ```smalltalk
+      #turnOn
+        "Si la farola no esta encendida, la enciende y propaga la accion"
+    ```
 
-```smalltalk
-  #turnOff
-    "Si la farola no esta apagada, la apaga y propaga la accion"
-```
+    ```smalltalk
+      #turnOff
+        "Si la farola no esta apagada, la apaga y propaga la accion"
+    ```
 
-```smalltalk
-  #isOn
-    "Retorna true si la farola esta encendida"
-```
+    ```smalltalk
+      #isOn
+        "Retorna true si la farola esta encendida"
+    ```
 
-4. Implemente el método de instancia #createLightPost en la clase
-TestLightGrid. Este método debe retornar una instancia de la farola, la cual
+4. Implemente el método de instancia `#createLightPost` en la clase
+`TestLightGrid`. Este método debe retornar una instancia de la farola, la cual
 debe estar inicializada apropiadamente.
 
 5. Utilice los test provistos por la cátedra para probar las implementaciones
 de 3.
 
-6. Implemente el mensaje #activarEncendidoDeEmergencia. Este mensaje puede ser
+6. Implemente el mensaje `#activarEncendidoDeEmergencia`. Este mensaje puede ser
 enviado a cualquier farola de la red de alumbrado y debe propagarse a toda la
 red sin importar si las farolas están encendidas o apagadas. Todas las farolas
 deben recibir el mensaje.
@@ -269,11 +276,11 @@ deben recibir el mensaje.
 7. Cree un nuevo tipo de farola, la cual al agregarle una vecina se asegura que
 el estado de la nueva vecina coincida con el propio.
 
-8. Implemente el método de instancia #createLightPost en la clase
-TestLightAcuteGrid. Este método retorna una instancia de la nueva farola
+8. Implemente el método de instancia `#createLightPost` en la clase
+`TestLightAcuteGrid`. Este método retorna una instancia de la nueva farola
 definida en 6, la cual debe estar inicializada apropiadamente.
 
-9. Indique por qué el test #testMixed es diferente. Discuta este punto con un
+9. Indique por qué el test `#testMixed` es diferente. Discuta este punto con un
 ayudante.
 
 Ejercicio 7
@@ -285,37 +292,37 @@ a los conductores.
 Para ello, cuando un semáforo recibe la orden de cambiar a verde, espera 20
 segundos y le propaga el pedido al siguiente.
 
-*Tareas*
+*Tareas:*
 
 1. Realice el diagrama de clases.
 
-2. Implemente en Pharo la clase TrafficLight con los siguientes métodos:
+2. Implemente en Pharo la clase `TrafficLight` con los siguientes métodos:
 
-```smalltalk
-  #initialize
-    "Inicializa el semáforo en luz roja"
-```
+    ```smalltalk
+    #initialize
+      "Inicializa el semáforo en luz roja"
+    ```
 
-```smalltalk
-  #pairWithNeighbor: otroSemaforo
-    "Crea la relación de vecinos entre los semaforos. Tenga presente que a
-    diferencia de las farolas, con los semáforos hay un orden entre ellos."
-```
+    ```smalltalk
+    #pairWithNeighbor: otroSemaforo
+      "Crea la relación de vecinos entre los semaforos. Tenga presente que a
+      diferencia de las farolas, con los semáforos hay un orden entre ellos."
+    ```
 
-```smalltalk
-  #green
-      "El semáforo cambia a verde, espera 20 segundos y le propaga el pedido al
-      siguiente."
-```
+    ```smalltalk
+    #green
+        "El semáforo cambia a verde, espera 20 segundos y le propaga el pedido al
+        siguiente."
+    ```
 
 Para implementar el retardo puede utilizar una instancia de la clase Delay, por ejemplo:
 
-```smalltalk
-  "Codigo para esperar 3 segundos"
-  |d|
-  d:= Delay forSeconds: 3.
-  d wait.
-```
+    ```smalltalk
+    "Codigo para esperar 3 segundos"
+    |d|
+    d:= Delay forSeconds: 3.
+    d wait.
+    ```
 
 3. Cree un test para verificar que el método #green propaga correctamente la
 onda verde (no se preocupe por testear el retardo).
@@ -325,7 +332,7 @@ Ejercicio 8
 
 Un SpoolerFIFO es un administrador de impresión que maneja una lista de
 documentos que deben ser impresos respetando el orden en que fueron enviados a
-imprimir. El protocolo de SpoolerFIFO incluye los siguientes mensajes:
+imprimir. El protocolo de `SpoolerFIFO` incluye los siguientes mensajes:
 
 ```smalltalk
   #spool: aDocument
@@ -340,7 +347,7 @@ imprimir. El protocolo de SpoolerFIFO incluye los siguientes mensajes:
 De los documentos se conoce: el nombre del mismo, su contenido y los datos del
 usuario que lo creó.
 
-*Tareas*
+*Tareas:*
 
 1. Realice el diagrama de clases.
 
@@ -371,7 +378,8 @@ al documento y solamente se utiliza para el spooler de impresión.
 
 ```smalltalk
   #documentsGreaterThan: aSize
-    "Retorna una lista con los documentos de tamaño mayor al recibido, manteniendo el orden de impresión. "
+    "Retorna una lista con los documentos de tamaño mayor al recibido,
+    manteniendo el orden de impresión. "
 ```
 
 Ejercicio 9
@@ -402,12 +410,12 @@ entender el mensaje #facturar: unosLibros para: unCliente, que genera la
 factura correspondiente.
 
 Una vez determinado el monto a pagar, el mismo debe informarse en el Transcript
-usando mensaje #show:.
+usando mensaje `#show:`.
 
-La clase Facturador debe entender el mensaje #totalDescontado que retorna el
+La clase Facturador debe entender el mensaje `#totalDescontado` que retorna el
 monto total descontado por las promociones.
 
-*Tareas*
+*Tareas:*
 
 1. Realice el diagrama de clases.
 
@@ -483,21 +491,33 @@ Ejercicio 12 (Avanzado)
 Ahora que conoce un poco más sobre `nil` defina el siguiente comportamiento
 para `nil`. El objeto `nil` ahora debe comportarse como el elemento neutro para
 la suma y la multiplicación cuando aparece como receptor del mensaje `+` o `*`
-respectivamente. Es decir, si en workspace evaluamos: `nil + 9` el resultado
-debe ser 9. Y si en workspace evaluamos `nil * 25` el resultado debe ser 25.
+respectivamente. Es decir, si en workspace evaluamos:
 
-*Tareas*
+```smalltak
+nil + 9
+```
+
+el resultado debe ser 9. Y si en workspace evaluamos:
+
+```smalltak
+nil * 25
+```
+
+el resultado debe ser 25.
+
+*Tareas:*
 
 1. Implemente en la clase de la cual es instancia `nil`, los mensajes + y *, que
 reciben como parámetro un número.
 
-```smalltak
-UndefinedObject>> + anObject
-  ^ anObject.
+    ```smalltak
+    UndefinedObject>> + anObject
+      ^ anObject.
 
-UndefinedObject>> * anObject
-  ^ anObject.
-```
+    UndefinedObject>> * anObject
+      ^ anObject.
+    ```
+
 2. Pruebe en el workspace
 
 Ejercicio 13 (Avanzado)
@@ -508,7 +528,7 @@ mensaje `#methods` a una clase obtendrá un array con todos los métodos. Y
 enviando el mensaje `#withAllSubclasses` a una clase obtendrá una colección con
 todas las subclases de esa clase.
 
-*Tareas*
+*Tareas:*
 
 1. Busque la implementación de ambos métodos y lea los comentarios para
 entender la funcionalidad provista.
@@ -519,7 +539,7 @@ entender la funcionalidad provista.
 2. Utillizando esos mensajes indique cuantos métodos se encuentran definidos en
 la jerarquía de `Collection`
 
-```smalltak
-Collection withAllSubclasses inject: 0  into: [ :t :subclass| t + subclass methods size] "=> 2294"
-```
+    ```smalltak
+    Collection withAllSubclasses inject: 0  into: [ :t :subclass| t + subclass methods size] "=> 2294"
+    ```
 

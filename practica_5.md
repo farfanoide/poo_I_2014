@@ -291,113 +291,91 @@ segundos y le propaga el pedido al siguiente.
 
 2. Implemente en Pharo la clase TrafficLight con los siguientes métodos:
 
-#initialize
+```smalltalk
+  #initialize
+    "Inicializa el semáforo en luz roja"
+```
 
-"Inicializa el semáforo en luz roja"
+```smalltalk
+  #pairWithNeighbor: otroSemaforo
+    "Crea la relación de vecinos entre los semaforos. Tenga presente que a
+    diferencia de las farolas, con los semáforos hay un orden entre ellos."
+```
 
-
-
-#pairWithNeighbor: otroSemaforo
-
-"Crea la relación de vecinos entre los semaforos. Tenga presente que a
-diferencia de las farolas, con los semáforos hay un orden entre ellos."
-
-
-
-#green
-
-  "El semáforo cambia a verde, espera 20 segundos y le propaga el pedido al siguiente."
-
-
+```smalltalk
+  #green
+      "El semáforo cambia a verde, espera 20 segundos y le propaga el pedido al
+      siguiente."
+```
 
 Para implementar el retardo puede utilizar una instancia de la clase Delay, por ejemplo:
 
-"Codigo para esperar 3 segundos"
-
-|d|
-
-d:= Delay forSeconds: 3.
-
-d wait.
-
-
+```smalltalk
+  "Codigo para esperar 3 segundos"
+  |d|
+  d:= Delay forSeconds: 3.
+  d wait.
+```
 
 3. Cree un test para verificar que el método #green propaga correctamente la
 onda verde (no se preocupe por testear el retardo).
 
-
-
-
 Ejercicio 8
 -----------
 
+Un SpoolerFIFO es un administrador de impresión que maneja una lista de
+documentos que deben ser impresos respetando el orden en que fueron enviados a
+imprimir. El protocolo de SpoolerFIFO incluye los siguientes mensajes:
 
+```smalltalk
+  #spool: aDocument
+    "El spooler agrega aDocument en su cola de impresión"
+```
 
-Un SpoolerFIFO es un administrador de impresión que maneja una lista de documentos que deben ser impresos respetando el orden en que fueron enviados a imprimir. El protocolo de SpoolerFIFO incluye los siguientes mensajes:
+```smalltalk
+  #nextDocument
+    "Retorna el siguiente documento a imprimir (FIFO) o nil si no hay ninguno"
+```
 
-#spool: aDocument
+De los documentos se conoce: el nombre del mismo, su contenido y los datos del
+usuario que lo creó.
 
-"El spooler agrega aDocument en su cola de impresión"
-
-
-
-#nextDocument
-
-"Retorna el siguiente documento a imprimir (FIFO) o nil si no hay ninguno"
-
-
-
-De los documentos se conoce: el nombre del mismo, su contenido y los datos del usuario que lo creó.
-
-
-
-
-
-Tareas
-
+*Tareas*
 
 1. Realice el diagrama de clases.
 
-
-
 2. Implemente en Pharo el SpoolerFIFO.
 
+3. ¿Cómo logró que los documentos sean impresos en el orden en que fueron
+recibidos?
 
+4. Implemente en Pharo un SpoolerLIFO (last in first out) que permite imprimir
+los documentos en el orden inverso al que fueron enviados a imprimir.
 
-3. ¿Cómo logró que los documentos sean impresos en el orden en que fueron recibidos?
-
-
-
-4. Implemente en Pharo un SpoolerLIFO (last in first out) que permite imprimir los documentos en el orden inverso al que fueron enviados a imprimir.
-
-
-
-5. Extender el Spooler con un PrioritySpooler que entiende el mensaje: #spool: aDocument withPriority: aPriority, el cual ordena los documentos por prioridad. En este caso hay que tener en cuenta que la información de prioridad es ajena al documento y solamente se utiliza para el spooler de impresión.
-
-
+5. Extender el Spooler con un PrioritySpooler que entiende el mensaje: #spool:
+aDocument withPriority: aPriority, el cual ordena los documentos por prioridad.
+En este caso hay que tener en cuenta que la información de prioridad es ajena
+al documento y solamente se utiliza para el spooler de impresión.
 
 6. Implemente en el spooler los siguientes reportes:
 
-#sortedDocumentsFromUser: aUsername
+```smalltalk
+  #sortedDocumentsFromUser: aUsername
+    "Retorna, ordenados por nombre los documentos del usuario"
+```
 
-"Retorna, ordenados por nombre los documentos del usuario"
+```smalltalk
+  #documentsFromUser: aUsername sortedBy: aBlock
+    "Retorna los documentos del usuario, ordenados por el criterio recibido como parámetro"
+```
 
-
-
-#documentsFromUser: aUsername sortedBy: aBlock
-
-"Retorna los documentos del usuario, ordenados por el criterio recibido como parámetro"
-
-
-
-#documentsGreaterThan: aSize
-
-"Retorna una lista con los documentos de tamaño mayor al recibido, manteniendo el orden de impresión. "
+```smalltalk
+  #documentsGreaterThan: aSize
+    "Retorna una lista con los documentos de tamaño mayor al recibido, manteniendo el orden de impresión. "
+```
 
 Ejercicio 9
 -----------
-
-
 
 En una librería existen dos tipos de libros: libros de texto y de literatura.
 De ellos se conoce su título, autor, precio y cantidad de páginas. En la
@@ -429,21 +407,19 @@ usando mensaje #show:.
 La clase Facturador debe entender el mensaje #totalDescontado que retorna el
 monto total descontado por las promociones.
 
-Tareas
-
+*Tareas*
 
 1. Realice el diagrama de clases.
 
-
-2. Realice un diagrama de secuencia UML donde se muestre cómo se determina el monto final de una compra por un libro de texto y uno de literatura.
-
-
+2. Realice un diagrama de secuencia UML donde se muestre cómo se determina el
+monto final de una compra por un libro de texto y uno de literatura.
 
 3. Implemente en Pharo.
 
-
-
-4. Instancie en un workspace su facturador, 2 libros de texto y 2 de literatura (a su elección), un nuevo cliente y envíe al facturador el mensaje #facturar:para:. Indique cual es el monto que deberá informarse en el Transcript para ese caso en particular.
+4. Instancie en un workspace su facturador, 2 libros de texto y 2 de literatura
+(a su elección), un nuevo cliente y envíe al facturador el mensaje
+`#facturar:para:.` Indique cual es el monto que deberá informarse en el
+Transcript para ese caso en particular.
 
 Ejercicio 10 (Avanzado)
 -----------------------
@@ -451,13 +427,13 @@ Ejercicio 10 (Avanzado)
 Una instancia de Homero responde a los siguientes mensajes:
 
 ```smalltak
-#beberCerveza
-  "imprime en el transcript: bebiendo una Duff"
+  #beberCerveza
+    "imprime en el transcript: bebiendo una Duff"
 ```
 
 ```smalltak
-#verTelevision
-  "imprime en el transcript: Mirando sala de emergencia para monos"
+  #verTelevision
+    "imprime en el transcript: Mirando sala de emergencia para monos"
 ```
 
 Cuando recibe cualquier otro mensaje un Homero, responde en el Transcript con
@@ -486,7 +462,7 @@ El resultado en el Transcript debería ser:
 Ejercicio 11 (Avanzado)
 -----------------------
 
-Inspeccione a nil (utilice la opción "inspect it" desde un workspace) y
+Inspeccione a `nil` (utilice la opción "inspect it" desde un workspace) y
 responda:
 
 1. ¿A qué clase pertenece?
@@ -504,15 +480,15 @@ responda:
 Ejercicio 12 (Avanzado)
 -----------------------
 
-Ahora que conoce un poco más sobre nil defina el siguiente comportamiento para
-nil. El objeto nil ahora debe comportarse como el elemento neutro para la suma
-y la multiplicación cuando aparece como receptor del mensaje + o *
-respectivamente. Es decir, si en workspace evaluamos: nil + 9 el resultado debe
-ser 9. Y si en workspace evaluamos nil * 25 el resultado debe ser 25.
+Ahora que conoce un poco más sobre `nil` defina el siguiente comportamiento
+para `nil`. El objeto `nil` ahora debe comportarse como el elemento neutro para
+la suma y la multiplicación cuando aparece como receptor del mensaje `+` o `*`
+respectivamente. Es decir, si en workspace evaluamos: `nil + 9` el resultado
+debe ser 9. Y si en workspace evaluamos `nil * 25` el resultado debe ser 25.
 
 *Tareas*
 
-1. Implemente en la clase de la cual es instancia nil, los mensajes + y *, que
+1. Implemente en la clase de la cual es instancia `nil`, los mensajes + y *, que
 reciben como parámetro un número.
 
 ```smalltak
@@ -537,9 +513,13 @@ todas las subclases de esa clase.
 1. Busque la implementación de ambos métodos y lea los comentarios para
 entender la funcionalidad provista.
 
-`Sugerencia: utilice el finder, que se puede encontrar dentro del tools en el
-menu de world.`
+    `Sugerencia: utilice el finder, que se puede encontrar dentro del tools en el
+    menu de world.`
 
-2. Utillizando esos mensajes e indique cuantos métodos se encuentran definidos
-en la jerarquía de `Collection`
+2. Utillizando esos mensajes indique cuantos métodos se encuentran definidos en
+la jerarquía de `Collection`
+
+```smalltak
+Collection withAllSubclasses inject: 0  into: [ :t :subclass| t + subclass methods size] "=> 2294"
+```
 

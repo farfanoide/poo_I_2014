@@ -14,22 +14,22 @@ solo permite 10 mensajes como máximo (cuando llega el mensaje número 11 se
 descarta el mensaje más viejo).
 
 ```smalltalk
-Wall>>post:aMessage
+Wall>> post: aMessage
   "Agrega un mensaje al muro"
 ```
 
 ```smalltalk
-Wall>>list
+Wall>> list
   "Retorna una colección con todos lo mensajes del muro"
 ```
 
 ```smalltalk
-Wall>>remove: aMessage
+Wall>> remove: aMessage
   "Elimina el mensaje del muro"
 ```
 
 ```smalltalk
-Wall>>numberOfMessages
+Wall>> numberOfMessages
   "Retorna la cantidad de mensajes posteados en el muro"
 ```
 
@@ -39,27 +39,27 @@ notificados. Considere que la clase que implementa al usuario debe contener el
 siguiente protocolo:
 
 ```smalltalk
-User>>name
+User>> name
   "Retorna el nombre del usuario"
 ```
 
 ```smalltalk
-User>>name: aString
+User>> name: aString
   "Cambia el nombre del usuario por el valor recibido"
 ```
 
 ```smalltalk
-User>>addFriend: anotherUser
+User>> addFriend: anotherUser
   "Agregar anotherUser a la lista de amigos"
 ```
 
 ```smalltalk
-User>>post:aMessage
+User>> post: aMessage
   "Publica un mensaje en muro"
 ```
 
 ```smalltalk
-User>>newMessage:aMessage from:anotherUser
+User>> newMessage: aMessage from: anotherUser
   "Los usuarios reciben este mensaje cuando el amigo indicado por el parámetro
   anotherUser publicó el mensaje aMessage en su propio muro"
 ```
@@ -68,15 +68,35 @@ User>>newMessage:aMessage from:anotherUser
 
 1. Realice un diagrama de Clases.
 
+    ![uml red social](img/practica_5/red_social.jpg)
+
 2. Realice un diagrama de secuencia para mostrar cómo un usuario que tiene dos
 amigos agrega algo a su muro (y se agrega a los muros de los amigos).
+
+    ![diagrama de secuencia de nuevo post con dos amigos](img/practica_5/secuencia_post.jpg)
+    <!-- User&#45;>WallPost: post:(aString) -->
+    <!-- WallPost&#45;>WallMessage: (text: aString from: self) -->
+    <!-- WallMessage&#45;&#45;>WallPost: aMessage -->
+    <!-- User&#45;>Friend1: (newMessage: aString from: self) -->
+    <!-- User&#45;>Friend2: (newMessage: aString from: self) -->
 
 3. Implemente en Pharo.
 
   1. Incluya código de prueba en un workspace.
 
+      ```smalltalk
+      pepe := User new name: 'pepe'.
+      juan := User new name: 'juan'.
+      ana  := User new name:'ana'.
+      pepe addFriend: juan.
+      juan addFriend: ana.
+      pepe floodPost: 'q zarpado en smalltalk que estoy! '.
+      ana "=> Inspeccioname ;)"
+      ```
   2. Con la asistencia de un ayudante, implemente un test case en base al
      código del punto anterior.
+
+      > Solucion: [Red Social](src/practica_5/RedSocial.st)
 
 Ejercicio 2
 -----------
@@ -96,6 +116,8 @@ Carlos son amigos, cuando Juan hace un `floodPost:`, Carlos debe enterarse.
 1. Realice un diagrama de secuencia para el ejemplo.
 
 2. Implemente en Pharo.
+
+    > Solucion: [Red Social](src/practica_5/RedSocial.st)
 
 Ejercicio 3
 -----------
@@ -134,7 +156,11 @@ La aplicación debe permitir:
 
 1. Realice el diagrama de clases.
 
+    ![uml cliente mails](img/practica_5/mail_client.jpg)
+
 2. Implemente en Pharo.
+
+  > Solucion: [MailClient](src/practica_5/MailClient.st)
 
 Ejercicio 4
 -----------
@@ -426,7 +452,7 @@ monto final de una compra por un libro de texto y uno de literatura.
 
 4. Instancie en un workspace su facturador, 2 libros de texto y 2 de literatura
 (a su elección), un nuevo cliente y envíe al facturador el mensaje
-`#facturar:para:.` Indique cual es el monto que deberá informarse en el
+`#facturar:para:`. Indique cual es el monto que deberá informarse en el
 Transcript para ese caso en particular.
 
 Ejercicio 10 (Avanzado)

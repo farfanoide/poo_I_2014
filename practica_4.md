@@ -406,8 +406,8 @@ características:
 
 * Memoria (cantidad de GB)
 
-* Procesador (tipo de juego de instrucciones del procesador – x86, ARM,
-Itanium –, Ghz de velocidad)
+* Procesador (tipo de juego de instrucciones del procesador (x86, ARM,
+  Itanium), Ghz de velocidad)
 
 * Disco rígido (cantidad de GB)
 
@@ -416,8 +416,8 @@ correctamente inicializados.
 
 Cuando la computadora recibe el mensaje `on` debe reportar su configuración, es
 decir cuanta memoria tiene, de que procesador se trata y su velocidad, y la
-capacidad del disco rígido.  Nuestra computadora usará el Transcript para
-reportar esta información.  Considere además que la Memoria y el Disco Rígido
+capacidad del disco rígido. Nuestra computadora usará el Transcript para
+reportar esta información. Considere además que la Memoria y el Disco Rígido
 deben proveer un método (con implementación vacía ya que en la siguiente
 práctica implementará el cuerpo de estos métodos) para almacenar Strings que se
 le envían.
@@ -492,7 +492,7 @@ documenta en el siguiente diagrama. 
 Note que los vértices se guardan ahora en una colección en lugar de tres
 variables.
 
-![uml delaunay element ej 12](im/practica_4/delaunay.jpg)
+![uml delaunay element ej 12](img/practica_4/delaunay.jpg)
  Figura 3
 
 > Solucion: [DelaunayElement](src/practica_4/DelaunayElement.st)

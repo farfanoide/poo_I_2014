@@ -373,30 +373,35 @@ primeras prácticas (WalkingBrushRobot).
 
 1. Analice la implementacion de `#position` en toda la jerarquía. ¿Es necesaria
 la redefinición que se hizo en `WalkingBrushRobot`? Justifique.
-    > No, no es necesaria la redefinicion de #position, porque los dos métodos
-    > son iguales, estan definidos de la misma manera
+
+  > No, no es necesaria la redefinicion de #position, porque los dos métodos
+  > son iguales, estan definidos de la misma manera
 
 2. ¿Cuáles son los constructores que se definieron? ¿Para qué sirve cada uno?
-    > `withBattery`      instancia un robot con bateria.
-    >
-    > `withoutBattery`   instancia un robot sin bateria.
-    >
-    > `newWithPosition:` instancia un robot en una posicion dada.
+
+  > `withBattery`      instancia un robot con bateria.
+  >
+  > `withoutBattery`   instancia un robot sin bateria.
+  >
+  > `newWithPosition:` instancia un robot en una posicion dada.
 
 3. Analice las clases `Battery` y `EndlessBattery`.
 
-      1. ¿Cuál es el protocolo en común?
-           > El protocolo común es #consume: y #canConsume:
+  1. ¿Cuál es el protocolo en común?
 
-      2. ¿Qué puede concluir al respecto?
-           > Se puede concluir que hay polimorfismo.
+    > El protocolo común es #consume: y #canConsume:
 
-      3. ¿Es necesario que objetos polimórficos pertenezcan a la misma
-         jerarquía?
-          > No no es necesario que pertenezcan a la misma jerarquia.
-          >
-          > Hay Polimorfismo cuando es posible enviar mensajes sintácticamente
-          > iguales a objetos de tipos distintos.
+  2. ¿Qué puede concluir al respecto?
+
+    > Se puede concluir que hay polimorfismo.
+
+  3. ¿Es necesario que objetos polimórficos pertenezcan a la misma
+     jerarquía?
+
+    > No no es necesario que pertenezcan a la misma jerarquia.
+    >
+    > Hay Polimorfismo cuando es posible enviar mensajes sintácticamente
+    > iguales a objetos de tipos distintos.
 
 4. Liste las clases de las cuales hereda WalkingBrushRobot y para cada caso
 documente las variables de instancia
@@ -412,18 +417,19 @@ documente las variables de instancia
 
   1. cómo se inicializa esta variable?
 
-        ```smalltalk
+      ```smalltalk
 
-            initialize
-              ...
-              self body: self bodyClass new.
+          initialize
+            ...
+            self body: self bodyClass new.
 
-            bodyClass
-              ^BGSRobotBody.
-        ```
+          bodyClass
+            ^BGSRobotBody.
+      ```
 
   2. que retorna el mensaje `#bodyClass` de la clase `BGSRobot`?
-        > Retorna un objeto clase BGSRobotBody.
+
+      > Retorna un objeto clase BGSRobotBody.
 
 6. Modifique la clase `WalkingBrushRobot` para que se inicialize con otros tipos de "body"
 

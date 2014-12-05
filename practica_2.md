@@ -646,15 +646,15 @@ y sus métodos responda:
 
 2. ¿Cómo se escriben los nombres de métodos?
 
->En minuscula.  
+>En minuscula.
 
 3. ¿Para qué se usan los protocolos?
 
->Para organizar los metodos de los objetos.  
+>Para organizar los metodos de los objetos.
 
 4. ¿Qué pasa si un método no tiene un protocolo asignado?
 
->Absolutamente nada, solamente aparecera dentro de 'as yet unclassified' 
+>Absolutamente nada, solamente aparecera dentro de 'as yet unclassified'
 
 5. Busque la clase DateAndTime y:
 
@@ -830,13 +830,14 @@ Ejercicio 11: Documentar la batería con UML
 Ejercicio 12: (Avanzado)
 ------------------------
 
-Implemente un nuevo tipo batería que se llama EnergyRecoveryCell. Este tipo de
-batería tiene el mismo comportamiento que la clase Battery pero ademas se
-recarga mientras el robot se mueve. Una instancia de EnergyRecoveryCell recarga
-1 unidad de energía por cada 10 unidades de energía consumidas. Tenga en cuenta
-que es indistinto si las 10 unidades se consumen en una sola movida del robot o
-en varias.  Verifique su implementación utilizando el test case provisto por la
-cátedra
+Implemente un nuevo tipo batería que se llama `EnergyRecoveryCell`. Este tipo
+de batería tiene el mismo comportamiento que la clase Battery pero ademas se
+recarga mientras el robot se mueve. Una instancia de `EnergyRecoveryCell`
+recarga 1 unidad de energía por cada 10 unidades de energía consumidas. Tenga
+en cuenta que es indistinto si las 10 unidades se consumen en una sola movida
+del robot o en varias.
+
+Verifique su implementación utilizando el test case provisto por la cátedra
 
 ```smalltalk
 initialize
@@ -844,7 +845,7 @@ initialize
   self steps: 0
 ```
 
-> (no usar este metodo, rompe los tests de la catedra)
+*(no usar este metodo, rompe los tests de la catedra)*
 
 ```smalltalk
 canConsume: amount
@@ -914,5 +915,5 @@ Esto se usaria de esta manera:
 batt := EnergyRecoveryCell newWithDefaultCharge: 5.
 batt charge: 100;
     consume: 10;
-    charge. 95
+    charge. "=> 95"
 ```

@@ -180,6 +180,16 @@ Por otro lado, los abonados se clasifican en dos categorías. Están los
 particulares a los que se les factura el precio neto y las entidades
 gubernamentales que reciben un 10% de descuento.
 
+<!--
+comunicacion -> [comienzo, distancia -> [origen, destino], duracion]
+  ├── local         -> (costo fijo por minuto)
+  ├── interurbana   -> (3 rangos de distancia)
+  └── internacional -> (2 rangos horarios)
+
+abonado -> [algun dato, ej nombre?]
+  ├── privado -> (neto)
+  └── gubernamental -> (10% descuento) -->
+
 *Tareas:*
 
 1. Realice el diagrama de clases.
@@ -431,8 +441,8 @@ Las promociones se aplican de la siguiente manera:
 librería se les realiza un 5 % extra de descuento (se calcula sobre el neto
 resultante de aplicar los descuentos anteriores).
 
-Su solución debe respetar las siguientes indicaciones: La clase Facturador debe
-entender el mensaje #facturar: unosLibros para: unCliente, que genera la
+Su solución debe respetar las siguientes indicaciones: La clase `Facturador`
+debe entender el mensaje `#facturar: unosLibros para: unCliente`, que genera la
 factura correspondiente.
 
 Una vez determinado el monto a pagar, el mismo debe informarse en el Transcript
